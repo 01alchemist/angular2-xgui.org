@@ -1,0 +1,29 @@
+{
+  "name": "Angular2GUI",
+  "version": "1.0.0",
+  "authors": [
+    "01 Alchemist"
+  ],
+  "description": "GUI Framework for angular2",
+  "main": "GUICore.ts",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "angular2",
+    "gui",
+    "framework",
+    "typescript",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Angular2GUI",
+  "version": "1.0.0",
+  "description": "GUI Framework for angular2",
+  "main": "GUICore.ts",
+  "scripts": {
+    "postinstall": "bower install && tsd install && gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/01alchemist/Angular2GUI.git"
+  },
+  "keywords": [
+    "angular2",
+    "gui",
+    "framework",
+    "typescript",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "01 Alchemist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/01alchemist/Angular2GUI/issues"
+  },
+  "devDependencies": {
+    "tsd": "latest",
+    "bower": "latest",
+    "typescript": "1.5.3",
+    "gulp": "latest",
+    "gulp-shell": "latest",
+    "gulp-insert": "latest",
+    "gulp-rename": "latest",
+    "run-sequence": "latest",
+    "gulp-sourcemaps": "latest",
+    "del": "latest",
+    "jasmine": "2.1.0",
+    "phantomjs": "1.9.12",
+    "requirejs": "2.1.15",
+    "gulp-concat-css": "~2.2.0",
+    "gulp-minify-css": "~1.2.0"
+  }
+}
