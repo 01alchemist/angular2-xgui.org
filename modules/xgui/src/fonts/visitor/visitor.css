@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'visitor_tt1_brkregular';
+    src: url('visitor1.eot');
+    src: url('visitor1.eot?#iefix') format('embedded-opentype'),
+         url('visitor1.woff2') format('woff2'),
+         url('visitor1.woff') format('woff'),
+         url('visitor1.ttf') format('truetype'),
+         url('visitor1.svg#visitor_tt1_brkregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

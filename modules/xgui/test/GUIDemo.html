@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Angular2 GUI Demo</title>
+
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='../src/fonts/visitor/visitor.css' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="../src/xgui.css"/>
+    <!--Js scripts -->
+    <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+    <script src="../../../libs/traceur-runtime.js"></script>
+    <script src="../../../libs/system@0.16.11.js"></script>
+    <script src="../../../libs/angular2.dev.js"></script>
+</head>
+<body>
+
+<gui-demo></gui-demo>
+<script>
+    System.config({
+        baseURL:"../../"
+    });
+    System.import('xgui/test/GUIDemo');
+</script>
+</body>
+</html>

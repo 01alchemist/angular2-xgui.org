@@ -1,0 +1,11 @@
+<div class="vector-input">
+    <div class="label">{{ label }}</div>
+    <div class="input-group">
+        <div *ng-for="#element of elements"  class="input-element">
+            <div class="input-label">{{ element.label }}</div>
+            <input type="number" step="1" class="input-value" value="{{ element.value }}"
+                   (keyup)="onInput(element.label, $event.target, true)"
+                   (change)="onInput(element.label, $event.target)"/>
+        </div>
+    </div>
+</div>

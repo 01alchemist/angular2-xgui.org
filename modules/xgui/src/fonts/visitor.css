@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'visitor';
+    src: url('static/app/fonts/visitor/visitor1-webfont.eot');
+    src: url('static/app/fonts/visitor/visitor1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('static/app/fonts/visitor/visitor1-webfont.woff2') format('woff2'),
+         url('static/app/fonts/visitor/visitor1-webfont.woff') format('woff'),
+         url('static/app/fonts/visitor/visitor1-webfont.ttf') format('truetype')
+    font-weight: normal;
+    font-style: normal;
+}
