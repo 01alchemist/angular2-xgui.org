@@ -1,7 +1,7 @@
 ///<reference path="../typings/angular2/angular2.d.ts" />
 
 import {bootstrap, Component, View} from "angular2/angular2";
-import {VectorInput} from "xgui/angular2-xgui";
+import {VectorInput, Button} from "xgui/angular2-xgui";
 
 @Component({
     selector: 'gui-demo'
@@ -9,7 +9,8 @@ import {VectorInput} from "xgui/angular2-xgui";
 @View({
     templateUrl: 'GUIDemoTemplate.html',
     directives: [
-        VectorInput
+        VectorInput,
+        Button
     ]
 })
 export class GUIDemo {
