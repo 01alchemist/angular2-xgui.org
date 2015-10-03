@@ -1,5 +1,7 @@
 <div class="container">
+    <x-button [label]="'Click Me'" (click)="onButtonClick()"></x-button>
+    <x-checkbox [label]="'Check Me'" (click)="onButtonClick()"></x-checkbox>
+    <number-input id="angle" [label]="'Angle'" [value]="'0'" (change)="onAngleChange($event)"></number-input>
     <vector-input id="position" [label]="'Position'" [vector]="{x:554,y:0,z:0}" (change)="onVectorChange($event)"></vector-input>
-    <div class="input-display"></div>
-    <x-button [label]="'Click Me'"></x-button>
+    <!--<div class="input-display"></div>-->
 </div>

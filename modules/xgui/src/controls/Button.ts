@@ -21,6 +21,7 @@ import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/ang
     styles:[
         '.x-button{' +
             'cursor: hand;' +
+            'margin: 5px;' +
             'display: inline-block;' +
             'position: relative;' +
             'padding: 2px;' +

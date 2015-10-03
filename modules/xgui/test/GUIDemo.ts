@@ -1,7 +1,7 @@
 ///<reference path="../typings/angular2/angular2.d.ts" />
 
 import {bootstrap, Component, View} from "angular2/angular2";
-import {VectorInput, Button} from "xgui/angular2-xgui";
+import {Button, CheckBox, NumberInput, VectorInput} from "xgui/angular2-xgui";
 
 @Component({
     selector: 'gui-demo'
@@ -9,8 +9,10 @@ import {VectorInput, Button} from "xgui/angular2-xgui";
 @View({
     templateUrl: 'GUIDemoTemplate.html',
     directives: [
-        VectorInput,
-        Button
+        Button,
+        CheckBox,
+        NumberInput,
+        VectorInput
     ]
 })
 export class GUIDemo {
@@ -20,7 +22,13 @@ export class GUIDemo {
     constructor(){
         this.vector = {x:554,y:0,z:0};
     }
+    onButtonClick(){
+        console.log("Button Clicked");
+    }
     onVectorChange(event){
+        console.log(event);
+    }
+    onAngleChange(event){
         console.log(event);
     }
 }

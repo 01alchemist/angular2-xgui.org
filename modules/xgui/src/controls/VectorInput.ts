@@ -1,6 +1,16 @@
 /// <reference path="../../typings/angular2/angular2.d.ts" />
 
-import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/angular2';
+import {
+    Component,
+    View,
+    CSSClass,
+    NgFor,
+    NgIf,
+    EventEmitter,
+    ElementRef
+} from 'angular2/angular2';
+
+import {NumberInput} from "xgui/src/controls/NumberInput";
 
 @Component({
     selector: 'vector-input',
@@ -11,39 +21,53 @@ import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/ang
     events:["change:change"]
 })
 @View({
-    template: '<div class="vector-input">' +
-    '<div class="label">{{ label }}</div> ' +
-    '<div class="input-group"> ' +
-    '<div *ng-for="#element of elements"  class="input-element"> ' +
-    '<div class="input-label">{{ element.label }}</div>' +
-    '<input type="number" step="1" class="input-value" value="{{ element.value }}"' +
-    '(keyup)="onInput(element.label, $event.target, true)"' +
-    '(change)="onInput(element.label, $event.target)"/>' +
-    '</div></div></div>',
+    /*templateUrl:"VectorInput.html",*/
+    template:
+    '<div class="vector-input">' +
+        '<div class="label">{{ label }}</div> ' +
+        '<div class="input-group"> ' +
+            '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
+                '<number-input [label]="element.label" [value]="element.value"' +
+                '(change)="onInput($event)"></number-input>' +
+            '</div>' +
+        '</div>' +
+    '</div>',
     styles:[
-        '.vector-input{display: block;position: relative;padding: 5px;width: auto;background-color: #383838;}',
-        '.input-group{position: relative;display: flex;padding-top: 5px;padding-left: 5px;}',
-        '.input-element{font-size: 0.9em;position: relative;display: flex;padding-right: 10px;}',
-        '.input-label{padding-right: 7px;}',
-        '.input-label:hover{cursor:col-resize;}',
-        '.input-value{width: auto;height: 17px;padding: 2px;display: flex;background-color: #50524F;color: ' +
-        '#fff;font-size: 0.9em;border: 0px solid #262825;border-top: 1px solid #262825; ' +
-        '-webkit-box-shadow: inset 0px -1px 2px 0px rgba(0,0,0,0.53); ' +
-        '-moz-box-shadow: inset 0px -1px 2px 0px rgba(0,0,0,0.53);' +
-        'box-shadow: inset 0px -1px 2px 0px rgba(0,0,0,0.53);}'
+        '.vector-input{' +
+            'display: block;' +
+            'position: relative;' +
+            'padding: 5px;' +
+            'width: auto;' +
+        '}',
+        '.input-group{' +
+            'position: relative;' +
+            'display: flex;' +
+            'padding-top: 5px;' +
+            'padding-left: 5px;' +
+        '}',
+        '.input-element{' +
+            'font-size: 0.9em;' +
+            'position: relative;' +
+            'display: flex;' +
+            'padding-right: 10px;' +
+        '}'
     ],
-    directives: [NgFor, NgIf, CSSClass]
+    directives: [NgFor, NgIf, CSSClass, NumberInput]
 })
 
 export class VectorInput {
 
     change = new EventEmitter();
+    availableWidth:number;
 
     elements;
+    private _elementRef:ElementRef;
+    private _inputWidth:number;
     private _label:string;
     private _vector;
 
-    constructor() {
+    constructor(elementRef: ElementRef) {
+        this._elementRef = elementRef;
         this.vector = this.vector || { X:0, Y:0, Z:0 };
     }
 
@@ -52,6 +76,14 @@ export class VectorInput {
     }
     set label(value){
         this._label = value;
+    }
+    get inputWidth(){
+        this.availableWidth = this._elementRef.nativeElement.parentElement.offsetWidth || 250;
+        this._inputWidth = (this.availableWidth - (10 + (this.elements.length * 10)) ) / this.elements.length;
+        return this._inputWidth;
+    }
+    set inputWidth(value){
+        this._inputWidth = value;
     }
     get vector(){
         return this._vector;
@@ -69,42 +101,10 @@ export class VectorInput {
         }
     }
 
-    onInput(element, target, isKeyInput=false){
+    onInput(event){
 
-        var value = target.value;
-        element = element.toLowerCase();
-
-        if(value === ""){
-            value = this.vector[element];
-            target.value = value;
-        }else{
-            var split = value.split(".");
-            var step = target.step;
-            if(split.length > 1){
-                var fractions = split[1];
-                var length = fractions.length;
-
-                if(length == 0 && !isKeyInput){
-                    target.value = split[0];
-                    step = 1;
-                }else {
-
-                    var _step:any = ".";
-                    while (length > 1) {
-                        _step += "0";
-                        length--;
-                    }
-                    _step += "1";
-                    _step = parseFloat(_step);
-                    if (target.step > _step || isKeyInput) {
-                        step = _step;
-                    }
-                }
-            }
-            target.step = step;
-            value = parseFloat(value);
-        }
-
+        var value = event.value;
+        var element = event.label.toLowerCase();
 
         this.vector[element] = value;
         this.change.next({value:value, element:element, vector:this.vector});
