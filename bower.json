@@ -1,12 +1,13 @@
 {
-  "name": "Angular2GUI",
+  "name": "angular2-xgui",
   "version": "1.0.0",
   "authors": [
     "01 Alchemist"
   ],
   "description": "GUI Framework for angular2",
-  "main": "GUICore.ts",
+  "main": "src/angular2-xgui.ts",
   "moduleType": [
+    "amd",
     "es6"
   ],
   "keywords": [
@@ -27,8 +28,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
-    "jquery-ui": "~1.11.4",
     "traceur-runtime": "latest"
-  }
+  },
+  "homepage": "https://github.com/01alchemist/angular2-xgui.org"
 }

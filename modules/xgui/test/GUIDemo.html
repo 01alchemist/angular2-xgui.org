@@ -6,13 +6,9 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link href='../src/fonts/visitor/visitor.css' rel='stylesheet' type='text/css'>
 
-    <!-- Styles -->
-    <!--<link rel="stylesheet" type="text/css" href="../src/xgui.css"/>-->
-    <!--Js scripts -->
-    <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../../../bower_components/jquery-ui/jquery-ui.min.js"></script>
-
     <script src="../../../libs/traceur-runtime.js"></script>
+    <!--<script src="../../../node_modules/systemjs/dist/system.js"></script>-->
+    <!--<script src="https://code.angularjs.org/2.0.0-snapshot/angular2.dev.js"></script>-->
     <script src="../../../libs/system@0.16.11.js"></script>
     <script src="../../../libs/angular2.dev.js"></script>
     <style>
@@ -43,7 +39,7 @@
     System.config({
         baseURL:"../../"
     });
-    System.import('xgui/test/GUIDemo');
+    System.import('./xgui/test/GUIDemo');
 </script>
 </body>
 </html>
