@@ -275,7 +275,7 @@ gulp.task('bundle.js.dev', ['build.js.dev'], function() {
     return bundler.bundle(
         devBundleConfig,
         'xgui/angular2-xgui',
-        '../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js',
+        'build/angular2-xgui.dev.js',
         {
             sourceMaps: true
         }
