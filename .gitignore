@@ -1,5 +1,5 @@
 .idea
 typings
+/dist/tools
 node_modules
-/dist
 bower_components
