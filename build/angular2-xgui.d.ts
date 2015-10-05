@@ -13,6 +13,7 @@ declare module '__xgui/angular2-xgui/modules/xgui/src/controls/xcontrols' {
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/CheckBox";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/NumberInput";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/VectorInput";
+    export * from "__xgui/angular2-xgui/modules/xgui/src/controls/Tree";
 }
 
 declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Button' {
@@ -58,6 +59,22 @@ declare module '__xgui/angular2-xgui/modules/xgui/src/controls/VectorInput' {
     import { EventEmitter, ElementRef } from 'angular2/angular2';
     export class VectorInput {
         change: EventEmitter;
+        availableWidth: number;
+        elements: any;
+        constructor(elementRef: ElementRef);
+        label: string;
+        inputWidth: number;
+        vector: any;
+        onInput(event: any): void;
+    }
+}
+
+declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Tree' {
+    import { EventEmitter, ElementRef } from 'angular2/angular2';
+    export class Tree {
+        select: EventEmitter;
+        dateProvider: any;
+        dataField: string;
         availableWidth: number;
         elements: any;
         constructor(elementRef: ElementRef);

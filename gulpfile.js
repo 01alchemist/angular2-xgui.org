@@ -188,11 +188,7 @@ gulp.task('bundle.declaration', function() {
         out:"build/angular2-xgui.d.ts",
         externals: false,
         exclude: function(file, external){
-            if(file.indexOf("angular2.d.ts") > -1){
-                console.log("test");
-                return true;
-            }
-            return false;
+            return file.indexOf("angular2.d.ts") > -1;
         }
     });
 

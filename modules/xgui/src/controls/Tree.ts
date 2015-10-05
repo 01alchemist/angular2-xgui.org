@@ -10,20 +10,18 @@ import {
     ElementRef
 } from 'angular2/angular2';
 
-import {NumberInput} from "xgui/src/controls/NumberInput";
-
 @Component({
-    selector: 'tree',
+    selector: 'x-tree',
     properties:[
-        'vector:vector',
-        'label:label'
+        'dateProvider:dateProvider',
+        'dataField:dataField'
     ],
-    events:["change:change"]
+    events:["select:select"]
 })
 @View({
     /*templateUrl:"VectorInput.html",*/
     template:
-    '<div class="vector-input">' +
+    '<div class="x-tree">' +
     '<div class="label">{{ label }}</div> ' +
     '<div class="input-group"> ' +
     '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
@@ -33,7 +31,7 @@ import {NumberInput} from "xgui/src/controls/NumberInput";
     '</div>' +
     '</div>',
     styles:[
-        '.vector-input{' +
+        '.x-tree{' +
         'display: block;' +
         'position: relative;' +
         'padding: 5px;' +
@@ -52,12 +50,14 @@ import {NumberInput} from "xgui/src/controls/NumberInput";
         'padding-right: 10px;' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, NumberInput]
+    directives: [NgFor, NgIf, CSSClass]
 })
 
 export class Tree {
 
-    change = new EventEmitter();
+    select = new EventEmitter();
+    dateProvider:any;
+    dataField:string;
     availableWidth:number;
 
     elements;
@@ -107,6 +107,6 @@ export class Tree {
         var element = event.label.toLowerCase();
 
         this.vector[element] = value;
-        this.change.next({value:value, element:element, vector:this.vector});
+        this.select.next({value:value, element:element, vector:this.vector});
     }
 }
