@@ -21,19 +21,15 @@ import {NumberInput} from "xgui/src/controls/NumberInput";
     events:["change:change"]
 })
 @View({
-    /*templateUrl:"VectorInput.html",*/
     template:
-    '<div class="vector-input">' +
-        '<div class="label">{{ label }}</div> ' +
-        '<div class="input-group"> ' +
-            '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
-                '<number-input [label]="element.label" [value]="element.value"' +
-                '(change)="onInput($event)"></number-input>' +
-            '</div>' +
+    '<div class="label">{{ label }}</div> ' +
+    '<div class="input-group"> ' +
+        '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
+            '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
         '</div>' +
     '</div>',
     styles:[
-        '.vector-input{' +
+        'vector-input{' +
             'display: block;' +
             'position: relative;' +
             'padding: 5px;' +

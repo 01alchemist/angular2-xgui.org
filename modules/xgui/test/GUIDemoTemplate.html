@@ -3,5 +3,8 @@
     <x-checkbox [label]="'Check Me'" (click)="onButtonClick()"></x-checkbox>
     <number-input id="angle" [label]="'Angle'" [value]="'0'" (change)="onAngleChange($event)"></number-input>
     <vector-input id="position" [label]="'Position'" [vector]="{x:554,y:0,z:0}" (change)="onVectorChange($event)"></vector-input>
+    <!--<x-icon [src]="iconSrc"></x-icon>-->
+    <x-label>Tree</x-label>
+    <x-tree id="test-tree" [data-provider]="treeDataProvider" [data-field]="'data'" (select)="onTreeItemSelect($event)"></x-tree>
     <!--<div class="input-display"></div>-->
 </div>

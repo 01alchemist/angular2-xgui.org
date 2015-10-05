@@ -1,0 +1,15 @@
+<ul>
+    <li *ng-for="#data of dataProvider">
+
+        <span><input type="checkbox" [checked]="data.expanded" (click)="data.expand()" /></span>
+        <span (click)="data.toggle()">{{ data.label }}</span>
+
+        <div *ng-if="data.expanded">
+            <ul >
+                <li *ng-for="#child of data.dataProvider">
+                    <x-tree-item [data]="child"></x-tree-item>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

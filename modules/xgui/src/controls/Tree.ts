@@ -9,104 +9,95 @@ import {
     EventEmitter,
     ElementRef
 } from 'angular2/angular2';
+import {Label} from "xgui/src/controls/Label";
+import {Icon} from "xgui/src/controls/Icon";
 
 @Component({
     selector: 'x-tree',
     properties:[
-        'dateProvider:dateProvider',
-        'dataField:dataField'
+        'isChild:is-child',
+        'dataField:data-field',
+        'dataProvider:data-provider'
     ],
     events:["select:select"]
 })
 @View({
-    /*templateUrl:"VectorInput.html",*/
     template:
-    '<div class="x-tree">' +
-    '<div class="label">{{ label }}</div> ' +
-    '<div class="input-group"> ' +
-    '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
-    '<number-input [label]="element.label" [value]="element.value"' +
-    '(change)="onInput($event)"></number-input>' +
-    '</div>' +
-    '</div>' +
+    '<div class="x-tree-item" *ng-for="#data of dataProvider">' +
+        '<div *ng-if="isChild" class="x-tree-connector"></div>' +
+        '<div *ng-if="!isChild" class="x-tree-shift"></div>' +
+        '<x-icon></x-icon>' +
+        '<x-label class="tree-label" [text]="data.label"></x-label>' +
+        '<div *ng-if="hasDataProvider(data)" >' +
+            '<x-tree class="child" [is-child]="true" [data-provider]="getDataProvider(data)" [data-field]="dataField"></x-tree>' +
+        '</div>' +
     '</div>',
     styles:[
-        '.x-tree{' +
-        'display: block;' +
-        'position: relative;' +
-        'padding: 5px;' +
-        'width: auto;' +
+        'x-tree{' +
+            'display: block;' +
+            'position: relative;' +
+            'padding-left: 0px;' +
+            'width: auto;' +
         '}',
-        '.input-group{' +
-        'position: relative;' +
-        'display: flex;' +
-        'padding-top: 5px;' +
-        'padding-left: 5px;' +
+        'x-tree .child{' +
+            'padding-left: 20px;' +
         '}',
-        '.input-element{' +
-        'font-size: 0.9em;' +
-        'position: relative;' +
-        'display: flex;' +
-        'padding-right: 10px;' +
+        '.x-tree-item{' +
+            'display: block;' +
+            'position: relative;' +
+            'cursor: hand;' +
+        '}',
+        '.x-tree-connector{' +
+            'display: inline-block;' +
+            'position: relative;' +
+            'top: -5px;' +
+            'width: 13px;' +
+            'height: 22px;' +
+            'background-image: url(images/tree-connector.png)' +
+        '}',
+        '.x-tree-shift{' +
+            'display: inline-block;' +
+            'position: relative;' +
+            'width: 13px;' +
+        '}',
+        '.tree-label{' +
+            'top:-2px' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass]
+    directives: [NgFor, NgIf, CSSClass, Tree, Label, Icon]
 })
 
 export class Tree {
 
     select = new EventEmitter();
-    dateProvider:any;
-    dataField:string;
-    availableWidth:number;
+    isChild:boolean = false;
 
-    elements;
     private _elementRef:ElementRef;
-    private _inputWidth:number;
-    private _label:string;
-    private _vector;
+    private _dataField:string;
+    private _dataProvider:any;
 
     constructor(elementRef: ElementRef) {
         this._elementRef = elementRef;
-        this.vector = this.vector || { X:0, Y:0, Z:0 };
+        this.dataField = "data";
     }
 
-    get label(){
-        return this._label;
+    get dataProvider(){
+        return this._dataProvider;
     }
-    set label(value){
-        this._label = value;
+    set dataProvider(value){
+        this._dataProvider = value;
     }
-    get inputWidth(){
-        this.availableWidth = this._elementRef.nativeElement.parentElement.offsetWidth || 250;
-        this._inputWidth = (this.availableWidth - (10 + (this.elements.length * 10)) ) / this.elements.length;
-        return this._inputWidth;
+    get dataField(){
+        return this._dataField;
     }
-    set inputWidth(value){
-        this._inputWidth = value;
-    }
-    get vector(){
-        return this._vector;
-    }
-    set vector(value){
-        this._vector = value;
-        this.elements = [];
-        for(var element in this._vector){
-            if(this._vector.hasOwnProperty(element)){
-                this.elements.push({
-                    label:element.toUpperCase(),
-                    value:this.vector[element]
-                });
-            }
-        }
+    set dataField(value){
+        this._dataField = value;
     }
 
-    onInput(event){
-
-        var value = event.value;
-        var element = event.label.toLowerCase();
-
-        this.vector[element] = value;
-        this.select.next({value:value, element:element, vector:this.vector});
+    hasDataProvider(data){
+        return data[this.dataField] !== undefined;
+    }
+    getDataProvider(data){
+        return data[this.dataField];
     }
 }

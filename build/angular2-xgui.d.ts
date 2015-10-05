@@ -9,11 +9,28 @@ declare module '__xgui/angular2-xgui/modules/xgui/xgui-core' {
 }
 
 declare module '__xgui/angular2-xgui/modules/xgui/src/controls/xcontrols' {
+    export * from "__xgui/angular2-xgui/modules/xgui/src/controls/Label";
+    export * from "__xgui/angular2-xgui/modules/xgui/src/controls/Icon";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/Button";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/CheckBox";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/NumberInput";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/VectorInput";
+    export * from "__xgui/angular2-xgui/modules/xgui/src/controls/TreeItem";
     export * from "__xgui/angular2-xgui/modules/xgui/src/controls/Tree";
+}
+
+declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Label' {
+    export class Label {
+        constructor();
+        label: string;
+    }
+}
+
+declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Icon' {
+    export class Icon {
+        constructor();
+        src: string;
+    }
 }
 
 declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Button' {
@@ -69,19 +86,27 @@ declare module '__xgui/angular2-xgui/modules/xgui/src/controls/VectorInput' {
     }
 }
 
+declare module '__xgui/angular2-xgui/modules/xgui/src/controls/TreeItem' {
+    import { EventEmitter, ElementRef } from 'angular2/angular2';
+    export class TreeItem {
+        select: EventEmitter;
+        constructor(elementRef: ElementRef);
+        label: any;
+        data: any;
+        dataField: string;
+    }
+}
+
 declare module '__xgui/angular2-xgui/modules/xgui/src/controls/Tree' {
     import { EventEmitter, ElementRef } from 'angular2/angular2';
     export class Tree {
         select: EventEmitter;
-        dateProvider: any;
-        dataField: string;
-        availableWidth: number;
-        elements: any;
+        isChild: boolean;
         constructor(elementRef: ElementRef);
-        label: string;
-        inputWidth: number;
-        vector: any;
-        onInput(event: any): void;
+        dataProvider: any;
+        dataField: string;
+        hasDataProvider(data: any): boolean;
+        getDataProvider(data: any): any;
     }
 }
 
