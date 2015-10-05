@@ -35,6 +35,7 @@ var insert = require('gulp-insert');
 var tslint = require('gulp-tslint');
 //var sauceConf = require('./sauce.conf'); TODO: delete
 //var os = require('os'); TODO: delete
+var dts = require('dts-bundle');
 
 require('./tools/check-environment')({
     requiredNpmVersion: '>=2.9.0',
@@ -175,6 +176,28 @@ gulp.task('build.tools', ['build/clean.tools'], function(done) {
 });
 
 
+
+/**
+ * bundle declaration
+ */
+gulp.task('bundle.declaration', function() {
+    dts.bundle({
+        name: "xgui/angular2-xgui",
+        main: "modules/xgui/angular2-xgui.d.ts",
+        baseDir: "./",
+        out:"build/angular2-xgui.d.ts",
+        externals: false,
+        exclude: function(file, external){
+            if(file.indexOf("angular2.d.ts") > -1){
+                console.log("test");
+                return true;
+            }
+            return false;
+        }
+    });
+
+    return true;
+});
 /**
  * private task to build tools
  */
