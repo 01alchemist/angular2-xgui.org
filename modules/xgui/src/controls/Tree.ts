@@ -11,11 +11,13 @@ import {
 } from 'angular2/angular2';
 import {Label} from "xgui/src/controls/Label";
 import {Icon} from "xgui/src/controls/Icon";
+import {TreeItem} from "xgui/src/controls/TreeItem";
 
 @Component({
     selector: 'x-tree',
     properties:[
-        'isChild:is-child',
+        '_level:_level',
+        'expandLevel:expand',
         'dataField:data-field',
         'dataProvider:data-provider'
     ],
@@ -24,12 +26,9 @@ import {Icon} from "xgui/src/controls/Icon";
 @View({
     template:
     '<div class="x-tree-item" *ng-for="#data of dataProvider">' +
-        '<div *ng-if="isChild" class="x-tree-connector"></div>' +
-        '<div *ng-if="!isChild" class="x-tree-shift"></div>' +
-        '<x-icon></x-icon>' +
-        '<x-label class="tree-label" [text]="data.label"></x-label>' +
-        '<div *ng-if="hasDataProvider(data)" >' +
-            '<x-tree class="child" [is-child]="true" [data-provider]="getDataProvider(data)" [data-field]="dataField"></x-tree>' +
+        '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
+        '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' +
+            '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' +
         '</div>' +
     '</div>',
     styles:[
@@ -40,39 +39,24 @@ import {Icon} from "xgui/src/controls/Icon";
             'width: auto;' +
         '}',
         'x-tree .child{' +
-            'padding-left: 20px;' +
+            'padding-left: 30px;' +
         '}',
         '.x-tree-item{' +
             'display: block;' +
             'position: relative;' +
-            'cursor: hand;' +
-        '}',
-        '.x-tree-connector{' +
-            'display: inline-block;' +
-            'position: relative;' +
-            'top: -5px;' +
-            'width: 13px;' +
-            'height: 22px;' +
-            'background-image: url(images/tree-connector.png)' +
-        '}',
-        '.x-tree-shift{' +
-            'display: inline-block;' +
-            'position: relative;' +
-            'width: 13px;' +
-        '}',
-        '.tree-label{' +
-            'top:-2px' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, Tree, Label, Icon]
+    directives: [NgFor, NgIf, CSSClass, Tree, TreeItem, Label, Icon]
 })
 
 export class Tree {
 
     select = new EventEmitter();
-    isChild:boolean = false;
 
     private _elementRef:ElementRef;
+    private _level:number=0;
+    private _expandLevel:number = 0;
+    static _selectedItem:TreeItem = null;
     private _dataField:string;
     private _dataProvider:any;
 
@@ -80,7 +64,9 @@ export class Tree {
         this._elementRef = elementRef;
         this.dataField = "data";
     }
-
+    get selectedItem():TreeItem{
+        return Tree._selectedItem;
+    }
     get dataProvider(){
         return this._dataProvider;
     }
@@ -93,11 +79,46 @@ export class Tree {
     set dataField(value){
         this._dataField = value;
     }
-
+    get expandLevel():string{
+        return this._expandLevel == Number.POSITIVE_INFINITY?"all":this._expandLevel == -1?"none":this._expandLevel.toString();
+    }
+    set expandLevel(value:string){
+        this._expandLevel = value == "all"?Number.POSITIVE_INFINITY:value == "none"?-1:parseInt(value);
+    }
+    isLevelExpanded(){
+        return this._expandLevel == Number.POSITIVE_INFINITY || this._expandLevel > this._level;
+    }
+    isExpanded(data){
+        if(this.isLevelExpanded() && data.expanded == undefined){
+            data.expanded = true;
+        }
+        return data.expanded;
+    }
     hasDataProvider(data){
         return data[this.dataField] !== undefined;
     }
     getDataProvider(data){
         return data[this.dataField];
+    }
+
+    toggle(event){
+        if(this.isLevelExpanded() && event.data.expanded == undefined){
+            event.data.expanded = true;
+        }
+    }
+    expand(){
+        this._expandLevel = this._level;
+    }
+    collapse(){
+        this._expandLevel = this._level-1;
+    }
+
+    handleSelection(event){
+        if(Tree._selectedItem){
+            Tree._selectedItem.selected = false;
+        }
+        Tree._selectedItem = event.item;
+        Tree._selectedItem.selected = true;
+        this.select.next(event);
     }
 }

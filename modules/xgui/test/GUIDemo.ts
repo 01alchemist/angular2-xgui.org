@@ -35,20 +35,32 @@ export class GUIDemo {
         this.iconSrc = "images/favicon.png";
         this.treeDataProvider = [
             {
-                label:"level_1_1", data:[
-                    {label:"level_2_1"},
+                label:"level_1_1", collection:[
+                    {label:"level_2_1", icon:"images/palette.png"},
                     {label:"level_2_2"},
                     {label:"level_2_3"}
                 ]
             },
             {
-                label:"level_1_2", data:[
+                label:"level_1_2", collection:[
                     {label:"level_2_1"},
                     {label:"level_2_2"},
-                    {label:"level_2_3", data:[
+                    {label:"level_2_3", collection:[
                         {label:"level_3_1"},
                         {label:"level_3_2"},
-                        {label:"level_3_3"}
+                        {label:"level_3_3",
+                            collection:[
+                                {label:"level_2_1"},
+                                {label:"level_2_2"},
+                                {label:"level_2_3", collection:[
+                                    {label:"level_3_1"},
+                                    {label:"level_3_2"},
+                                    {label:"level_3_3",
+
+                                    }
+                                ]}
+                            ]
+                        }
                     ]}
                 ]
             }

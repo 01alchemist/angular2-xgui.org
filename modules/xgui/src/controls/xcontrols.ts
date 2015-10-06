@@ -1,3 +1,4 @@
+export * from "./assets/Assets";
 export * from "./Label";
 export * from "./Icon";
 export * from "./Button";

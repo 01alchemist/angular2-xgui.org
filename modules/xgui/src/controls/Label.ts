@@ -23,6 +23,7 @@ import {
             'display: inline-block;' +
             'position: relative;' +
             'padding-left: 5px;' +
+            'padding-right: 5px;' +
             'width: auto;' +
         '}'
     ],
