@@ -28,6 +28,7 @@
     "tests"
   ],
   "dependencies": {
+    "components-font-awesome": "4.4.0",
     "traceur-runtime": "latest"
   },
   "homepage": "https://github.com/01alchemist/angular2-xgui.org"
