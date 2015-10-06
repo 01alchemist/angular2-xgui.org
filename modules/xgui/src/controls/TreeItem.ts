@@ -35,10 +35,10 @@ import {Assets} from "xgui/src/controls/assets/Assets";
             'padding-left: 5px;' +
         '}',
         'x-tree-item:hover{' +
-            'background-color: #50524F;' +
+            'background-color: #3E698E;' +
         '}',
         '.x-tree-item-selected{' +
-            'background-color: #212121;' +
+            'background-color: #135996;' +
         '}',
         '.x-tree-expander{' +
             'display: inline-block;' +

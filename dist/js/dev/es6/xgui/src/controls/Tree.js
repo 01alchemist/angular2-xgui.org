@@ -112,7 +112,7 @@ Tree = __decorate([
                 'position: relative;' +
                 '}'
         ],
-        directives: [NgFor, NgIf, CSSClass, Tree, TreeItem, Label, Icon]
+        directives: [NgFor, NgIf, CSSClass, Label, Icon, TreeItem, Tree]
     }), 
     __metadata('design:paramtypes', [ElementRef])
 ], Tree);

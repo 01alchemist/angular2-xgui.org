@@ -42,6 +42,7 @@ require('./tools/check-environment')({
     requiredNodeVersion: '>=0.12.2'
 });
 
+var build_dir = "../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js";//'build/angular2-xgui.dev.js'
 
 /**
  * dynamic require in build.tools so we can bootstrap TypeScript compilation
@@ -276,7 +277,7 @@ gulp.task('bundle.js.min', ['build.js.prod'], function() {
     return bundler.bundle(
         bundleConfig,
         'xgui/angular2-xgui',
-        './dist/build/angular2-xgui.min.js',
+        build_dir,
         {
             sourceMaps: true,
             minify: true
@@ -294,7 +295,7 @@ gulp.task('bundle.js.dev', ['build.js.dev'], function() {
     return bundler.bundle(
         devBundleConfig,
         'xgui/angular2-xgui',
-        'build/angular2-xgui.dev.js',
+        build_dir,
         {
             sourceMaps: true
         }

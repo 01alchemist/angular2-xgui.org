@@ -127,7 +127,7 @@ var Tree = (function () {
                     'position: relative;' +
                     '}'
             ],
-            directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Tree, TreeItem_1.TreeItem, Label_1.Label, Icon_1.Icon]
+            directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
         }), 
         __metadata('design:paramtypes', [angular2_1.ElementRef])
     ], Tree);

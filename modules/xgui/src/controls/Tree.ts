@@ -46,7 +46,7 @@ import {TreeItem} from "xgui/src/controls/TreeItem";
             'position: relative;' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, Tree, TreeItem, Label, Icon]
+    directives: [NgFor, NgIf, CSSClass, Label, Icon, TreeItem, Tree]
 })
 
 export class Tree {
