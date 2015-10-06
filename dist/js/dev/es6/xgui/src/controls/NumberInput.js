@@ -84,15 +84,10 @@ NumberInput = __decorate([
         events: ["change:change"]
     }),
     View({
-        template: '<div class="number-input">' +
-            '<div class="input-label">{{ label }}</div>' +
-            '<input type="number" step="1" class="input-value" value="{{ value }}"' +
-            '[style.width]="inputWidth"' +
-            '(keyup)="onInput($event, true)"' +
-            '(change)="onInput($event)"/>' +
-            '</div>',
+        template: '<div class="input-label">{{ label }}</div>' +
+            '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
         styles: [
-            '.number-input{' +
+            'number-input{' +
                 'display: flex;' +
                 'position: relative;' +
                 'padding: 5px;' +

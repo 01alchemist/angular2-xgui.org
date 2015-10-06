@@ -15,6 +15,38 @@ var angular2_xgui_1 = require("xgui/angular2-xgui");
 var GUIDemo = (function () {
     function GUIDemo() {
         this.vector = { x: 554, y: 0, z: 0 };
+        this.iconSrc = "images/favicon.png";
+        this.treeDataProvider = [
+            {
+                label: "level_1_1", collection: [
+                    { label: "level_2_1", icon: "images/palette.png" },
+                    { label: "level_2_2" },
+                    { label: "level_2_3" }
+                ]
+            },
+            {
+                label: "level_1_2", collection: [
+                    { label: "level_2_1" },
+                    { label: "level_2_2" },
+                    { label: "level_2_3", collection: [
+                            { label: "level_3_1" },
+                            { label: "level_3_2" },
+                            { label: "level_3_3",
+                                collection: [
+                                    { label: "level_2_1" },
+                                    { label: "level_2_2" },
+                                    { label: "level_2_3", collection: [
+                                            { label: "level_3_1" },
+                                            { label: "level_3_2" },
+                                            { label: "level_3_3",
+                                            }
+                                        ] }
+                                ]
+                            }
+                        ] }
+                ]
+            }
+        ];
     }
     GUIDemo.prototype.onButtonClick = function () {
         console.log("Button Clicked");
@@ -25,6 +57,9 @@ var GUIDemo = (function () {
     GUIDemo.prototype.onAngleChange = function (event) {
         console.log(event);
     };
+    GUIDemo.prototype.onTreeItemSelect = function (event) {
+        console.log(event);
+    };
     GUIDemo = __decorate([
         angular2_1.Component({
             selector: 'gui-demo'
@@ -32,10 +67,12 @@ var GUIDemo = (function () {
         angular2_1.View({
             templateUrl: 'GUIDemoTemplate.html',
             directives: [
+                angular2_xgui_1.Icon,
                 angular2_xgui_1.Button,
                 angular2_xgui_1.CheckBox,
                 angular2_xgui_1.NumberInput,
-                angular2_xgui_1.VectorInput
+                angular2_xgui_1.VectorInput,
+                angular2_xgui_1.Tree
             ]
         }), 
         __metadata('design:paramtypes', [])

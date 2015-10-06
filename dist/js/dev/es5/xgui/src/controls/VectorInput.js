@@ -75,18 +75,14 @@ var VectorInput = (function () {
             events: ["change:change"]
         }),
         angular2_1.View({
-            /*templateUrl:"VectorInput.html",*/
-            template: '<div class="vector-input">' +
-                '<div class="label">{{ label }}</div> ' +
+            template: '<div class="label">{{ label }}</div> ' +
                 '<div class="input-group"> ' +
                 '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
-                '<number-input [label]="element.label" [value]="element.value"' +
-                '(change)="onInput($event)"></number-input>' +
-                '</div>' +
+                '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
                 '</div>' +
                 '</div>',
             styles: [
-                '.vector-input{' +
+                'vector-input{' +
                     'display: block;' +
                     'position: relative;' +
                     'padding: 5px;' +

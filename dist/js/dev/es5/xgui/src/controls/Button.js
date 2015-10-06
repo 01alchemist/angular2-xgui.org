@@ -37,11 +37,9 @@ var Button = (function () {
             events: ["click:click"]
         }),
         angular2_1.View({
-            template: '<div class="x-button">' +
-                '<div class="button-label">{{ label }}</div> ' +
-                '</div>',
+            template: '<div class="button-label">{{ label }}</div>',
             styles: [
-                '.x-button{' +
+                'x-button{' +
                     'cursor: hand;' +
                     'margin: 5px;' +
                     'display: inline-block;' +
@@ -50,10 +48,10 @@ var Button = (function () {
                     'height: 21px;' +
                     'background-color: #5D5D5D;' +
                     '}',
-                '.x-button:hover{' +
+                'x-button:hover{' +
                     'background-color: #4C4C4C;' +
                     '}',
-                '.x-button:active{' +
+                'x-button:active{' +
                     'background-color: #3879D9;' +
                     '}',
                 '.button-label{display:block; padding: 2px 5px 2px 5px;}'
