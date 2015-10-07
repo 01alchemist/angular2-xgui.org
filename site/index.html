@@ -1,19 +1,15 @@
 <html>
 <head>
-    <title>Angular2 GUI Demo</title>
+    <title>Angular2 XGUI Demo</title>
 
     <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link href='../src/fonts/visitor/visitor.css' rel='stylesheet' type='text/css'>
-    <link href='images/font-awesome-4.4.0/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+    <link href='font/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
-    <script src="../../../libs/traceur-runtime.js"></script>
-    <!--<script src="../../../node_modules/systemjs/dist/system.js"></script>-->
-    <!--<script src="https://code.angularjs.org/2.0.0-snapshot/angular2.dev.js"></script>-->
-    <script src="../../../libs/system@0.16.11.js"></script>
-    <script src="../../../libs/angular2.dev.js"></script>
-    <script src="../../../build/angular2-xgui.dev.js"></script>
-    <!--<script src="https://use.fonticons.com/de84a96c.js"></script>-->
+    <script src="js/traceur-runtime.js"></script>
+    <script src="js/system@0.16.11.js"></script>
+    <script src="js/angular2.dev.js"></script>
+    <script src="js/angular2-xgui.dev.js"></script>
     <style>
         body{
             margin: 0;
@@ -40,9 +36,9 @@
 <gui-demo></gui-demo>
 <script>
     System.config({
-        baseURL:"../../"
+        baseURL:"./"
     });
-    System.import('./xgui/test/GUIDemo');
+    System.import('./demo');
 </script>
 </body>
 </html>
