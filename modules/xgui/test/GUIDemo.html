@@ -8,12 +8,9 @@
     <link href='images/font-awesome-4.4.0/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
     <script src="../../../libs/traceur-runtime.js"></script>
-    <!--<script src="../../../node_modules/systemjs/dist/system.js"></script>-->
-    <!--<script src="https://code.angularjs.org/2.0.0-snapshot/angular2.dev.js"></script>-->
     <script src="../../../libs/system@0.16.11.js"></script>
     <script src="../../../libs/angular2.dev.js"></script>
-    <script src="../../../build/angular2-xgui.dev.js"></script>
-    <!--<script src="https://use.fonticons.com/de84a96c.js"></script>-->
+    <!--<script src="../../../build/angular2-xgui.dev.js"></script>-->
     <style>
         body{
             margin: 0;
@@ -26,12 +23,21 @@
         }
         .container{
             display: block;
-            width: 350px;
-            top: 50px;
+            min-width: 800px;
+            min-height: 600px;
             left: 50px;
+            right: 50px;
+            top: 50px;
+            bottom: 50px;
             position: absolute;
             background-color: #383838;
             border: 1px solid #252525;
+        }
+        .column{
+            width: 300px;
+            height:100%;
+            padding: 10px;
+            float:left;
         }
     </style>
 </head>

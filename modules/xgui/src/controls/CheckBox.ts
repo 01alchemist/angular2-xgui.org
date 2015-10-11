@@ -21,7 +21,7 @@ import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/ang
     '</div>',
     styles:[
         '.x-checkbox{' +
-            'cursor: hand;' +
+            'cursor: pointer;' +
             'margin: 5px;' +
             'display: inline-block;' +
             'position: relative;' +
@@ -35,7 +35,7 @@ import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/ang
 
         '}',
         '.x-checkbox-input{' +
-            'cursor: hand;' +
+            'cursor: pointer;' +
             'padding: 2px;' +
             'display: inline-block;' +
             'background-color: #50524F;' +

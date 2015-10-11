@@ -7,7 +7,8 @@ import {
     CheckBox,
     NumberInput,
     VectorInput,
-    Tree
+    Tree,
+    Panel
 } from "xgui/angular2-xgui";
 
 @Component({
@@ -21,7 +22,8 @@ import {
         CheckBox,
         NumberInput,
         VectorInput,
-        Tree
+        Tree,
+        Panel
     ]
 })
 export class GUIDemo {

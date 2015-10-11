@@ -11,7 +11,7 @@ import {
 } from 'angular2/angular2';
 import {Label} from "xgui/src/controls/Label";
 import {Icon} from "xgui/src/controls/Icon";
-import {Assets} from "xgui/src/controls/assets/Assets";
+import {Assets} from "xgui/src/assets/Assets";
 
 @Component({
     selector: 'x-tree-item',
@@ -48,7 +48,7 @@ import {Assets} from "xgui/src/controls/assets/Assets";
             'text-align: center;' +
             'font-family: FontAwesome;' +
             'color: #5fa2dd;' +
-            'cursor: hand;' +
+            'cursor: pointer;' +
         '}',
         '.x-tree-item-container{' +
             'display: inline-block;' +

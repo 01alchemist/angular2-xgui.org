@@ -1,5 +1,64 @@
 "format register";
-System.register("xgui/src/controls/Label", ["angular2/angular2"], true, function(require, exports, module) {
+System.register("xgui/src/skins/ISkin", [], false, function(__require, __exports, __module) {
+  System.get("@@global-helpers").prepareGlobal(__module.id, []);
+  (function() {}).call(System.global);
+  return System.get("@@global-helpers").retrieveGlobal(__module.id, false);
+});
+
+System.register("xgui/src/skins/dracula/Dracula", [], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var Dracula = (function() {
+    function Dracula() {}
+    Dracula.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
+    return Dracula;
+  })();
+  exports.Dracula = Dracula;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/skins/SkinManager", ["xgui/angular2-xgui"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var angular2_xgui_1 = require("xgui/angular2-xgui");
+  var SkinManager = (function() {
+    function SkinManager() {
+      this.skins = [new angular2_xgui_1.Dracula()];
+      this.defaultSkin = this.skins[0];
+    }
+    SkinManager.getInstance = function() {
+      if (!SkinManager.instance) {
+        SkinManager.instance = new SkinManager();
+      }
+      return SkinManager.instance;
+    };
+    return SkinManager;
+  })();
+  exports.SkinManager = SkinManager;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/assets/Assets", [], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var Assets = (function() {
+    function Assets() {}
+    Assets.icon_blank_16 = "data:image/gif;base64,R0lGODlhEAAQAIAAAP///8nL0CH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MThFQTQyN0U2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MThFQTQyN0Y2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxOEVBNDI3QzZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxOEVBNDI3RDZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7";
+    Assets.icon_folder_16 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAS1BMVEUAAAD+ogD+yyj+xiX+ngD+sxf+thP/rw/+ySj+ySf+oAD/ySj+nwD+oAD9yij9ySj/nwD/uxv9yCj8owP8xCP8uRb9wiH/pAT/yijPEjbXAAAAF3RSTlMAFhkbHSw1QHJzd3h7fL2/wMzY2u3u+WZ66xsAAABFSURBVHgBYyACsHDx8vIwIgkIiAOBMDsbCLCCBEQlkIAgUEAMWUAMKCCCLCACFBBCFhCikgA/sgAfUICZkxsOOJiI8CsAigUMzqb3Iu0AAAAASUVORK5CYII=";
+    Assets.icon_palette_16 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACKFBMVEXq6urr6+vs6+vs6+zs7Oz5+fn6+vr7+/r7+/v8/Pz9/Pz////4+f/09vz8+f/79/rv9Pfu9PXx9fHz9PLt8Pjt8Pjw9/v08Pj18Pfx+vz1+fT2+vbm5/Dr5+/o7PTv9Pn1+vrv6+73+vjy8/HR1MjV1cni3NDo3tPQ2dfY3OH14+3x4+3HzK3Mza7gza/jzLHU0Lbryd/vyeC2yMi7x9DBzLLa0rrx0tHjz+G8zL3s08PVzN0RjV8VkjUahWQbdXUelFUhgYEkgX0unEMvg3YwZ5Aypis2mRw6cZ9BbZ5BrQJGrxBMZKBOiGVQaJxQpQlSYKtSnnRSqyZfvABlW6xmuABpSKNrvgBwYpR7UqqBxwCCQZqDfbCJTa6NuhGNywCOkkCOtkqQuwaYO5iaPqebSaacRKqgzgCkxQKnYXmowpWs1ACtMJqwQaqx1gC1Pqe7Ppa/ba3BzALCPKTEQpbHOaHILpLOw0vPyhLQtdTSxADUOaDUmgvUyZrU1wDU3QDU3wDYOKPbOKTbsEzcKpTduAzfZz3hrQrjj0zjnA7kSBfkUgblOJLldgznbpTpegDpiwDqRmrq3gDrzgDsvqPu2wDvOojwNpnx0gDyNaL0XAD1NE71qwD1vwD4nQD5wwD6cwP60gD7TgD7xwD9NI79VSH+RU7+dQD+qAD+tQD/PHT/Si//Uwn/YAD/ZAD/bwD/fQD/gwD/hwD/mgD/mwD/nAD/rwD/vwBkpMkpAAAAPHRSTlMAAAAAAAAAAAAAAAAhJCQnKCksLGBiZmhpam5vi4yPkpaXmJvR0dPV2tzf4Onp6uvt7e3v7+/y8vP19fhBwj3MAAAA20lEQVQY013PTUrDQBgG4Pf7ZjL5mRRtoRAQCvUCLj2CK9eewZN6gS6VShVxY0mrSSbz97nW5wYPWfyl4VHwZV2Jm08hwmhA2as78uOododTgjKyeLxZL7Kfh+Z275SGuW46/pEUcnjZTpGxvF93rCQmF8duBY3KtGJ8DMEl+SrBqEqbW+IciAuy0CCRLNzUloIkgobLQyWFtZFCjAM0XPg2QkXZ0DS3HsqE49Zonlwgya/vkXF+rj97z8Qim30PsnPqNg/ZnT09vX2okuyMuLxoKvFTf9Qo6X//F2caa2X9D1ICAAAAAElFTkSuQmCC";
+    return Assets;
+  })();
+  exports.Assets = Assets;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -25,77 +84,6 @@ System.register("xgui/src/controls/Label", ["angular2/angular2"], true, function
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
-  var Label = (function() {
-    function Label() {
-      this.label = this.label || "Untitled";
-    }
-    Object.defineProperty(Label.prototype, "label", {
-      get: function() {
-        return this._text;
-      },
-      set: function(value) {
-        this._text = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Label = __decorate([angular2_1.Component({
-      selector: 'x-label',
-      properties: ['text:text']
-    }), angular2_1.View({
-      template: '{{text}}',
-      styles: ['x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}'],
-      directives: [angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [])], Label);
-    return Label;
-  })();
-  exports.Label = Label;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/assets/Assets", [], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var Assets = (function() {
-    function Assets() {}
-    Assets.icon_blank_16 = "data:image/gif;base64,R0lGODlhEAAQAIAAAP///8nL0CH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MThFQTQyN0U2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MThFQTQyN0Y2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxOEVBNDI3QzZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxOEVBNDI3RDZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7";
-    Assets.icon_folder_16 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAS1BMVEUAAAD+ogD+yyj+xiX+ngD+sxf+thP/rw/+ySj+ySf+oAD/ySj+nwD+oAD9yij9ySj/nwD/uxv9yCj8owP8xCP8uRb9wiH/pAT/yijPEjbXAAAAF3RSTlMAFhkbHSw1QHJzd3h7fL2/wMzY2u3u+WZ66xsAAABFSURBVHgBYyACsHDx8vIwIgkIiAOBMDsbCLCCBEQlkIAgUEAMWUAMKCCCLCACFBBCFhCikgA/sgAfUICZkxsOOJiI8CsAigUMzqb3Iu0AAAAASUVORK5CYII=";
-    return Assets;
-  })();
-  exports.Assets = Assets;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-          return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-          case 2:
-            return decorators.reduceRight(function(o, d) {
-              return (d && d(o)) || o;
-            }, target);
-          case 3:
-            return decorators.reduceRight(function(o, d) {
-              return (d && d(target, key)), void 0;
-            }, void 0);
-          case 4:
-            return decorators.reduceRight(function(o, d) {
-              return (d && d(target, key, o)) || o;
-            }, desc);
-        }
-      };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-          return Reflect.metadata(k, v);
-      };
   var angular2_1 = require("angular2/angular2");
   var Assets_1 = require("xgui/src/controls/assets/Assets");
   var Icon = (function() {
@@ -140,134 +128,6 @@ System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/contro
     return Icon;
   })();
   exports.Icon = Icon;
-  global.define = __define;
-  return module.exports;
-});
-System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var angular2_1 = require("angular2/angular2");
-  var Label_1 = require("xgui/src/controls/Label");
-  var Icon_1 = require("xgui/src/controls/Icon");
-  var Assets_1 = require("xgui/src/controls/assets/Assets");
-  var TreeItem = (function() {
-    function TreeItem(elementRef) {
-      this.toggle = new angular2_1.EventEmitter();
-      this.select = new angular2_1.EventEmitter();
-      this.defaultIcon = Assets_1.Assets.icon_folder_16;
-      this.expanderClass = {
-        "x-tree-expander": true,
-        "x-tree-collapsed": !this._expanded,
-        "x-tree-expanded": this._expanded
-      };
-      this._expanded = false;
-      this._selected = false;
-      this._elementRef = elementRef;
-    }
-    Object.defineProperty(TreeItem.prototype, "label", {
-      get: function() {
-        return this._data.label;
-      },
-      set: function(value) {
-        this._data.label = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(TreeItem.prototype, "data", {
-      get: function() {
-        return this._data;
-      },
-      set: function(value) {
-        this._data = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(TreeItem.prototype, "dataField", {
-      get: function() {
-        return this._dataField;
-      },
-      set: function(value) {
-        this._dataField = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(TreeItem.prototype, "selected", {
-      get: function() {
-        return this._selected;
-      },
-      set: function(value) {
-        this._selected = value;
-        if (value) {
-          this._elementRef.nativeElement.classList.add("x-tree-item-selected");
-        } else {
-          this._elementRef.nativeElement.classList.remove("x-tree-item-selected");
-        }
-      },
-      enumerable: true,
-      configurable: true
-    });
-    TreeItem.prototype.hasDataProvider = function() {
-      if (this.data.expanded) {
-        this.expanderClass["x-tree-expanded"] = true;
-        this.expanderClass["x-tree-collapsed"] = false;
-      }
-      this._expanded = this.data.expanded;
-      return this.data[this.dataField] !== undefined;
-    };
-    TreeItem.prototype.getDataProvider = function(data) {
-      return data[this.dataField];
-    };
-    TreeItem.prototype.onToggle = function(event) {
-      this._expanded = !this._expanded;
-      this.data.expanded = this._expanded;
-      event.target.classList.remove(this._expanded ? "x-tree-collapsed" : "x-tree-expanded");
-      event.target.classList.add(this._expanded ? "x-tree-expanded" : "x-tree-collapsed");
-      this.toggle.next({
-        expanded: this._expanded,
-        data: this.data
-      });
-    };
-    TreeItem.prototype.onSelect = function(event) {
-      this.select.next({item: this});
-    };
-    TreeItem = __decorate([angular2_1.Component({
-      selector: 'x-tree-item',
-      properties: ['data:data', 'dataField:data-field'],
-      events: ["toggle:toggle", "select:select"]
-    }), angular2_1.View({
-      template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
-      styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #50524F;' + '}', '.x-tree-item-selected{' + 'background-color: #212121;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: hand;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], TreeItem);
-    return TreeItem;
-  })();
-  exports.TreeItem = TreeItem;
   global.define = __define;
   return module.exports;
 });
@@ -599,7 +459,7 @@ System.register("xgui/src/controls/VectorInput", ["angular2/angular2", "xgui/src
     VectorInput = __decorate([angular2_1.Component({
       selector: 'vector-input',
       properties: ['vector:vector', 'label:label'],
-      events: ["change:change"]
+      events: ['change:change']
     }), angular2_1.View({
       template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
       styles: ['vector-input{' + 'display: block;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
@@ -608,6 +468,135 @@ System.register("xgui/src/controls/VectorInput", ["angular2/angular2", "xgui/src
     return VectorInput;
   })();
   exports.VectorInput = VectorInput;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+      case 2:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(o)) || o;
+        }, target);
+      case 3:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key)), void 0;
+        }, void 0);
+      case 4:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key, o)) || o;
+        }, desc);
+    }
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var angular2_1 = require("angular2/angular2");
+  var Label_1 = require("xgui/src/controls/Label");
+  var Icon_1 = require("xgui/src/controls/Icon");
+  var Assets_1 = require("xgui/src/controls/assets/Assets");
+  var TreeItem = (function() {
+    function TreeItem(elementRef) {
+      this.toggle = new angular2_1.EventEmitter();
+      this.select = new angular2_1.EventEmitter();
+      this.defaultIcon = Assets_1.Assets.icon_folder_16;
+      this.expanderClass = {
+        "x-tree-expander": true,
+        "x-tree-collapsed": !this._expanded,
+        "x-tree-expanded": this._expanded
+      };
+      this._expanded = false;
+      this._selected = false;
+      this._elementRef = elementRef;
+    }
+    Object.defineProperty(TreeItem.prototype, "label", {
+      get: function() {
+        return this._data.label;
+      },
+      set: function(value) {
+        this._data.label = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(TreeItem.prototype, "data", {
+      get: function() {
+        return this._data;
+      },
+      set: function(value) {
+        this._data = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(TreeItem.prototype, "dataField", {
+      get: function() {
+        return this._dataField;
+      },
+      set: function(value) {
+        this._dataField = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(TreeItem.prototype, "selected", {
+      get: function() {
+        return this._selected;
+      },
+      set: function(value) {
+        this._selected = value;
+        if (value) {
+          this._elementRef.nativeElement.classList.add("x-tree-item-selected");
+        } else {
+          this._elementRef.nativeElement.classList.remove("x-tree-item-selected");
+        }
+      },
+      enumerable: true,
+      configurable: true
+    });
+    TreeItem.prototype.hasDataProvider = function() {
+      if (this.data.expanded) {
+        this.expanderClass["x-tree-expanded"] = true;
+        this.expanderClass["x-tree-collapsed"] = false;
+      }
+      this._expanded = this.data.expanded;
+      return this.data[this.dataField] !== undefined;
+    };
+    TreeItem.prototype.getDataProvider = function(data) {
+      return data[this.dataField];
+    };
+    TreeItem.prototype.onToggle = function(event) {
+      this._expanded = !this._expanded;
+      this.data.expanded = this._expanded;
+      event.target.classList.remove(this._expanded ? "x-tree-collapsed" : "x-tree-expanded");
+      event.target.classList.add(this._expanded ? "x-tree-expanded" : "x-tree-collapsed");
+      this.toggle.next({
+        expanded: this._expanded,
+        data: this.data
+      });
+    };
+    TreeItem.prototype.onSelect = function(event) {
+      this.select.next({item: this});
+    };
+    TreeItem = __decorate([angular2_1.Component({
+      selector: 'x-tree-item',
+      properties: ['data:data', 'dataField:data-field'],
+      events: ["toggle:toggle", "select:select"]
+    }), angular2_1.View({
+      template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
+      styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: hand;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
+      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon]
+    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], TreeItem);
+    return TreeItem;
+  })();
+  exports.TreeItem = TreeItem;
   global.define = __define;
   return module.exports;
 });
@@ -738,29 +727,60 @@ System.register("xgui/src/controls/Tree", ["angular2/angular2", "xgui/src/contro
   return module.exports;
 });
 
-System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/Tree", "xgui/src/controls/TreeItem", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/Button", "xgui/src/controls/CheckBox", "xgui/src/controls/VectorInput", "xgui/src/controls/NumberInput", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/angular2-xgui"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
-  function __export(m) {
-    for (var p in m)
-      if (!exports.hasOwnProperty(p))
-        exports[p] = m[p];
-  }
-  __export(require("xgui/src/controls/Tree"));
-  __export(require("xgui/src/controls/TreeItem"));
-  __export(require("xgui/src/controls/Label"));
-  __export(require("xgui/src/controls/Icon"));
-  __export(require("xgui/src/controls/Button"));
-  __export(require("xgui/src/controls/CheckBox"));
-  __export(require("xgui/src/controls/VectorInput"));
-  __export(require("xgui/src/controls/NumberInput"));
-  __export(require("xgui/src/controls/assets/Assets"));
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+      case 2:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(o)) || o;
+        }, target);
+      case 3:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key)), void 0;
+        }, void 0);
+      case 4:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key, o)) || o;
+        }, desc);
+    }
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var styles = ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}'];
+  var angular2_1 = require("angular2/angular2");
+  var angular2_xgui_1 = require("xgui/angular2-xgui");
+  var Panel = (function() {
+    function Panel() {}
+    Object.defineProperty(Panel.prototype, "stackHeadDisplay", {
+      get: function() {
+        return this.stacked ? "none" : "block";
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Panel = __decorate([angular2_1.Component({
+      selector: 'x-panel',
+      properties: ['name:name']
+    }), angular2_1.View({
+      template: '<div class="panel-container">' + '<div class="stack-header" [style.display]="stackHeadDisplay"></div>' + '<div class="panel-header">' + '<div class="panel-title" [style.width]="titleWidth" [style.height]="titleHeight">{{name}}</div>' + '</div>' + '<div class="stack-tabs">' + '</div>' + '</div>',
+      styles: angular2_xgui_1.Dracula.panel.styles,
+      directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_1.CSSClass]
+    }), __metadata('design:paramtypes', [])], Panel);
+    return Panel;
+  })();
+  exports.Panel = Panel;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/xgui-core", ["xgui/src/controls/xcontrols"], true, function(require, exports, module) {
+System.register("xgui/src/skins/xskin", ["xgui/src/skins/ISkin", "xgui/src/skins/dracula/Dracula", "xgui/src/skins/SkinManager"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -769,7 +789,117 @@ System.register("xgui/xgui-core", ["xgui/src/controls/xcontrols"], true, functio
       if (!exports.hasOwnProperty(p))
         exports[p] = m[p];
   }
+  __export(require("xgui/src/skins/ISkin"));
+  __export(require("xgui/src/skins/dracula/Dracula"));
+  __export(require("xgui/src/skins/SkinManager"));
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Label", ["angular2/angular2"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+      case 2:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(o)) || o;
+        }, target);
+      case 3:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key)), void 0;
+        }, void 0);
+      case 4:
+        return decorators.reduceRight(function(o, d) {
+          return (d && d(target, key, o)) || o;
+        }, desc);
+    }
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var angular2_1 = require("angular2/angular2");
+  var Label = (function() {
+    function Label() {
+      this.label = this.label || "Untitled";
+    }
+    Object.defineProperty(Label.prototype, "label", {
+      get: function() {
+        return this._text;
+      },
+      set: function(value) {
+        this._text = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Label = __decorate([angular2_1.Component({
+      selector: 'x-label',
+      properties: ['text:text']
+    }), angular2_1.View({
+      template: '{{text}}',
+      styles: ['x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}'],
+      directives: [angular2_1.CSSClass]
+    }), __metadata('design:paramtypes', [])], Label);
+    return Label;
+  })();
+  exports.Label = Label;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/containers/xcontainers", ["xgui/src/containers/Panel"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  function __export(m) {
+    for (var p in m)
+      if (!exports.hasOwnProperty(p))
+        exports[p] = m[p];
+  }
+  __export(require("xgui/src/containers/Panel"));
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/assets/Assets", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/Button", "xgui/src/controls/CheckBox", "xgui/src/controls/NumberInput", "xgui/src/controls/VectorInput", "xgui/src/controls/TreeItem", "xgui/src/controls/Tree"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  function __export(m) {
+    for (var p in m)
+      if (!exports.hasOwnProperty(p))
+        exports[p] = m[p];
+  }
+  __export(require("xgui/src/controls/assets/Assets"));
+  __export(require("xgui/src/controls/Label"));
+  __export(require("xgui/src/controls/Icon"));
+  __export(require("xgui/src/controls/Button"));
+  __export(require("xgui/src/controls/CheckBox"));
+  __export(require("xgui/src/controls/NumberInput"));
+  __export(require("xgui/src/controls/VectorInput"));
+  __export(require("xgui/src/controls/TreeItem"));
+  __export(require("xgui/src/controls/Tree"));
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/xgui-core", ["xgui/src/skins/xskin", "xgui/src/controls/xcontrols", "xgui/src/containers/xcontainers"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  function __export(m) {
+    for (var p in m)
+      if (!exports.hasOwnProperty(p))
+        exports[p] = m[p];
+  }
+  __export(require("xgui/src/skins/xskin"));
   __export(require("xgui/src/controls/xcontrols"));
+  __export(require("xgui/src/containers/xcontainers"));
   global.define = __define;
   return module.exports;
 });

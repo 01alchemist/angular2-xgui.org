@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, View, CSSClass, NgFor, NgIf, EventEmitter, ElementRef } from 'angular2/angular2';
-import { NumberInput } from "xgui/src/controls/NumberInput";
+import { NumberInput } from 'xgui/src/controls/NumberInput';
 export let VectorInput = class {
     constructor(elementRef) {
         this.change = new EventEmitter();
@@ -61,7 +61,7 @@ VectorInput = __decorate([
             'vector:vector',
             'label:label'
         ],
-        events: ["change:change"]
+        events: ['change:change']
     }),
     View({
         template: '<div class="label">{{ label }}</div> ' +

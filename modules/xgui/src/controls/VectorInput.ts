@@ -10,7 +10,7 @@ import {
     ElementRef
 } from 'angular2/angular2';
 
-import {NumberInput} from "xgui/src/controls/NumberInput";
+import {NumberInput} from 'xgui/src/controls/NumberInput';
 
 @Component({
     selector: 'vector-input',
@@ -18,7 +18,7 @@ import {NumberInput} from "xgui/src/controls/NumberInput";
         'vector:vector',
         'label:label'
     ],
-    events:["change:change"]
+    events:['change:change']
 })
 @View({
     template:

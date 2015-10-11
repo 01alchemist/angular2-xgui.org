@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { bootstrap, Component, View } from "angular2/angular2";
-import { Icon, Button, CheckBox, NumberInput, VectorInput, Tree } from "xgui/angular2-xgui";
+import { Icon, Button, CheckBox, NumberInput, VectorInput, Tree, Panel } from "xgui/angular2-xgui";
 export let GUIDemo = class {
     constructor() {
         this.vector = { x: 554, y: 0, z: 0 };
@@ -73,7 +73,8 @@ GUIDemo = __decorate([
             CheckBox,
             NumberInput,
             VectorInput,
-            Tree
+            Tree,
+            Panel
         ]
     }), 
     __metadata('design:paramtypes', [])

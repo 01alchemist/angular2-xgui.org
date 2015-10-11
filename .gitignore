@@ -3,4 +3,5 @@ typings
 /dist/tools
 /npm-debug.log
 node_modules
+/tmp
 bower_components
