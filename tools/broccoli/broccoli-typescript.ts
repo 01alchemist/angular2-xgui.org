@@ -1,5 +1,5 @@
 /// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../../node_modules/typescript/bin/typescript.d.ts" />
+/// <reference path="../../node_modules/typescript/lib/typescript.d.ts" />
 
 import fs = require('fs');
 import fse = require('fs-extra');

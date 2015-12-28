@@ -41,5 +41,6 @@ var EventDispatcher = (function () {
     };
     return EventDispatcher;
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EventDispatcher;
 //# sourceMappingURL=EventDispatcher.js.map

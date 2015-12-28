@@ -1,4 +1,3 @@
-/// <reference path="../../../../xgui/typings/angular2/angular2.d.ts" />
 export declare class GUIDemo {
     vector: any;
     treeDataProvider: any;

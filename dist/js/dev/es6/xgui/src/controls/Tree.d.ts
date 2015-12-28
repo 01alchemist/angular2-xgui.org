@@ -1,8 +1,7 @@
-/// <reference path="../../../../../xgui/typings/angular2/angular2.d.ts" />
-import { EventEmitter, ElementRef } from 'angular2/angular2';
+import { ElementRef } from 'angular2/angular2';
 import { TreeItem } from "xgui/src/controls/TreeItem";
 export declare class Tree {
-    select: EventEmitter;
+    select: any;
     private _elementRef;
     private _level;
     private _expandLevel;

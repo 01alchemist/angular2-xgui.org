@@ -1,7 +1,6 @@
-/// <reference path="../../../../../xgui/typings/angular2/angular2.d.ts" />
-import { EventEmitter, ElementRef } from 'angular2/angular2';
+import { ElementRef } from 'angular2/angular2';
 export declare class NumberInput {
-    change: EventEmitter;
+    change: any;
     availableWidth: number;
     private _elementRef;
     private _inputWidth;
