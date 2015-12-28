@@ -1,4 +1,38 @@
 "format register";
+System.register("xgui/src/assets/Assets", [], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var Assets = (function() {
+    function Assets() {}
+    Assets.getURL = function(b64Data, contentType, sliceSize) {
+      contentType = contentType || '';
+      sliceSize = sliceSize || 512;
+      var byteCharacters = atob(b64Data);
+      var byteArrays = [];
+      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+        var byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+      return URL.createObjectURL(new Blob(byteArrays, {type: contentType}));
+    };
+    Assets.icon_blank_16 = Assets.getURL("R0lGODlhEAAQAIAAAP///8nL0CH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MThFQTQyN0U2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MThFQTQyN0Y2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxOEVBNDI3QzZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxOEVBNDI3RDZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7", "image/gif");
+    Assets.icon_folder_16 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAS1BMVEUAAAD+ogD+yyj+xiX+ngD+sxf+thP/rw/+ySj+ySf+oAD/ySj+nwD+oAD9yij9ySj/nwD/uxv9yCj8owP8xCP8uRb9wiH/pAT/yijPEjbXAAAAF3RSTlMAFhkbHSw1QHJzd3h7fL2/wMzY2u3u+WZ66xsAAABFSURBVHgBYyACsHDx8vIwIgkIiAOBMDsbCLCCBEQlkIAgUEAMWUAMKCCCLCACFBBCFhCikgA/sgAfUICZkxsOOJiI8CsAigUMzqb3Iu0AAAAASUVORK5CYII=", "image/png");
+    Assets.icon_palette_16 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACKFBMVEXq6urr6+vs6+vs6+zs7Oz5+fn6+vr7+/r7+/v8/Pz9/Pz////4+f/09vz8+f/79/rv9Pfu9PXx9fHz9PLt8Pjt8Pjw9/v08Pj18Pfx+vz1+fT2+vbm5/Dr5+/o7PTv9Pn1+vrv6+73+vjy8/HR1MjV1cni3NDo3tPQ2dfY3OH14+3x4+3HzK3Mza7gza/jzLHU0Lbryd/vyeC2yMi7x9DBzLLa0rrx0tHjz+G8zL3s08PVzN0RjV8VkjUahWQbdXUelFUhgYEkgX0unEMvg3YwZ5Aypis2mRw6cZ9BbZ5BrQJGrxBMZKBOiGVQaJxQpQlSYKtSnnRSqyZfvABlW6xmuABpSKNrvgBwYpR7UqqBxwCCQZqDfbCJTa6NuhGNywCOkkCOtkqQuwaYO5iaPqebSaacRKqgzgCkxQKnYXmowpWs1ACtMJqwQaqx1gC1Pqe7Ppa/ba3BzALCPKTEQpbHOaHILpLOw0vPyhLQtdTSxADUOaDUmgvUyZrU1wDU3QDU3wDYOKPbOKTbsEzcKpTduAzfZz3hrQrjj0zjnA7kSBfkUgblOJLldgznbpTpegDpiwDqRmrq3gDrzgDsvqPu2wDvOojwNpnx0gDyNaL0XAD1NE71qwD1vwD4nQD5wwD6cwP60gD7TgD7xwD9NI79VSH+RU7+dQD+qAD+tQD/PHT/Si//Uwn/YAD/ZAD/bwD/fQD/gwD/hwD/mgD/mwD/nAD/rwD/vwBkpMkpAAAAPHRSTlMAAAAAAAAAAAAAAAAhJCQnKCksLGBiZmhpam5vi4yPkpaXmJvR0dPV2tzf4Onp6uvt7e3v7+/y8vP19fhBwj3MAAAA20lEQVQY013PTUrDQBgG4Pf7ZjL5mRRtoRAQCvUCLj2CK9eewZN6gS6VShVxY0mrSSbz97nW5wYPWfyl4VHwZV2Jm08hwmhA2as78uOododTgjKyeLxZL7Kfh+Z275SGuW46/pEUcnjZTpGxvF93rCQmF8duBY3KtGJ8DMEl+SrBqEqbW+IciAuy0CCRLNzUloIkgobLQyWFtZFCjAM0XPg2QkXZ0DS3HsqE49Zonlwgya/vkXF+rj97z8Qim30PsnPqNg/ZnT09vX2okuyMuLxoKvFTf9Qo6X//F2caa2X9D1ICAAAAAElFTkSuQmCC", "image/png");
+    Assets.icon_arrow_left_7x5 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAMAAAC+RAbqAAAAElBMVEX////IyMjJycnKysrLy8vMzMyNMQabAAAAAXRSTlMAQObYZgAAAB1JREFUeAFjYGBghWAWFjBmZmYGYwYmJghmYARhAAUIADcJQfU3AAAAAElFTkSuQmCC", "image/png");
+    Assets.icon_close_6x5 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAMAAABRhm3UAAAAHlBMVEVHR0dKSkpNTU1QUFBTU1PIyMjJycnKysrLy8vMzMwo6GY1AAAABXRSTlMAAAAAAMJrBrEAAAAiSURBVAjXY+Rk+M3AysDIzMrAwPCbkQnI/s3AyAjhsYLlAFSABRrcSHg1AAAAAElFTkSuQmCC", "image/png");
+    return Assets;
+  })();
+  exports.Assets = Assets;
+  global.define = __define;
+  return module.exports;
+});
+
 System.register("xgui/src/skins/ISkin", [], false, function(__require, __exports, __module) {
   System.get("@@global-helpers").prepareGlobal(__module.id, []);
   (function() {}).call(System.global);
@@ -10,8 +44,9 @@ System.register("xgui/src/skins/dracula/Dracula", [], true, function(require, ex
       __define = global.define;
   global.define = undefined;
   var Dracula = (function() {
-    function Dracula() {}
-    Dracula.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
+    function Dracula() {
+      this.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
+    }
     return Dracula;
   })();
   exports.Dracula = Dracula;
@@ -19,14 +54,14 @@ System.register("xgui/src/skins/dracula/Dracula", [], true, function(require, ex
   return module.exports;
 });
 
-System.register("xgui/src/skins/SkinManager", ["xgui/angular2-xgui"], true, function(require, exports, module) {
+System.register("xgui/src/skins/SkinManager", ["xgui/src/skins/dracula/Dracula"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
-  var angular2_xgui_1 = require("xgui/angular2-xgui");
+  var Dracula_1 = require("xgui/src/skins/dracula/Dracula");
   var SkinManager = (function() {
     function SkinManager() {
-      this.skins = [new angular2_xgui_1.Dracula()];
+      this.skins = [new Dracula_1.Dracula()];
       this.defaultSkin = this.skins[0];
     }
     SkinManager.getInstance = function() {
@@ -42,23 +77,7 @@ System.register("xgui/src/skins/SkinManager", ["xgui/angular2-xgui"], true, func
   return module.exports;
 });
 
-System.register("xgui/src/controls/assets/Assets", [], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var Assets = (function() {
-    function Assets() {}
-    Assets.icon_blank_16 = "data:image/gif;base64,R0lGODlhEAAQAIAAAP///8nL0CH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MThFQTQyN0U2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MThFQTQyN0Y2QzE2MTFFNTkyNEJFMEM4RDdEMzg2MjIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxOEVBNDI3QzZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxOEVBNDI3RDZDMTYxMUU1OTI0QkUwQzhEN0QzODYyMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7";
-    Assets.icon_folder_16 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAS1BMVEUAAAD+ogD+yyj+xiX+ngD+sxf+thP/rw/+ySj+ySf+oAD/ySj+nwD+oAD9yij9ySj/nwD/uxv9yCj8owP8xCP8uRb9wiH/pAT/yijPEjbXAAAAF3RSTlMAFhkbHSw1QHJzd3h7fL2/wMzY2u3u+WZ66xsAAABFSURBVHgBYyACsHDx8vIwIgkIiAOBMDsbCLCCBEQlkIAgUEAMWUAMKCCCLCACFBBCFhCikgA/sgAfUICZkxsOOJiI8CsAigUMzqb3Iu0AAAAASUVORK5CYII=";
-    Assets.icon_palette_16 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACKFBMVEXq6urr6+vs6+vs6+zs7Oz5+fn6+vr7+/r7+/v8/Pz9/Pz////4+f/09vz8+f/79/rv9Pfu9PXx9fHz9PLt8Pjt8Pjw9/v08Pj18Pfx+vz1+fT2+vbm5/Dr5+/o7PTv9Pn1+vrv6+73+vjy8/HR1MjV1cni3NDo3tPQ2dfY3OH14+3x4+3HzK3Mza7gza/jzLHU0Lbryd/vyeC2yMi7x9DBzLLa0rrx0tHjz+G8zL3s08PVzN0RjV8VkjUahWQbdXUelFUhgYEkgX0unEMvg3YwZ5Aypis2mRw6cZ9BbZ5BrQJGrxBMZKBOiGVQaJxQpQlSYKtSnnRSqyZfvABlW6xmuABpSKNrvgBwYpR7UqqBxwCCQZqDfbCJTa6NuhGNywCOkkCOtkqQuwaYO5iaPqebSaacRKqgzgCkxQKnYXmowpWs1ACtMJqwQaqx1gC1Pqe7Ppa/ba3BzALCPKTEQpbHOaHILpLOw0vPyhLQtdTSxADUOaDUmgvUyZrU1wDU3QDU3wDYOKPbOKTbsEzcKpTduAzfZz3hrQrjj0zjnA7kSBfkUgblOJLldgznbpTpegDpiwDqRmrq3gDrzgDsvqPu2wDvOojwNpnx0gDyNaL0XAD1NE71qwD1vwD4nQD5wwD6cwP60gD7TgD7xwD9NI79VSH+RU7+dQD+qAD+tQD/PHT/Si//Uwn/YAD/ZAD/bwD/fQD/gwD/hwD/mgD/mwD/nAD/rwD/vwBkpMkpAAAAPHRSTlMAAAAAAAAAAAAAAAAhJCQnKCksLGBiZmhpam5vi4yPkpaXmJvR0dPV2tzf4Onp6uvt7e3v7+/y8vP19fhBwj3MAAAA20lEQVQY013PTUrDQBgG4Pf7ZjL5mRRtoRAQCvUCLj2CK9eewZN6gS6VShVxY0mrSSbz97nW5wYPWfyl4VHwZV2Jm08hwmhA2as78uOododTgjKyeLxZL7Kfh+Z275SGuW46/pEUcnjZTpGxvF93rCQmF8duBY3KtGJ8DMEl+SrBqEqbW+IciAuy0CCRLNzUloIkgobLQyWFtZFCjAM0XPg2QkXZ0DS3HsqE49Zonlwgya/vkXF+rj97z8Qim30PsnPqNg/ZnT09vX2okuyMuLxoKvFTf9Qo6X//F2caa2X9D1ICAAAAAElFTkSuQmCC";
-    return Assets;
-  })();
-  exports.Assets = Assets;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/assets/Assets"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -85,7 +104,7 @@ System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/contro
       return Reflect.metadata(k, v);
   };
   var angular2_1 = require("angular2/angular2");
-  var Assets_1 = require("xgui/src/controls/assets/Assets");
+  var Assets_1 = require("xgui/src/assets/Assets");
   var Icon = (function() {
     function Icon(elementRef) {
       this._elementRef = elementRef;
@@ -96,6 +115,7 @@ System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/contro
         return this._src;
       },
       set: function(value) {
+        console.log(value);
         if (value != undefined) {
           this._src = value;
           this._elementRef.nativeElement.style.backgroundImage = "url(" + value + ")";
@@ -179,7 +199,7 @@ System.register("xgui/src/controls/Button", ["angular2/angular2"], true, functio
       events: ["click:click"]
     }), angular2_1.View({
       template: '<div class="button-label">{{ label }}</div>',
-      styles: ['x-button{' + 'cursor: hand;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}', 'x-button:hover{' + 'background-color: #4C4C4C;' + '}', 'x-button:active{' + 'background-color: #3879D9;' + '}', '.button-label{display:block; padding: 2px 5px 2px 5px;}'],
+      styles: ['x-button{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}', 'x-button:hover{' + 'background-color: #4C4C4C;' + '}', 'x-button:active{' + 'background-color: #3879D9;' + '}', '.button-label{display:block; padding: 2px 5px 2px 5px;}'],
       directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
     }), __metadata('design:paramtypes', [])], Button);
     return Button;
@@ -236,7 +256,7 @@ System.register("xgui/src/controls/CheckBox", ["angular2/angular2"], true, funct
       events: ["click:click"]
     }), angular2_1.View({
       template: '<div class="x-checkbox">' + '<div *ng-if="label" class="checkbox-label">{{ label }}</div> ' + '<input class="x-checkbox-input" type="checkbox"/>' + '</div>',
-      styles: ['.x-checkbox{' + 'cursor: hand;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + '}', '.x-checkbox:hover{' + '}', '.x-checkbox:active{' + '}', '.x-checkbox-input{' + 'cursor: hand;' + 'padding: 2px;' + 'display: inline-block;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}', '.checkbox-label{' + 'display:inline-block; ' + 'padding: 2px 5px 2px 5px;' + '}'],
+      styles: ['.x-checkbox{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + '}', '.x-checkbox:hover{' + '}', '.x-checkbox:active{' + '}', '.x-checkbox-input{' + 'cursor: pointer;' + 'padding: 2px;' + 'display: inline-block;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}', '.checkbox-label{' + 'display:inline-block; ' + 'padding: 2px 5px 2px 5px;' + '}'],
       directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
     }), __metadata('design:paramtypes', [])], CheckBox);
     return CheckBox;
@@ -472,7 +492,7 @@ System.register("xgui/src/controls/VectorInput", ["angular2/angular2", "xgui/src
   return module.exports;
 });
 
-System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -501,7 +521,7 @@ System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/co
   var angular2_1 = require("angular2/angular2");
   var Label_1 = require("xgui/src/controls/Label");
   var Icon_1 = require("xgui/src/controls/Icon");
-  var Assets_1 = require("xgui/src/controls/assets/Assets");
+  var Assets_1 = require("xgui/src/assets/Assets");
   var TreeItem = (function() {
     function TreeItem(elementRef) {
       this.toggle = new angular2_1.EventEmitter();
@@ -591,7 +611,7 @@ System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/co
       events: ["toggle:toggle", "select:select"]
     }), angular2_1.View({
       template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
-      styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: hand;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
+      styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: pointer;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
       directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon]
     }), __metadata('design:paramtypes', [angular2_1.ElementRef])], TreeItem);
     return TreeItem;
@@ -727,7 +747,7 @@ System.register("xgui/src/controls/Tree", ["angular2/angular2", "xgui/src/contro
   return module.exports;
 });
 
-System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/angular2-xgui"], true, function(require, exports, module) {
+System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/src/assets/Assets", "xgui/src/controls/Icon"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -753,11 +773,24 @@ System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/angular
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var styles = ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}'];
   var angular2_1 = require("angular2/angular2");
-  var angular2_xgui_1 = require("xgui/angular2-xgui");
+  var Assets_1 = require("xgui/src/assets/Assets");
+  var Icon_1 = require("xgui/src/controls/Icon");
   var Panel = (function() {
-    function Panel() {}
+    function Panel(elementRef, containerRef) {
+      this.arrowIcon = Assets_1.Assets.icon_arrow_left_7x5;
+      this.closeIcon = Assets_1.Assets.icon_close_6x5;
+      this._elementRef = elementRef;
+      this._containerRef = containerRef;
+      this._elementRef.nativeElement.addEventListener("mousedown", this.handleMouseEvent);
+      this._elementRef.nativeElement.addEventListener("mouseup", this.handleMouseEvent);
+      this._elementRef.nativeElement.addEventListener("onmouseleave", this.handleMouseEvent);
+      document.addEventListener("onmouseout", this.handleMouseEvent);
+      this._elementRef.nativeElement.addEventListener("onmousemove", this.handleMouseEvent);
+      setInterval(function() {
+        console.log("I am alive");
+      }, 2000);
+    }
     Object.defineProperty(Panel.prototype, "stackHeadDisplay", {
       get: function() {
         return this.stacked ? "none" : "block";
@@ -765,14 +798,19 @@ System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/angular
       enumerable: true,
       configurable: true
     });
+    Panel.prototype.handleMouseEvent = function(event) {
+      console.log(event.type);
+    };
+    Panel.prototype.close = function() {};
     Panel = __decorate([angular2_1.Component({
       selector: 'x-panel',
-      properties: ['name:name']
+      properties: ['name:name'],
+      injectables: [angular2_1.ViewContainerRef]
     }), angular2_1.View({
-      template: '<div class="panel-container">' + '<div class="stack-header" [style.display]="stackHeadDisplay"></div>' + '<div class="panel-header">' + '<div class="panel-title" [style.width]="titleWidth" [style.height]="titleHeight">{{name}}</div>' + '</div>' + '<div class="stack-tabs">' + '</div>' + '</div>',
-      styles: angular2_xgui_1.Dracula.panel.styles,
-      directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [])], Panel);
+      template: '<div class="panel-container">' + '<div class="stack-header">' + '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' + '<div class="expand-button"><x-icon class="expand-arrow-icon" [src]="arrowIcon"></x-icon></div>' + '</div>' + '<div class="panel-header">' + '<div class="panel-title" [style.width]="titleWidth" [style.height]="titleHeight">{{name}}</div>' + '</div>' + '<div class="stack-tabs">' + '</div>' + '</div>',
+      styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + 'background-color: #535353;' + '}', '.stack-header{' + 'display:block;' + 'cursor:default;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.expand-arrow-icon{' + 'width:7px;' + 'height:5px;' + 'top:3px;' + 'left:2px;' + '}', '.expand-button{' + 'cursor: pointer;' + 'width: 12px;' + 'height: 12px;' + 'float:right;' + '}', '.expand-button:hover{' + 'background-color:#222222;' + '}', '.stack-close-icon{' + 'width:6px;' + 'height:5px;' + 'top:3px;' + 'left:3px;' + '}', '.close-button{' + 'cursor: pointer;' + 'width: 12px;' + 'height: 12px;' + 'float:right;' + '}', '.close-button:hover{' + 'background-color:#222222;' + '}', '.panel-header{' + 'display:block;' + 'width:inherit;' + 'height:27px;' + 'border-top: #282828 1px solid;' + 'background-color: #8A8782;' + 'border-bottom: #444444 1px solid;' + '}', '.panel-title{' + 'width:70px;' + 'height:17px;' + 'padding:5px;' + 'padding-left:8px;' + 'color:#ffffff;' + 'font-size:0.94em;' + 'font-weight:bold;' + 'text-shadow: 0 -1px #000;' + 'background-color: #6F6F6F;' + 'font-family: Arial;' + '}'],
+      directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_1.CSSClass, Icon_1.Icon]
+    }), __metadata('design:paramtypes', [angular2_1.ElementRef, angular2_1.ViewContainerRef])], Panel);
     return Panel;
   })();
   exports.Panel = Panel;
@@ -866,7 +904,7 @@ System.register("xgui/src/containers/xcontainers", ["xgui/src/containers/Panel"]
   return module.exports;
 });
 
-System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/assets/Assets", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/Button", "xgui/src/controls/CheckBox", "xgui/src/controls/NumberInput", "xgui/src/controls/VectorInput", "xgui/src/controls/TreeItem", "xgui/src/controls/Tree"], true, function(require, exports, module) {
+System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/Button", "xgui/src/controls/CheckBox", "xgui/src/controls/NumberInput", "xgui/src/controls/VectorInput", "xgui/src/controls/TreeItem", "xgui/src/controls/Tree"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -875,7 +913,6 @@ System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/assets/Assets
       if (!exports.hasOwnProperty(p))
         exports[p] = m[p];
   }
-  __export(require("xgui/src/controls/assets/Assets"));
   __export(require("xgui/src/controls/Label"));
   __export(require("xgui/src/controls/Icon"));
   __export(require("xgui/src/controls/Button"));
@@ -888,7 +925,7 @@ System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/assets/Assets
   return module.exports;
 });
 
-System.register("xgui/xgui-core", ["xgui/src/skins/xskin", "xgui/src/controls/xcontrols", "xgui/src/containers/xcontainers"], true, function(require, exports, module) {
+System.register("xgui/xgui-core", ["xgui/src/assets/Assets", "xgui/src/skins/xskin", "xgui/src/controls/xcontrols", "xgui/src/containers/xcontainers"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -897,6 +934,7 @@ System.register("xgui/xgui-core", ["xgui/src/skins/xskin", "xgui/src/controls/xc
       if (!exports.hasOwnProperty(p))
         exports[p] = m[p];
   }
+  __export(require("xgui/src/assets/Assets"));
   __export(require("xgui/src/skins/xskin"));
   __export(require("xgui/src/controls/xcontrols"));
   __export(require("xgui/src/containers/xcontainers"));

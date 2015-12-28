@@ -39,7 +39,7 @@ CheckBox = __decorate([
             '</div>',
         styles: [
             '.x-checkbox{' +
-                'cursor: hand;' +
+                'cursor: pointer;' +
                 'margin: 5px;' +
                 'display: inline-block;' +
                 'position: relative;' +
@@ -51,7 +51,7 @@ CheckBox = __decorate([
             '.x-checkbox:active{' +
                 '}',
             '.x-checkbox-input{' +
-                'cursor: hand;' +
+                'cursor: pointer;' +
                 'padding: 2px;' +
                 'display: inline-block;' +
                 'background-color: #50524F;' +

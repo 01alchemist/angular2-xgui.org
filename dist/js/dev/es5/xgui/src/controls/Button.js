@@ -40,7 +40,7 @@ var Button = (function () {
             template: '<div class="button-label">{{ label }}</div>',
             styles: [
                 'x-button{' +
-                    'cursor: hand;' +
+                    'cursor: pointer;' +
                     'margin: 5px;' +
                     'display: inline-block;' +
                     'position: relative;' +

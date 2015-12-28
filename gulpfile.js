@@ -42,8 +42,8 @@ require('./tools/check-environment')({
     requiredNodeVersion: '>=0.12.2'
 });
 
-//var build_dir = "../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js";//'build/angular2-xgui.dev.js'
-var build_dir = 'build/angular2-xgui.dev.js';
+var build_dir = "../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js";//'build/angular2-xgui.dev.js'
+//var build_dir = 'build/angular2-xgui.dev.js';
 
 /**
  * dynamic require in build.tools so we can bootstrap TypeScript compilation

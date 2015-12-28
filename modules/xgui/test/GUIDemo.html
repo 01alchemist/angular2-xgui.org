@@ -7,9 +7,13 @@
     <link href='../src/fonts/visitor/visitor.css' rel='stylesheet' type='text/css'>
     <link href='images/font-awesome-4.4.0/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
-    <script src="../../../libs/traceur-runtime.js"></script>
-    <script src="../../../libs/system@0.16.11.js"></script>
-    <script src="../../../libs/angular2.dev.js"></script>
+    <!--<script src="../../../libs/traceur-runtime.js"></script>-->
+    <!--<script src="../../../libs/system@0.16.11.js"></script>-->
+    <!--<script src="../../../libs/es6-module-loader@0.16.6.js"></script>-->
+    <!--<script src="../../libs/systemjs-0.19.4/dist/system.js"></script>-->
+    <!--<script src="../../../node_modules/es6-promise/dist/es6-promise.js"></script>-->
+    <script src="../../../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="../../../node_modules/angular2/bundles/angular2.dev.js"></script>
     <!--<script src="../../../build/angular2-xgui.dev.js"></script>-->
     <style>
         body{
@@ -46,9 +50,54 @@
 <gui-demo></gui-demo>
 <script>
     System.config({
-        baseURL:"../../"
+        baseURL:'../../',
+        defaultJSExtensions: true
+        /*paths:{
+            'es6-promise':'../../../node_modules/es6-promise/dist/es6-promise.js',
+            /!*'angular2/angular2':'../../../node_modules/angular2/bundles/angular2.dev.js'*!/
+            /!*'angular2/angular2':'../../../node_modules/angular2/angular2'*!/
+        },
+        packages: {
+            'test': {
+                main: 'GUIDemo.js',
+                format: 'cjs',
+                defaultExtension: 'js'/!*,
+                map:{
+                    'es6-promise':'../../node_modules/es6-promise/dist/es6-promise.js'/!*,
+                    'angular2/angular2':'../../node_modules/angular2/bundles/angular2.dev.js'*!/
+                }*!/
+            },
+            'xgui': {
+                main: 'angular2-xgui.js',
+                format: 'cjs',
+                defaultExtension: 'js'/!*,
+                map:{
+                    'es6-promise':'../../node_modules/es6-promise/dist/es6-promise.js'/!*,
+                    'angular2/angular2':'../../node_modules/angular2/bundles/angular2.dev.js'*!/
+                }*!/
+            }/!*,
+            'angular2/angular2': {
+                main: '../../../node_modules/angular2/angular2.js',
+                format: 'cjs',
+                defaultExtension: 'js'/!*,
+                map:{
+                    'es6-promise':'../../node_modules/es6-promise/dist/es6-promise.js'/!*,
+                    'angular2/angular2':'../../node_modules/angular2/bundles/angular2.dev.js'*!/
+                }*!/
+            }*!/
+        },
+        meta: {
+            'xgui': {
+                format: 'cjs',
+                defaultExtension: 'js',
+                deps: [
+                    'es6-promise',
+                    'angular2/angular2'
+                ]
+            }
+        }*/
     });
-    System.import('./xgui/test/GUIDemo');
+    System.import('xgui/test/GUIDemo');
 </script>
 </body>
 </html>

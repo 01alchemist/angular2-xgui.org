@@ -4,5 +4,5 @@ function __export(m) {
 __export(require("./src/assets/Assets"));
 __export(require("./src/skins/xskin"));
 __export(require("./src/controls/xcontrols"));
-__export(require("./src/containers/xcontainers"));
+//export * from "./src/containers/xcontainers";
 //# sourceMappingURL=xgui-core.js.map

@@ -22,7 +22,6 @@ var Icon = (function () {
             return this._src;
         },
         set: function (value) {
-            console.log(value);
             if (value != undefined) {
                 this._src = value;
                 this._elementRef.nativeElement.style.backgroundImage = "url(" + value + ")";

@@ -44,7 +44,6 @@ export class Icon {
         return this._src;
     }
     set src(value){
-        console.log(value);
         if(value != undefined){
             this._src = value;
             this._elementRef.nativeElement.style.backgroundImage = "url("+value+")";

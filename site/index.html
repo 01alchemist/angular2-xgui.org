@@ -6,9 +6,8 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link href='font/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
-    <script src="js/traceur-runtime.js"></script>
-    <script src="js/system@0.16.11.js"></script>
-    <script src="js/angular2.dev.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="js/angular2-xgui.dev.js"></script>
     <style>
         body{
@@ -39,9 +38,10 @@
 <gui-demo></gui-demo>
 <script>
     System.config({
-        baseURL:"./"
+        defaultJSExtension: true,
+        packages: {'demo': {defaultExtension: 'js'}}
     });
-    System.import('./demo');
+    System.import('demo.js');
 </script>
 </body>
 </html>
