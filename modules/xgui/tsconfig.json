@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
+        "target": "ES5",
+        "module": "system",
+        "moduleResolution": "node",
+        "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "declaration": true,
-        "module": "commonjs",
-        "rootDir": ".",
-        "sourceMap": true,
-        "sourceRoot": ".",
-        "target": "es5",
-        "outDir": "../../dist/js/cjs"
-    }
+        "removeComments": true,
+        "noImplicitAny": false
+    },
+    "exclude": [
+        "node_modules",
+        "tools"
+    ]
 }
