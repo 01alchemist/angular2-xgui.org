@@ -1,1 +1,1 @@
-{"version":3,"file":"BaseEvent.js","sourceRoot":"","sources":["BaseEvent.ts"],"names":["BaseEvent","BaseEvent.constructor"],"mappings":"AAGA,AAHA;;GAEG;;IAKCA,mBAAYA,IAAWA;QACnBC,IAAIA,CAACA,IAAIA,GAAGA,IAAIA,CAACA;IACrBA,CAACA;IACLD,gBAACA;AAADA,CAACA,AAPD,IAOC;AAPD,2BAOC,CAAA"}
+{"version":3,"file":"BaseEvent.js","sourceRoot":"","sources":["BaseEvent.ts"],"names":["BaseEvent","BaseEvent.constructor"],"mappings":";;;;;YAGA;gBAIIA,mBAAYA,IAAWA;oBACnBC,IAAIA,CAACA,IAAIA,GAAGA,IAAIA,CAACA;gBACrBA,CAACA;gBACLD,gBAACA;YAADA,CAACA,AAPD,IAOC;YAPD,+BAOC,CAAA"}

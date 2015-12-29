@@ -1,7 +1,15 @@
-var FlexWindow = (function () {
-    function FlexWindow() {
+System.register([], function(exports_1) {
+    var FlexWindow;
+    return {
+        setters:[],
+        execute: function() {
+            FlexWindow = (function () {
+                function FlexWindow() {
+                }
+                return FlexWindow;
+            })();
+            exports_1("FlexWindow", FlexWindow);
+        }
     }
-    return FlexWindow;
-})();
-exports.FlexWindow = FlexWindow;
+});
 //# sourceMappingURL=FlexWindow.js.map

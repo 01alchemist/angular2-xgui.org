@@ -1,0 +1,32 @@
+{
+  "name": "xgui",
+  "version": "1.0.0-alpha.2",
+  "description": "GUI Framework for angular2",
+  "main": "GUICore.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/01alchemist/angular2-xgui.org.git"
+  },
+  "keywords": [
+    "angular2",
+    "gui",
+    "framework",
+    "typescript",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "01 Alchemist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/01alchemist/angular2-xgui.org/issues"
+  },
+  "dependencies": {
+    "angular2": "2.0.0-beta.0",
+    "systemjs": "0.19.6"
+  },
+  "devDependencies": {}
+}

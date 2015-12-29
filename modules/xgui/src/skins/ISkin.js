@@ -1,4 +1,8 @@
-/**
- * Created by Nidin Vinayakan on 10-10-2015.
- */
+System.register([], function(exports_1) {
+    return {
+        setters:[],
+        execute: function() {
+        }
+    }
+});
 //# sourceMappingURL=ISkin.js.map

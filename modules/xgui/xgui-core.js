@@ -1,8 +1,24 @@
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(require("./src/assets/Assets"));
-__export(require("./src/skins/xskin"));
-__export(require("./src/controls/xcontrols"));
-//export * from "./src/containers/xcontainers";
+System.register(["./src/assets/Assets", "./src/skins/xskin", "./src/controls/xcontrols"], function(exports_1) {
+    function exportStar_1(m) {
+        var exports = {};
+        for(var n in m) {
+            if (n !== "default") exports[n] = m[n];
+        }
+        exports_1(exports);
+    }
+    return {
+        setters:[
+            function (Assets_1_1) {
+                exportStar_1(Assets_1_1);
+            },
+            function (xskin_1_1) {
+                exportStar_1(xskin_1_1);
+            },
+            function (xcontrols_1_1) {
+                exportStar_1(xcontrols_1_1);
+            }],
+        execute: function() {
+        }
+    }
+});
 //# sourceMappingURL=xgui-core.js.map

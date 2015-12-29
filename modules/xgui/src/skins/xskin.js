@@ -1,7 +1,24 @@
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(require("./ISkin"));
-__export(require("./dracula/Dracula"));
-__export(require("./SkinManager"));
+System.register(["./ISkin", "./dracula/Dracula", "./SkinManager"], function(exports_1) {
+    function exportStar_1(m) {
+        var exports = {};
+        for(var n in m) {
+            if (n !== "default") exports[n] = m[n];
+        }
+        exports_1(exports);
+    }
+    return {
+        setters:[
+            function (ISkin_1_1) {
+                exportStar_1(ISkin_1_1);
+            },
+            function (Dracula_1_1) {
+                exportStar_1(Dracula_1_1);
+            },
+            function (SkinManager_1_1) {
+                exportStar_1(SkinManager_1_1);
+            }],
+        execute: function() {
+        }
+    }
+});
 //# sourceMappingURL=xskin.js.map

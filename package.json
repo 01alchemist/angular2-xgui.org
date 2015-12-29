@@ -1,6 +1,6 @@
 {
-  "name": "angular2-xgui",
-  "version": "1.0.0-alpha.1",
+  "name": "xgui",
+  "version": "1.0.0-alpha.2",
   "description": "GUI Framework for angular2",
   "main": "GUICore.ts",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",
-    "systemjs": "0.19.2"
+    "systemjs": "0.19.6"
   },
   "devDependencies": {
     "angular2": "2.0.0-beta.0",
