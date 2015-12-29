@@ -1,8 +1,8 @@
 {
   "name": "xgui",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "GUI Framework for angular2",
-  "main": "GUICore.ts",
+  "main": "angular2-xgui.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
