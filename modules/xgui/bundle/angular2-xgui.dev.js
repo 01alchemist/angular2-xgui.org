@@ -1,4 +1,6 @@
 "format register";
+
+
 System.register("xgui/src/assets/Assets", [], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
@@ -35,7 +37,9 @@ System.register("xgui/src/assets/Assets", [], true, function(require, exports, m
 
 System.register("xgui/src/skins/ISkin", [], false, function(__require, __exports, __module) {
   System.get("@@global-helpers").prepareGlobal(__module.id, []);
-  (function() {}).call(System.global);
+  (function() {
+    [];
+  }).call(System.global);
   return System.get("@@global-helpers").retrieveGlobal(__module.id, false);
 });
 
