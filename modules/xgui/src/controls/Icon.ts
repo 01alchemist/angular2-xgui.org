@@ -1,14 +1,6 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {
-    Component,
-    View,
-    CSSClass,
-    NgFor,
-    NgIf,
-    ElementRef
-} from 'angular2/angular2';
-import {Assets} from "xgui/src/assets/Assets";
+import {Component,View,ElementRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {Assets} from "../assets/Assets";
 
 @Component({
     selector: 'x-icon',
@@ -25,8 +17,7 @@ import {Assets} from "xgui/src/assets/Assets";
             'width: 16px;' +
             'height: 16px;' +
         '}'
-    ],
-    directives: [CSSClass]
+    ]
 })
 
 export class Icon {

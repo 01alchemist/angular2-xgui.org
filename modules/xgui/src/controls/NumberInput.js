@@ -1,4 +1,4 @@
-System.register(['angular2/angular2'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,17 +8,20 @@ System.register(['angular2/angular2'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1;
+    var core_1, common_1;
     var NumberInput;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             }],
         execute: function() {
             NumberInput = (function () {
                 function NumberInput(elementRef) {
-                    this.change = new angular2_1.EventEmitter();
+                    this.change = new core_1.EventEmitter();
                     this._elementRef = elementRef;
                     this.value = this.value || 0;
                 }
@@ -89,10 +92,10 @@ System.register(['angular2/angular2'], function(exports_1) {
                         value = parseFloat(value);
                     }
                     this.value = value;
-                    this.change.next({ label: this._label, value: value });
+                    this.change.emit({ label: this._label, value: value });
                 };
                 NumberInput = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'number-input',
                         properties: [
                             'value:value',
@@ -100,7 +103,7 @@ System.register(['angular2/angular2'], function(exports_1) {
                         ],
                         events: ["change:change"]
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '<div class="input-label">{{ label }}</div>' +
                             '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
                         styles: [
@@ -128,9 +131,9 @@ System.register(['angular2/angular2'], function(exports_1) {
                                 'border-top: 1px solid #2F2F2F; ' +
                                 '}'
                         ],
-                        directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
+                        directives: [common_1.NgFor, common_1.NgIf]
                     }), 
-                    __metadata('design:paramtypes', [angular2_1.ElementRef])
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], NumberInput);
                 return NumberInput;
             })();

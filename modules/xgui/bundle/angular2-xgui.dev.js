@@ -54,56 +54,76 @@ System.register("xgui/src/skins/dracula/Dracula", [], true, function(require, ex
   return module.exports;
 });
 
-System.register("xgui/src/skins/SkinManager", ["xgui/src/skins/dracula/Dracula"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var Dracula_1 = require("xgui/src/skins/dracula/Dracula");
-  var SkinManager = (function() {
-    function SkinManager() {
-      this.skins = [new Dracula_1.Dracula()];
-      this.defaultSkin = this.skins[0];
-    }
-    SkinManager.getInstance = function() {
-      if (!SkinManager.instance) {
-        SkinManager.instance = new SkinManager();
-      }
-      return SkinManager.instance;
-    };
-    return SkinManager;
-  })();
-  exports.SkinManager = SkinManager;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Label", ["angular2/core"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var Label = (function() {
+    function Label() {
+      this.label = this.label || "Untitled";
+    }
+    Object.defineProperty(Label.prototype, "label", {
+      get: function() {
+        return this._text;
+      },
+      set: function(value) {
+        this._text = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Label = __decorate([core_1.Component({
+      selector: 'x-label',
+      properties: ['text:text']
+    }), core_1.View({
+      template: '{{text}}',
+      styles: ['x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}']
+    }), __metadata('design:paramtypes', [])], Label);
+    return Label;
+  })();
+  exports.Label = Label;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Icon", ["angular2/core", "xgui/src/assets/Assets"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = require("angular2/core");
   var Assets_1 = require("xgui/src/assets/Assets");
   var Icon = (function() {
     function Icon(elementRef) {
@@ -115,7 +135,6 @@ System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/assets
         return this._src;
       },
       set: function(value) {
-        console.log(value);
         if (value != undefined) {
           this._src = value;
           this._elementRef.nativeElement.style.backgroundImage = "url(" + value + ")";
@@ -137,108 +156,46 @@ System.register("xgui/src/controls/Icon", ["angular2/angular2", "xgui/src/assets
       enumerable: true,
       configurable: true
     });
-    Icon = __decorate([angular2_1.Component({
+    Icon = __decorate([core_1.Component({
       selector: 'x-icon',
       properties: ['src:src']
-    }), angular2_1.View({
+    }), core_1.View({
       template: '',
-      styles: ['x-icon{' + 'display: inline-block;' + 'position: relative;' + 'width: 16px;' + 'height: 16px;' + '}'],
-      directives: [angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], Icon);
+      styles: ['x-icon{' + 'display: inline-block;' + 'position: relative;' + 'width: 16px;' + 'height: 16px;' + '}']
+    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Icon);
     return Icon;
+    var _a;
   })();
   exports.Icon = Icon;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/Button", ["angular2/angular2"], true, function(require, exports, module) {
+System.register("xgui/src/controls/CheckBox", ["angular2/core", "angular2/common"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
-  var Button = (function() {
-    function Button() {
-      this.click = new angular2_1.EventEmitter();
-    }
-    Object.defineProperty(Button.prototype, "label", {
-      get: function() {
-        return this._label;
-      },
-      set: function(value) {
-        this._label = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Button = __decorate([angular2_1.Component({
-      selector: 'x-button',
-      properties: ['label:label'],
-      events: ["click:click"]
-    }), angular2_1.View({
-      template: '<div class="button-label">{{ label }}</div>',
-      styles: ['x-button{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}', 'x-button:hover{' + 'background-color: #4C4C4C;' + '}', 'x-button:active{' + 'background-color: #3879D9;' + '}', '.button-label{display:block; padding: 2px 5px 2px 5px;}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [])], Button);
-    return Button;
-  })();
-  exports.Button = Button;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/CheckBox", ["angular2/angular2"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
   var CheckBox = (function() {
     function CheckBox() {
-      this.click = new angular2_1.EventEmitter();
+      this.click = new core_1.EventEmitter();
     }
     Object.defineProperty(CheckBox.prototype, "label", {
       get: function() {
@@ -250,14 +207,14 @@ System.register("xgui/src/controls/CheckBox", ["angular2/angular2"], true, funct
       enumerable: true,
       configurable: true
     });
-    CheckBox = __decorate([angular2_1.Component({
+    CheckBox = __decorate([core_1.Component({
       selector: 'x-checkbox',
       properties: ['label:label'],
       events: ["click:click"]
-    }), angular2_1.View({
+    }), core_1.View({
       template: '<div class="x-checkbox">' + '<div *ng-if="label" class="checkbox-label">{{ label }}</div> ' + '<input class="x-checkbox-input" type="checkbox"/>' + '</div>',
       styles: ['.x-checkbox{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + '}', '.x-checkbox:hover{' + '}', '.x-checkbox:active{' + '}', '.x-checkbox-input{' + 'cursor: pointer;' + 'padding: 2px;' + 'display: inline-block;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}', '.checkbox-label{' + 'display:inline-block; ' + 'padding: 2px 5px 2px 5px;' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
+      directives: [common_1.NgFor, common_1.NgIf]
     }), __metadata('design:paramtypes', [])], CheckBox);
     return CheckBox;
   })();
@@ -266,36 +223,31 @@ System.register("xgui/src/controls/CheckBox", ["angular2/angular2"], true, funct
   return module.exports;
 });
 
-System.register("xgui/src/controls/NumberInput", ["angular2/angular2"], true, function(require, exports, module) {
+System.register("xgui/src/controls/NumberInput", ["angular2/core", "angular2/common"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
   var NumberInput = (function() {
     function NumberInput(elementRef) {
-      this.change = new angular2_1.EventEmitter();
+      this.change = new core_1.EventEmitter();
       this._elementRef = elementRef;
       this.value = this.value || 0;
     }
@@ -366,58 +318,54 @@ System.register("xgui/src/controls/NumberInput", ["angular2/angular2"], true, fu
         value = parseFloat(value);
       }
       this.value = value;
-      this.change.next({
+      this.change.emit({
         label: this._label,
         value: value
       });
     };
-    NumberInput = __decorate([angular2_1.Component({
+    NumberInput = __decorate([core_1.Component({
       selector: 'number-input',
       properties: ['value:value', 'label:label'],
       events: ["change:change"]
-    }), angular2_1.View({
+    }), core_1.View({
       template: '<div class="input-label">{{ label }}</div>' + '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
       styles: ['number-input{' + 'display: flex;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-label{' + 'padding-right: 7px;' + '}', '.input-label:hover{' + 'cursor:col-resize;' + '}', '.input-value{' + 'width: auto;' + 'height: 17px;' + 'padding: 2px;' + 'display: flex;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], NumberInput);
+      directives: [common_1.NgFor, common_1.NgIf]
+    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], NumberInput);
     return NumberInput;
+    var _a;
   })();
   exports.NumberInput = NumberInput;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/VectorInput", ["angular2/angular2", "xgui/src/controls/NumberInput"], true, function(require, exports, module) {
+System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/common", "xgui/src/controls/NumberInput"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
   var NumberInput_1 = require("xgui/src/controls/NumberInput");
   var VectorInput = (function() {
     function VectorInput(elementRef) {
-      this.change = new angular2_1.EventEmitter();
+      this.change = new core_1.EventEmitter();
       this._elementRef = elementRef;
       this.vector = this.vector || {
         X: 0,
@@ -470,62 +418,58 @@ System.register("xgui/src/controls/VectorInput", ["angular2/angular2", "xgui/src
       var value = event.value;
       var element = event.label.toLowerCase();
       this.vector[element] = value;
-      this.change.next({
+      this.change.emit({
         value: value,
         element: element,
         vector: this.vector
       });
     };
-    VectorInput = __decorate([angular2_1.Component({
+    VectorInput = __decorate([core_1.Component({
       selector: 'vector-input',
       properties: ['vector:vector', 'label:label'],
       events: ['change:change']
-    }), angular2_1.View({
+    }), core_1.View({
       template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
       styles: ['vector-input{' + 'display: block;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, NumberInput_1.NumberInput]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], VectorInput);
+      directives: [common_1.NgFor, common_1.NgIf, NumberInput_1.NumberInput]
+    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], VectorInput);
     return VectorInput;
+    var _a;
   })();
   exports.VectorInput = VectorInput;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
   var Label_1 = require("xgui/src/controls/Label");
   var Icon_1 = require("xgui/src/controls/Icon");
   var Assets_1 = require("xgui/src/assets/Assets");
   var TreeItem = (function() {
     function TreeItem(elementRef) {
-      this.toggle = new angular2_1.EventEmitter();
-      this.select = new angular2_1.EventEmitter();
+      this.toggle = new core_1.EventEmitter();
+      this.select = new core_1.EventEmitter();
       this.defaultIcon = Assets_1.Assets.icon_folder_16;
       this.expanderClass = {
         "x-tree-expander": true,
@@ -597,63 +541,59 @@ System.register("xgui/src/controls/TreeItem", ["angular2/angular2", "xgui/src/co
       this.data.expanded = this._expanded;
       event.target.classList.remove(this._expanded ? "x-tree-collapsed" : "x-tree-expanded");
       event.target.classList.add(this._expanded ? "x-tree-expanded" : "x-tree-collapsed");
-      this.toggle.next({
+      this.toggle.emit({
         expanded: this._expanded,
         data: this.data
       });
     };
     TreeItem.prototype.onSelect = function(event) {
-      this.select.next({item: this});
+      this.select.emit({item: this});
     };
-    TreeItem = __decorate([angular2_1.Component({
+    TreeItem = __decorate([core_1.Component({
       selector: 'x-tree-item',
       properties: ['data:data', 'dataField:data-field'],
       events: ["toggle:toggle", "select:select"]
-    }), angular2_1.View({
+    }), core_1.View({
       template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
       styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: pointer;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], TreeItem);
+      directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon]
+    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], TreeItem);
     return TreeItem;
+    var _a;
   })();
   exports.TreeItem = TreeItem;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/Tree", ["angular2/angular2", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/TreeItem"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/TreeItem"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
   var Label_1 = require("xgui/src/controls/Label");
   var Icon_1 = require("xgui/src/controls/Icon");
   var TreeItem_1 = require("xgui/src/controls/TreeItem");
   var Tree = (function() {
     function Tree(elementRef) {
-      this.select = new angular2_1.EventEmitter();
+      this.select = new core_1.EventEmitter();
       this._level = 0;
       this._expandLevel = 0;
       this._elementRef = elementRef;
@@ -731,89 +671,117 @@ System.register("xgui/src/controls/Tree", ["angular2/angular2", "xgui/src/contro
       this.select.next(event);
     };
     Tree._selectedItem = null;
-    Tree = __decorate([angular2_1.Component({
+    Tree = __decorate([core_1.Component({
       selector: 'x-tree',
       properties: ['_level:_level', 'expandLevel:expand', 'dataField:data-field', 'dataProvider:data-provider'],
       events: ["select:select"]
-    }), angular2_1.View({
+    }), core_1.View({
       template: '<div class="x-tree-item" *ng-for="#data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
       styles: ['x-tree{' + 'display: block;' + 'position: relative;' + 'padding-left: 0px;' + 'width: auto;' + '}', 'x-tree .child{' + 'padding-left: 30px;' + '}', '.x-tree-item{' + 'display: block;' + 'position: relative;' + '}'],
-      directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef])], Tree);
+      directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
+    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Tree);
     return Tree;
+    var _a;
   })();
   exports.Tree = Tree;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/containers/Panel", ["angular2/angular2", "xgui/src/assets/Assets", "xgui/src/controls/Icon"], true, function(require, exports, module) {
+System.register("xgui/src/skins/SkinManager", ["angular2/core", "xgui/src/skins/dracula/Dracula"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
   var __metadata = (this && this.__metadata) || function(k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
       return Reflect.metadata(k, v);
   };
-  var angular2_1 = require("angular2/angular2");
-  var Assets_1 = require("xgui/src/assets/Assets");
-  var Icon_1 = require("xgui/src/controls/Icon");
-  var Panel = (function() {
-    function Panel(elementRef, containerRef) {
-      this.arrowIcon = Assets_1.Assets.icon_arrow_left_7x5;
-      this.closeIcon = Assets_1.Assets.icon_close_6x5;
-      this._elementRef = elementRef;
-      this._containerRef = containerRef;
-      this._elementRef.nativeElement.addEventListener("mousedown", this.handleMouseEvent);
-      this._elementRef.nativeElement.addEventListener("mouseup", this.handleMouseEvent);
-      this._elementRef.nativeElement.addEventListener("onmouseleave", this.handleMouseEvent);
-      document.addEventListener("onmouseout", this.handleMouseEvent);
-      this._elementRef.nativeElement.addEventListener("onmousemove", this.handleMouseEvent);
-      setInterval(function() {
-        console.log("I am alive");
-      }, 2000);
+  var core_1 = require("angular2/core");
+  var Dracula_1 = require("xgui/src/skins/dracula/Dracula");
+  var SkinManager = (function() {
+    function SkinManager(_viewManager) {
+      this._viewManager = _viewManager;
+      if (self) {
+        throw {
+          code: 0,
+          name: "Singleton Error",
+          message: "ComponentManager is singleton, someone already created it"
+        };
+      }
     }
-    Object.defineProperty(Panel.prototype, "stackHeadDisplay", {
+    SkinManager.prototype.init = function() {
+      this.skins = [new Dracula_1.Dracula()];
+      this.defaultSkin = this.skins[0];
+    };
+    SkinManager = __decorate([core_1.Injectable(), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.AppViewManager !== 'undefined' && core_1.AppViewManager) === 'function' && _a) || Object])], SkinManager);
+    return SkinManager;
+    var _a;
+  })();
+  exports.SkinManager = SkinManager;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = require("angular2/core");
+  var common_1 = require("angular2/common");
+  var Button = (function() {
+    function Button() {
+      this.click = new core_1.EventEmitter();
+    }
+    Object.defineProperty(Button.prototype, "label", {
       get: function() {
-        return this.stacked ? "none" : "block";
+        return this._label;
+      },
+      set: function(value) {
+        this._label = value;
       },
       enumerable: true,
       configurable: true
     });
-    Panel.prototype.handleMouseEvent = function(event) {
-      console.log(event.type);
-    };
-    Panel.prototype.close = function() {};
-    Panel = __decorate([angular2_1.Component({
-      selector: 'x-panel',
-      properties: ['name:name'],
-      injectables: [angular2_1.ViewContainerRef]
-    }), angular2_1.View({
-      template: '<div class="panel-container">' + '<div class="stack-header">' + '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' + '<div class="expand-button"><x-icon class="expand-arrow-icon" [src]="arrowIcon"></x-icon></div>' + '</div>' + '<div class="panel-header">' + '<div class="panel-title" [style.width]="titleWidth" [style.height]="titleHeight">{{name}}</div>' + '</div>' + '<div class="stack-tabs">' + '</div>' + '</div>',
-      styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + 'background-color: #535353;' + '}', '.stack-header{' + 'display:block;' + 'cursor:default;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.expand-arrow-icon{' + 'width:7px;' + 'height:5px;' + 'top:3px;' + 'left:2px;' + '}', '.expand-button{' + 'cursor: pointer;' + 'width: 12px;' + 'height: 12px;' + 'float:right;' + '}', '.expand-button:hover{' + 'background-color:#222222;' + '}', '.stack-close-icon{' + 'width:6px;' + 'height:5px;' + 'top:3px;' + 'left:3px;' + '}', '.close-button{' + 'cursor: pointer;' + 'width: 12px;' + 'height: 12px;' + 'float:right;' + '}', '.close-button:hover{' + 'background-color:#222222;' + '}', '.panel-header{' + 'display:block;' + 'width:inherit;' + 'height:27px;' + 'border-top: #282828 1px solid;' + 'background-color: #8A8782;' + 'border-bottom: #444444 1px solid;' + '}', '.panel-title{' + 'width:70px;' + 'height:17px;' + 'padding:5px;' + 'padding-left:8px;' + 'color:#ffffff;' + 'font-size:0.94em;' + 'font-weight:bold;' + 'text-shadow: 0 -1px #000;' + 'background-color: #6F6F6F;' + 'font-family: Arial;' + '}'],
-      directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_1.CSSClass, Icon_1.Icon]
-    }), __metadata('design:paramtypes', [angular2_1.ElementRef, angular2_1.ViewContainerRef])], Panel);
-    return Panel;
+    Button = __decorate([core_1.Component({
+      selector: 'x-button',
+      properties: ['label:label'],
+      events: ["click:click"]
+    }), core_1.View({
+      template: '<div class="button-label">{{ label }}</div>',
+      styles: ['x-button{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}', 'x-button:hover{' + 'background-color: #4C4C4C;' + '}', 'x-button:active{' + 'background-color: #3879D9;' + '}', '.button-label{display:block; padding: 2px 5px 2px 5px;}'],
+      directives: [common_1.NgFor, common_1.NgIf]
+    }), __metadata('design:paramtypes', [])], Button);
+    return Button;
   })();
-  exports.Panel = Panel;
+  exports.Button = Button;
   global.define = __define;
   return module.exports;
 });
@@ -830,76 +798,6 @@ System.register("xgui/src/skins/xskin", ["xgui/src/skins/ISkin", "xgui/src/skins
   __export(require("xgui/src/skins/ISkin"));
   __export(require("xgui/src/skins/dracula/Dracula"));
   __export(require("xgui/src/skins/SkinManager"));
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/Label", ["angular2/angular2"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-      case 2:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(o)) || o;
-        }, target);
-      case 3:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key)), void 0;
-        }, void 0);
-      case 4:
-        return decorators.reduceRight(function(o, d) {
-          return (d && d(target, key, o)) || o;
-        }, desc);
-    }
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var angular2_1 = require("angular2/angular2");
-  var Label = (function() {
-    function Label() {
-      this.label = this.label || "Untitled";
-    }
-    Object.defineProperty(Label.prototype, "label", {
-      get: function() {
-        return this._text;
-      },
-      set: function(value) {
-        this._text = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Label = __decorate([angular2_1.Component({
-      selector: 'x-label',
-      properties: ['text:text']
-    }), angular2_1.View({
-      template: '{{text}}',
-      styles: ['x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}'],
-      directives: [angular2_1.CSSClass]
-    }), __metadata('design:paramtypes', [])], Label);
-    return Label;
-  })();
-  exports.Label = Label;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/containers/xcontainers", ["xgui/src/containers/Panel"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  function __export(m) {
-    for (var p in m)
-      if (!exports.hasOwnProperty(p))
-        exports[p] = m[p];
-  }
-  __export(require("xgui/src/containers/Panel"));
   global.define = __define;
   return module.exports;
 });
@@ -925,7 +823,7 @@ System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/Label", "xgui
   return module.exports;
 });
 
-System.register("xgui/xgui-core", ["xgui/src/assets/Assets", "xgui/src/skins/xskin", "xgui/src/controls/xcontrols", "xgui/src/containers/xcontainers"], true, function(require, exports, module) {
+System.register("xgui/xgui-core", ["xgui/src/assets/Assets", "xgui/src/skins/xskin", "xgui/src/controls/xcontrols"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -937,7 +835,6 @@ System.register("xgui/xgui-core", ["xgui/src/assets/Assets", "xgui/src/skins/xsk
   __export(require("xgui/src/assets/Assets"));
   __export(require("xgui/src/skins/xskin"));
   __export(require("xgui/src/controls/xcontrols"));
-  __export(require("xgui/src/containers/xcontainers"));
   global.define = __define;
   return module.exports;
 });

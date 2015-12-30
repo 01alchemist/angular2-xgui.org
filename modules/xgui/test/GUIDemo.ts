@@ -1,15 +1,12 @@
-///<reference path="../typings/angular2/angular2.d.ts" />
-
-import {bootstrap, Component, View} from "angular2/angular2";
-import {
-    Icon,
-    Button,
-    CheckBox,
-    NumberInput,
-    VectorInput,
-    Tree,
-    Panel
-} from "xgui/angular2-xgui";
+import {Component, View} from "angular2/core";
+import {Icon} from "../src/controls/Icon";
+import {Button} from "../src/controls/Button";
+import {CheckBox} from "../src/controls/CheckBox";
+import {NumberInput} from "../src/controls/NumberInput";
+import {VectorInput} from "../src/controls/VectorInput";
+import {Tree} from "../src/controls/Tree";
+import {Panel} from "../src/containers/Panel";
+import {bootstrap} from "angular2/bootstrap";
 
 @Component({
     selector: 'gui-demo'

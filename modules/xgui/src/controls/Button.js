@@ -1,4 +1,4 @@
-System.register(['angular2/angular2'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,17 +8,20 @@ System.register(['angular2/angular2'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1;
+    var core_1, common_1;
     var Button;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             }],
         execute: function() {
             Button = (function () {
                 function Button() {
-                    this.click = new angular2_1.EventEmitter();
+                    this.click = new core_1.EventEmitter();
                 }
                 Object.defineProperty(Button.prototype, "label", {
                     get: function () {
@@ -31,14 +34,14 @@ System.register(['angular2/angular2'], function(exports_1) {
                     configurable: true
                 });
                 Button = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'x-button',
                         properties: [
                             'label:label'
                         ],
                         events: ["click:click"]
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '<div class="button-label">{{ label }}</div>',
                         styles: [
                             'x-button{' +
@@ -58,7 +61,7 @@ System.register(['angular2/angular2'], function(exports_1) {
                                 '}',
                             '.button-label{display:block; padding: 2px 5px 2px 5px;}'
                         ],
-                        directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
+                        directives: [common_1.NgFor, common_1.NgIf]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Button);

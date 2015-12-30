@@ -1,18 +1,15 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
+import {Component,View,EventEmitter,ElementRef, ViewContainerRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {Icon} from "../controls/Icon";
+import {Assets} from "../assets/Assets";
 
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-import {Component, View, NgIf, NgFor, CSSClass, ElementRef, ViewContainerRef} from "angular2/angular2";
-import {SkinManager} from "xgui/src/skins/SkinManager";
-import {Dracula} from "xgui/src/skins/dracula/Dracula";
-import {Assets} from "xgui/src/assets/Assets";
-import {Icon} from "xgui/src/controls/Icon";
-
 @Component({
     selector:'x-panel',
     properties:['name:name'],
-    injectables:[ViewContainerRef]
+    directives:[ViewContainerRef]
 })
 @View({
     template:
@@ -98,7 +95,7 @@ import {Icon} from "xgui/src/controls/Icon";
             /*'text-transform: uppercase;' +*/
         '}'
     ],
-    directives:[NgIf, NgFor, CSSClass, Icon]
+    directives:[NgIf, NgFor, Icon]
 })
 export class Panel{
 

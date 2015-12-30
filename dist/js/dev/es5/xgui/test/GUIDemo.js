@@ -1,4 +1,3 @@
-///<reference path="../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var angular2_1 = require("angular2/angular2");
-var angular2_xgui_1 = require("xgui/angular2-xgui");
+var core_1 = require("angular2/core");
+var Icon_1 = require("../src/controls/Icon");
+var Button_1 = require("../src/controls/Button");
+var CheckBox_1 = require("../src/controls/CheckBox");
+var NumberInput_1 = require("../src/controls/NumberInput");
+var VectorInput_1 = require("../src/controls/VectorInput");
+var Tree_1 = require("../src/controls/Tree");
+var Panel_1 = require("../src/containers/Panel");
+var bootstrap_1 = require("angular2/bootstrap");
 var GUIDemo = (function () {
     function GUIDemo() {
         this.vector = { x: 554, y: 0, z: 0 };
@@ -59,19 +65,19 @@ var GUIDemo = (function () {
         console.log(event);
     };
     GUIDemo = __decorate([
-        angular2_1.Component({
+        core_1.Component({
             selector: 'gui-demo'
         }),
-        angular2_1.View({
+        core_1.View({
             templateUrl: 'GUIDemoTemplate.html',
             directives: [
-                angular2_xgui_1.Icon,
-                angular2_xgui_1.Button,
-                angular2_xgui_1.CheckBox,
-                angular2_xgui_1.NumberInput,
-                angular2_xgui_1.VectorInput,
-                angular2_xgui_1.Tree,
-                angular2_xgui_1.Panel
+                Icon_1.Icon,
+                Button_1.Button,
+                CheckBox_1.CheckBox,
+                NumberInput_1.NumberInput,
+                VectorInput_1.VectorInput,
+                Tree_1.Tree,
+                Panel_1.Panel
             ]
         }), 
         __metadata('design:paramtypes', [])
@@ -79,5 +85,5 @@ var GUIDemo = (function () {
     return GUIDemo;
 })();
 exports.GUIDemo = GUIDemo;
-angular2_1.bootstrap(GUIDemo);
+bootstrap_1.bootstrap(GUIDemo);
 //# sourceMappingURL=GUIDemo.js.map

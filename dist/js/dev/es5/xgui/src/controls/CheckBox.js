@@ -1,6 +1,3 @@
-/**
- * Created by Nidin Vinayakan on 02-10-2015.
- */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,11 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-var angular2_1 = require('angular2/angular2');
+/**
+ * Created by Nidin Vinayakan on 02-10-2015.
+ */
+var core_1 = require('angular2/core');
+var common_1 = require('angular2/common');
 var CheckBox = (function () {
     function CheckBox() {
-        this.click = new angular2_1.EventEmitter();
+        this.click = new core_1.EventEmitter();
     }
     Object.defineProperty(CheckBox.prototype, "label", {
         get: function () {
@@ -27,14 +27,14 @@ var CheckBox = (function () {
         configurable: true
     });
     CheckBox = __decorate([
-        angular2_1.Component({
+        core_1.Component({
             selector: 'x-checkbox',
             properties: [
                 'label:label'
             ],
             events: ["click:click"]
         }),
-        angular2_1.View({
+        core_1.View({
             template: '<div class="x-checkbox">' +
                 '<div *ng-if="label" class="checkbox-label">{{ label }}</div> ' +
                 '<input class="x-checkbox-input" type="checkbox"/>' +
@@ -67,7 +67,7 @@ var CheckBox = (function () {
                     'padding: 2px 5px 2px 5px;' +
                     '}'
             ],
-            directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass]
+            directives: [common_1.NgFor, common_1.NgIf]
         }), 
         __metadata('design:paramtypes', [])
     ], CheckBox);

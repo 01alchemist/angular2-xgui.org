@@ -1,4 +1,4 @@
-System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1) {
+System.register(["angular2/core", "../src/controls/Icon", "../src/controls/Button", "../src/controls/CheckBox", "../src/controls/NumberInput", "../src/controls/VectorInput", "../src/controls/Tree", "../src/containers/Panel", "angular2/bootstrap"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,36 @@ System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1)
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1, angular2_xgui_1;
+    var core_1, Icon_1, Button_1, CheckBox_1, NumberInput_1, VectorInput_1, Tree_1, Panel_1, bootstrap_1;
     var GUIDemo;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
-            function (angular2_xgui_1_1) {
-                angular2_xgui_1 = angular2_xgui_1_1;
+            function (Icon_1_1) {
+                Icon_1 = Icon_1_1;
+            },
+            function (Button_1_1) {
+                Button_1 = Button_1_1;
+            },
+            function (CheckBox_1_1) {
+                CheckBox_1 = CheckBox_1_1;
+            },
+            function (NumberInput_1_1) {
+                NumberInput_1 = NumberInput_1_1;
+            },
+            function (VectorInput_1_1) {
+                VectorInput_1 = VectorInput_1_1;
+            },
+            function (Tree_1_1) {
+                Tree_1 = Tree_1_1;
+            },
+            function (Panel_1_1) {
+                Panel_1 = Panel_1_1;
+            },
+            function (bootstrap_1_1) {
+                bootstrap_1 = bootstrap_1_1;
             }],
         execute: function() {
             GUIDemo = (function () {
@@ -68,19 +89,19 @@ System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1)
                     console.log(event);
                 };
                 GUIDemo = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'gui-demo'
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         templateUrl: 'GUIDemoTemplate.html',
                         directives: [
-                            angular2_xgui_1.Icon,
-                            angular2_xgui_1.Button,
-                            angular2_xgui_1.CheckBox,
-                            angular2_xgui_1.NumberInput,
-                            angular2_xgui_1.VectorInput,
-                            angular2_xgui_1.Tree,
-                            angular2_xgui_1.Panel
+                            Icon_1.Icon,
+                            Button_1.Button,
+                            CheckBox_1.CheckBox,
+                            NumberInput_1.NumberInput,
+                            VectorInput_1.VectorInput,
+                            Tree_1.Tree,
+                            Panel_1.Panel
                         ]
                     }), 
                     __metadata('design:paramtypes', [])
@@ -88,7 +109,7 @@ System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1)
                 return GUIDemo;
             })();
             exports_1("GUIDemo", GUIDemo);
-            angular2_1.bootstrap(GUIDemo);
+            bootstrap_1.bootstrap(GUIDemo);
         }
     }
 });

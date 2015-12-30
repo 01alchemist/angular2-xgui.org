@@ -1,7 +1,7 @@
+import { ElementRef, ViewContainerRef } from 'angular2/core';
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-import { ElementRef, ViewContainerRef } from "angular2/angular2";
 export declare class Panel {
     arrowIcon: string;
     closeIcon: string;

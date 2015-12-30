@@ -1,16 +1,6 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {
-    Component,
-    View,
-    CSSClass,
-    NgFor,
-    NgIf,
-    EventEmitter,
-    ElementRef
-} from 'angular2/angular2';
-
-import {NumberInput} from 'xgui/src/controls/NumberInput';
+import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {NumberInput} from "./NumberInput";
 
 @Component({
     selector: 'vector-input',
@@ -48,7 +38,7 @@ import {NumberInput} from 'xgui/src/controls/NumberInput';
             'padding-right: 10px;' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, NumberInput]
+    directives: [NgFor, NgIf, NumberInput]
 })
 
 export class VectorInput {
@@ -103,6 +93,6 @@ export class VectorInput {
         var element = event.label.toLowerCase();
 
         this.vector[element] = value;
-        this.change.next({value:value, element:element, vector:this.vector});
+        this.change.emit({value:value, element:element, vector:this.vector});
     }
 }

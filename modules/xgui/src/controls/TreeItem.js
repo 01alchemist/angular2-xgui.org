@@ -1,4 +1,4 @@
-System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../assets/Assets"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1, Label_1, Icon_1, Assets_1;
+    var core_1, common_1, Label_1, Icon_1, Assets_1;
     var TreeItem;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             },
             function (Label_1_1) {
                 Label_1 = Label_1_1;
@@ -27,8 +30,8 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
         execute: function() {
             TreeItem = (function () {
                 function TreeItem(elementRef) {
-                    this.toggle = new angular2_1.EventEmitter();
-                    this.select = new angular2_1.EventEmitter();
+                    this.toggle = new core_1.EventEmitter();
+                    this.select = new core_1.EventEmitter();
                     this.defaultIcon = Assets_1.Assets.icon_folder_16;
                     this.expanderClass = { "x-tree-expander": true, "x-tree-collapsed": !this._expanded, "x-tree-expanded": this._expanded };
                     this._expanded = false;
@@ -97,13 +100,13 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                     this.data.expanded = this._expanded;
                     event.target.classList.remove(this._expanded ? "x-tree-collapsed" : "x-tree-expanded");
                     event.target.classList.add(this._expanded ? "x-tree-expanded" : "x-tree-collapsed");
-                    this.toggle.next({ expanded: this._expanded, data: this.data });
+                    this.toggle.emit({ expanded: this._expanded, data: this.data });
                 };
                 TreeItem.prototype.onSelect = function (event) {
-                    this.select.next({ item: this });
+                    this.select.emit({ item: this });
                 };
                 TreeItem = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'x-tree-item',
                         properties: [
                             'data:data',
@@ -111,7 +114,7 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                         ],
                         events: ["toggle:toggle", "select:select"]
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' +
                             '<div class="x-tree-item-container" (^click)="onSelect($event)">' +
                             '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
@@ -156,9 +159,9 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                                 'cursor:default;' +
                                 '}'
                         ],
-                        directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon]
+                        directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon]
                     }), 
-                    __metadata('design:paramtypes', [angular2_1.ElementRef])
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], TreeItem);
                 return TreeItem;
             })();

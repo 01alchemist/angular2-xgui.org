@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, CSSClass, NgFor, NgIf, EventEmitter, ElementRef } from 'angular2/angular2';
-import { NumberInput } from 'xgui/src/controls/NumberInput';
+import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
+import { NgFor, NgIf } from 'angular2/common';
+import { NumberInput } from "./NumberInput";
 export let VectorInput = class {
     constructor(elementRef) {
         this.change = new EventEmitter();
@@ -49,7 +49,7 @@ export let VectorInput = class {
         var value = event.value;
         var element = event.label.toLowerCase();
         this.vector[element] = value;
-        this.change.next({ value: value, element: element, vector: this.vector });
+        this.change.emit({ value: value, element: element, vector: this.vector });
     }
 };
 VectorInput = __decorate([
@@ -88,7 +88,7 @@ VectorInput = __decorate([
                 'padding-right: 10px;' +
                 '}'
         ],
-        directives: [NgFor, NgIf, CSSClass, NumberInput]
+        directives: [NgFor, NgIf, NumberInput]
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], VectorInput);

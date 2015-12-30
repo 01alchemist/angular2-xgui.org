@@ -1,5 +1,5 @@
-import { ElementRef } from 'angular2/angular2';
-import { TreeItem } from "xgui/src/controls/TreeItem";
+import { ElementRef } from 'angular2/core';
+import { TreeItem } from "./TreeItem";
 export declare class Tree {
     select: any;
     private _elementRef;

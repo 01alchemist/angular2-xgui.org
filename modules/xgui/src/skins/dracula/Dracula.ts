@@ -1,9 +1,7 @@
+import {ISkin} from "../ISkin";
 /**
  * Created by Nidin Vinayakan on 10-10-2015.
  */
-
-import {ISkin} from "xgui/src/skins/ISkin";
-
 export class Dracula implements ISkin{
 
     constructor(){

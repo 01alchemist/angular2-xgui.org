@@ -1,4 +1,4 @@
-System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/TreeItem"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./TreeItem"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1, Label_1, Icon_1, TreeItem_1;
+    var core_1, common_1, Label_1, Icon_1, TreeItem_1;
     var Tree;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             },
             function (Label_1_1) {
                 Label_1 = Label_1_1;
@@ -27,7 +30,7 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
         execute: function() {
             Tree = (function () {
                 function Tree(elementRef) {
-                    this.select = new angular2_1.EventEmitter();
+                    this.select = new core_1.EventEmitter();
                     this._level = 0;
                     this._expandLevel = 0;
                     this._elementRef = elementRef;
@@ -106,7 +109,7 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                 };
                 Tree._selectedItem = null;
                 Tree = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'x-tree',
                         properties: [
                             '_level:_level',
@@ -116,7 +119,7 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                         ],
                         events: ["select:select"]
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '<div class="x-tree-item" *ng-for="#data of dataProvider">' +
                             '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
                             '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' +
@@ -138,9 +141,9 @@ System.register(['angular2/angular2', "xgui/src/controls/Label", "xgui/src/contr
                                 'position: relative;' +
                                 '}'
                         ],
-                        directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
+                        directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
                     }), 
-                    __metadata('design:paramtypes', [angular2_1.ElementRef])
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], Tree);
                 return Tree;
             })();

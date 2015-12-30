@@ -37,13 +37,13 @@ var tslint = require('gulp-tslint');
 //var os = require('os'); TODO: delete
 var dts = require('dts-bundle');
 
-require('./tools/check-environment')({
+/*require('./tools/check-environment')({
     requiredNpmVersion: '>=2.9.0',
     requiredNodeVersion: '>=0.12.2'
-});
+});*/
 
-var build_dir = "../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js";//'build/angular2-xgui.dev.js'
-//var build_dir = 'build/angular2-xgui.dev.js';
+//var build_dir = "../RealView3D/RealView3D/static/libs/angular2-xgui.dev.js";//'build/angular2-xgui.dev.js'
+var build_dir = 'modules/xgui/bundle/angular2-xgui.dev.js';
 
 /**
  * dynamic require in build.tools so we can bootstrap TypeScript compilation
@@ -252,9 +252,21 @@ var bundleConfig = {
         "*": "dist/js/prod/es5/*.js"
     },
     meta: {
-      'angular2/angular2': {
-        build: false
-      }
+        'angular2/core': {
+            build: false
+        },
+        'angular2/bootstrap': {
+            build: false
+        },
+        'angular2/common': {
+            build: false
+        },
+        'angular2/http': {
+            build: false
+        },
+        'angular2/router': {
+            build: false
+        }
     }
 };
 

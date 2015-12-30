@@ -1,4 +1,4 @@
-System.register(['angular2/angular2', "xgui/src/assets/Assets"], function(exports_1) {
+System.register(['angular2/core', "../assets/Assets"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,12 @@ System.register(['angular2/angular2', "xgui/src/assets/Assets"], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1, Assets_1;
+    var core_1, Assets_1;
     var Icon;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
             function (Assets_1_1) {
                 Assets_1 = Assets_1_1;
@@ -53,13 +53,13 @@ System.register(['angular2/angular2', "xgui/src/assets/Assets"], function(export
                     configurable: true
                 });
                 Icon = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'x-icon',
                         properties: [
                             'src:src'
                         ]
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '',
                         styles: [
                             'x-icon{' +
@@ -68,10 +68,9 @@ System.register(['angular2/angular2', "xgui/src/assets/Assets"], function(export
                                 'width: 16px;' +
                                 'height: 16px;' +
                                 '}'
-                        ],
-                        directives: [angular2_1.CSSClass]
+                        ]
                     }), 
-                    __metadata('design:paramtypes', [angular2_1.ElementRef])
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], Icon);
                 return Icon;
             })();

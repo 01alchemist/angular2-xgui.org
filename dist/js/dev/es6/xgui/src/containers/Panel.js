@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,9 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, NgIf, NgFor, CSSClass, ElementRef, ViewContainerRef } from "angular2/angular2";
-import { Assets } from "xgui/src/assets/Assets";
-import { Icon } from "xgui/src/controls/Icon";
+import { Component, View, ElementRef, ViewContainerRef } from 'angular2/core';
+import { NgFor, NgIf } from 'angular2/common';
+import { Icon } from "../controls/Icon";
+import { Assets } from "../assets/Assets";
+/**
+ * Created by Nidin Vinayakan on 02-10-2015.
+ */
 export let Panel = class {
     constructor(elementRef, containerRef) {
         this.arrowIcon = Assets.icon_arrow_left_7x5;
@@ -42,7 +45,7 @@ Panel = __decorate([
     Component({
         selector: 'x-panel',
         properties: ['name:name'],
-        injectables: [ViewContainerRef]
+        directives: [ViewContainerRef]
     }),
     View({
         template: '<div class="panel-container">' +
@@ -127,7 +130,7 @@ Panel = __decorate([
                 /*'text-transform: uppercase;' +*/
                 '}'
         ],
-        directives: [NgIf, NgFor, CSSClass, Icon]
+        directives: [NgIf, NgFor, Icon]
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof ViewContainerRef !== 'undefined' && ViewContainerRef) === 'function' && _b) || Object])
 ], Panel);

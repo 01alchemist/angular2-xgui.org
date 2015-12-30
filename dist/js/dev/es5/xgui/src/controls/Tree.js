@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var angular2_1 = require('angular2/angular2');
-var Label_1 = require("xgui/src/controls/Label");
-var Icon_1 = require("xgui/src/controls/Icon");
-var TreeItem_1 = require("xgui/src/controls/TreeItem");
+var core_1 = require('angular2/core');
+var common_1 = require('angular2/common');
+var Label_1 = require("./Label");
+var Icon_1 = require("./Icon");
+var TreeItem_1 = require("./TreeItem");
 var Tree = (function () {
     function Tree(elementRef) {
-        this.select = new angular2_1.EventEmitter();
+        this.select = new core_1.EventEmitter();
         this._level = 0;
         this._expandLevel = 0;
         this._elementRef = elementRef;
@@ -93,7 +93,7 @@ var Tree = (function () {
     };
     Tree._selectedItem = null;
     Tree = __decorate([
-        angular2_1.Component({
+        core_1.Component({
             selector: 'x-tree',
             properties: [
                 '_level:_level',
@@ -103,7 +103,7 @@ var Tree = (function () {
             ],
             events: ["select:select"]
         }),
-        angular2_1.View({
+        core_1.View({
             template: '<div class="x-tree-item" *ng-for="#data of dataProvider">' +
                 '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
                 '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' +
@@ -125,9 +125,9 @@ var Tree = (function () {
                     'position: relative;' +
                     '}'
             ],
-            directives: [angular2_1.NgFor, angular2_1.NgIf, angular2_1.CSSClass, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
+            directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof angular2_1.ElementRef !== 'undefined' && angular2_1.ElementRef) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
     ], Tree);
     return Tree;
     var _a;

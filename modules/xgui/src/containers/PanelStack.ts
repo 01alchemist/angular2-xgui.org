@@ -1,13 +1,9 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
+import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {Panel} from "./Panel";
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-
-
-import {Component, View, NgIf, NgFor} from "angular2/angular2";
-import {Panel} from "xgui/angular2-xgui";
-
 @Component({
     selector:'x-panel-stack',
     properties:[]

@@ -1,11 +1,8 @@
+import {Component, View, EventEmitter} from 'angular2/core';
+import {NgFor, NgIf} from 'angular2/common';
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/angular2';
-
 @Component({
     selector: 'x-button',
     properties:[
@@ -33,7 +30,7 @@ import {Component, View, CSSClass, NgFor, NgIf, EventEmitter} from 'angular2/ang
         '}',
         '.button-label{display:block; padding: 2px 5px 2px 5px;}'
     ],
-    directives: [NgFor, NgIf, CSSClass]
+    directives: [NgFor, NgIf]
 })
 
 export class Button {

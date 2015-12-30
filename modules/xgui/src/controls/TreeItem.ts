@@ -1,17 +1,8 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {
-    Component,
-    View,
-    CSSClass,
-    NgFor,
-    NgIf,
-    EventEmitter,
-    ElementRef
-} from 'angular2/angular2';
-import {Label} from "xgui/src/controls/Label";
-import {Icon} from "xgui/src/controls/Icon";
-import {Assets} from "xgui/src/assets/Assets";
+import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {Label} from "./Label";
+import {Icon} from "./Icon";
+import {Assets} from "../assets/Assets";
 
 @Component({
     selector: 'x-tree-item',
@@ -67,7 +58,7 @@ import {Assets} from "xgui/src/assets/Assets";
             'cursor:default;' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, Label, Icon]
+    directives: [NgFor, NgIf, Label, Icon]
 })
 
 export class TreeItem {
@@ -133,9 +124,9 @@ export class TreeItem {
         this.data.expanded = this._expanded;
         event.target.classList.remove(this._expanded?"x-tree-collapsed":"x-tree-expanded");
         event.target.classList.add(this._expanded?"x-tree-expanded":"x-tree-collapsed");
-        this.toggle.next({expanded:this._expanded, data:this.data});
+        this.toggle.emit({expanded:this._expanded, data:this.data});
     }
     onSelect(event){
-        this.select.next({item:this});
+        this.select.emit({item:this});
     }
 }

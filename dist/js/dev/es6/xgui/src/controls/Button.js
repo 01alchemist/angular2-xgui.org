@@ -1,6 +1,3 @@
-/**
- * Created by Nidin Vinayakan on 02-10-2015.
- */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, CSSClass, NgFor, NgIf, EventEmitter } from 'angular2/angular2';
+import { Component, View, EventEmitter } from 'angular2/core';
+import { NgFor, NgIf } from 'angular2/common';
+/**
+ * Created by Nidin Vinayakan on 02-10-2015.
+ */
 export let Button = class {
     constructor() {
         this.click = new EventEmitter();
@@ -50,7 +51,7 @@ Button = __decorate([
                 '}',
             '.button-label{display:block; padding: 2px 5px 2px 5px;}'
         ],
-        directives: [NgFor, NgIf, CSSClass]
+        directives: [NgFor, NgIf]
     }), 
     __metadata('design:paramtypes', [])
 ], Button);

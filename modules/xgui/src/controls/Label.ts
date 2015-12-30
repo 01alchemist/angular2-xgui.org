@@ -1,14 +1,4 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {
-    Component,
-    View,
-    CSSClass,
-    NgFor,
-    NgIf,
-    EventEmitter,
-    ElementRef
-} from 'angular2/angular2';
+import {Component,View} from 'angular2/core';
 
 @Component({
     selector: 'x-label',
@@ -26,8 +16,7 @@ import {
             'padding-right: 5px;' +
             'width: auto;' +
         '}'
-    ],
-    directives: [CSSClass]
+    ]
 })
 
 export class Label {

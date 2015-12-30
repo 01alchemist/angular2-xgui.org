@@ -28,14 +28,15 @@ module.exports = function makeBrowserTree(options, destinationPath) {
       'benchmarks/e2e_test/**',
       // Exclude ES6 polyfill typings when tsc target=ES6
       'xgui/manual_typings/traceur-runtime.d.ts',
-      'xgui/typings/es6-promise/**'
+      'xgui/typings/es6-promise/**',
+      'xgui/bundle/**'
     ],
     destDir: '/'
   });
 
   var es5ModulesTree = new Funnel('modules', {
     include: ['**/**/*.ts'],
-    exclude: ['**/*.cjs', 'benchmarks/e2e_test/**'],
+    exclude: ['**/*.cjs', 'benchmarks/e2e_test/**', 'xgui/bundle/**'],
     destDir: '/'
   });
 

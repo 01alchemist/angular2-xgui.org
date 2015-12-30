@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, CSSClass, NgFor, NgIf, EventEmitter, ElementRef } from 'angular2/angular2';
-import { Label } from "xgui/src/controls/Label";
-import { Icon } from "xgui/src/controls/Icon";
-import { TreeItem } from "xgui/src/controls/TreeItem";
+import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
+import { NgFor, NgIf } from 'angular2/common';
+import { Label } from "./Label";
+import { Icon } from "./Icon";
+import { TreeItem } from "./TreeItem";
 export let Tree = class {
     constructor(elementRef) {
         this.select = new EventEmitter();
@@ -110,7 +110,7 @@ Tree = __decorate([
                 'position: relative;' +
                 '}'
         ],
-        directives: [NgFor, NgIf, CSSClass, Label, Icon, TreeItem, Tree]
+        directives: [NgFor, NgIf, Label, Icon, TreeItem, Tree]
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], Tree);

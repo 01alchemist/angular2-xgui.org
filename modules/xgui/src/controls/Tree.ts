@@ -1,17 +1,8 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-
-import {
-    Component,
-    View,
-    CSSClass,
-    NgFor,
-    NgIf,
-    EventEmitter,
-    ElementRef
-} from 'angular2/angular2';
-import {Label} from "xgui/src/controls/Label";
-import {Icon} from "xgui/src/controls/Icon";
-import {TreeItem} from "xgui/src/controls/TreeItem";
+import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
+import {NgFor,NgIf} from 'angular2/common';
+import {Label} from "./Label";
+import {Icon} from "./Icon";
+import {TreeItem} from "./TreeItem";
 
 @Component({
     selector: 'x-tree',
@@ -46,7 +37,7 @@ import {TreeItem} from "xgui/src/controls/TreeItem";
             'position: relative;' +
         '}'
     ],
-    directives: [NgFor, NgIf, CSSClass, Label, Icon, TreeItem, Tree]
+    directives: [NgFor, NgIf, Label, Icon, TreeItem, Tree]
 })
 
 export class Tree {

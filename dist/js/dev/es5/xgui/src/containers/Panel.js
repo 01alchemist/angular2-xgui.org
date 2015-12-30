@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var core_1 = require('angular2/core');
+var common_1 = require('angular2/common');
+var Icon_1 = require("../controls/Icon");
+var Assets_1 = require("../assets/Assets");
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-var angular2_1 = require("angular2/angular2");
-var Assets_1 = require("xgui/src/assets/Assets");
-var Icon_1 = require("xgui/src/controls/Icon");
 var Panel = (function () {
     function Panel(elementRef, containerRef) {
         this.arrowIcon = Assets_1.Assets.icon_arrow_left_7x5;
@@ -45,12 +45,12 @@ var Panel = (function () {
         vc.remove(this._elementRef.boundElementIndex);*/
     };
     Panel = __decorate([
-        angular2_1.Component({
+        core_1.Component({
             selector: 'x-panel',
             properties: ['name:name'],
-            injectables: [angular2_1.ViewContainerRef]
+            directives: [core_1.ViewContainerRef]
         }),
-        angular2_1.View({
+        core_1.View({
             template: '<div class="panel-container">' +
                 '<div class="stack-header">' +
                 '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
@@ -133,9 +133,9 @@ var Panel = (function () {
                     /*'text-transform: uppercase;' +*/
                     '}'
             ],
-            directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_1.CSSClass, Icon_1.Icon]
+            directives: [common_1.NgIf, common_1.NgFor, Icon_1.Icon]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof angular2_1.ElementRef !== 'undefined' && angular2_1.ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof angular2_1.ViewContainerRef !== 'undefined' && angular2_1.ViewContainerRef) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object])
     ], Panel);
     return Panel;
     var _a, _b;

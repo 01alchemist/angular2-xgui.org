@@ -1,4 +1,3 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, CSSClass, NgFor, NgIf, EventEmitter, ElementRef } from 'angular2/angular2';
+import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
+import { NgFor, NgIf } from 'angular2/common';
 export let NumberInput = class {
     constructor(elementRef) {
         this.change = new EventEmitter();
@@ -69,7 +69,7 @@ export let NumberInput = class {
             value = parseFloat(value);
         }
         this.value = value;
-        this.change.next({ label: this._label, value: value });
+        this.change.emit({ label: this._label, value: value });
     }
 };
 NumberInput = __decorate([
@@ -109,7 +109,7 @@ NumberInput = __decorate([
                 'border-top: 1px solid #2F2F2F; ' +
                 '}'
         ],
-        directives: [NgFor, NgIf, CSSClass]
+        directives: [NgFor, NgIf]
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], NumberInput);

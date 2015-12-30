@@ -1,4 +1,4 @@
-System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./Panel"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,26 +8,29 @@ System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1)
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var angular2_1, angular2_xgui_1;
+    var core_1, common_1, Panel_1;
     var StackBox;
     return {
         setters:[
-            function (angular2_1_1) {
-                angular2_1 = angular2_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
-            function (angular2_xgui_1_1) {
-                angular2_xgui_1 = angular2_xgui_1_1;
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (Panel_1_1) {
+                Panel_1 = Panel_1_1;
             }],
         execute: function() {
             StackBox = (function () {
                 function StackBox() {
                 }
                 StackBox = __decorate([
-                    angular2_1.Component({
+                    core_1.Component({
                         selector: 'x-panel-stack',
                         properties: []
                     }),
-                    angular2_1.View({
+                    core_1.View({
                         template: '<div class="stack-bound">' +
                             '<div class="stack-container">' +
                             '<div class="stack-header"></div>' +
@@ -36,7 +39,7 @@ System.register(["angular2/angular2", "xgui/angular2-xgui"], function(exports_1)
                             '</div>' +
                             '</div>' +
                             '</div>',
-                        directives: [angular2_1.NgIf, angular2_1.NgFor, angular2_xgui_1.Panel]
+                        directives: [common_1.NgIf, common_1.NgFor, Panel_1.Panel]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], StackBox);

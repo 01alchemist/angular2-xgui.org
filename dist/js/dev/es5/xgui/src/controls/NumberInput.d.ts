@@ -1,4 +1,4 @@
-import { ElementRef } from 'angular2/angular2';
+import { ElementRef } from 'angular2/core';
 export declare class NumberInput {
     change: any;
     availableWidth: number;
