@@ -30,7 +30,7 @@ CheckBox = __decorate([
     }),
     View({
         template: '<div class="x-checkbox">' +
-            '<div *ng-if="label" class="checkbox-label">{{ label }}</div> ' +
+            '<div *ngIf="label" class="checkbox-label">{{ label }}</div> ' +
             '<input class="x-checkbox-input" type="checkbox"/>' +
             '</div>',
         styles: [

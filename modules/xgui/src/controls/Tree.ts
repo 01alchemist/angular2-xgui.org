@@ -16,9 +16,9 @@ import {TreeItem} from "./TreeItem";
 })
 @View({
     template:
-    '<div class="x-tree-item" *ng-for="#data of dataProvider">' +
+    '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
         '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
-        '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' +
+        '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +
             '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' +
         '</div>' +
     '</div>',

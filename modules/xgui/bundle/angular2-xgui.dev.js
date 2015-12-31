@@ -233,7 +233,7 @@ System.register("xgui/src/controls/CheckBox", ["angular2/core", "angular2/common
       properties: ['label:label'],
       events: ["click:click"]
     }), core_1.View({
-      template: '<div class="x-checkbox">' + '<div *ng-if="label" class="checkbox-label">{{ label }}</div> ' + '<input class="x-checkbox-input" type="checkbox"/>' + '</div>',
+      template: '<div class="x-checkbox">' + '<div *ngIf="label" class="checkbox-label">{{ label }}</div> ' + '<input class="x-checkbox-input" type="checkbox"/>' + '</div>',
       styles: ['.x-checkbox{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + '}', '.x-checkbox:hover{' + '}', '.x-checkbox:active{' + '}', '.x-checkbox-input{' + 'cursor: pointer;' + 'padding: 2px;' + 'display: inline-block;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}', '.checkbox-label{' + 'display:inline-block; ' + 'padding: 2px 5px 2px 5px;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf]
     }), __metadata('design:paramtypes', [])], CheckBox);
@@ -450,7 +450,7 @@ System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/com
       properties: ['vector:vector', 'label:label'],
       events: ['change:change']
     }), core_1.View({
-      template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
+      template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
       styles: ['vector-input{' + 'display: block;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, NumberInput_1.NumberInput]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], VectorInput);
@@ -575,7 +575,7 @@ System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common
       properties: ['data:data', 'dataField:data-field'],
       events: ["toggle:toggle", "select:select"]
     }), core_1.View({
-      template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
+      template: '<div *ngIf="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
       styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: pointer;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], TreeItem);
@@ -697,7 +697,7 @@ System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "
       properties: ['_level:_level', 'expandLevel:expand', 'dataField:data-field', 'dataProvider:data-provider'],
       events: ["select:select"]
     }), core_1.View({
-      template: '<div class="x-tree-item" *ng-for="#data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ng-if="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
+      template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
       styles: ['x-tree{' + 'display: block;' + 'position: relative;' + 'padding-left: 0px;' + 'width: auto;' + '}', 'x-tree .child{' + 'padding-left: 30px;' + '}', '.x-tree-item{' + 'display: block;' + 'position: relative;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Tree);

@@ -87,7 +87,7 @@ System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(
                     core_1.View({
                         template: '<div class="label">{{ label }}</div> ' +
                             '<div class="input-group"> ' +
-                            '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
+                            '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
                             '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
                             '</div>' +
                             '</div>',

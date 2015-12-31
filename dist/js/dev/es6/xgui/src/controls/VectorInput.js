@@ -64,7 +64,7 @@ VectorInput = __decorate([
     View({
         template: '<div class="label">{{ label }}</div> ' +
             '<div class="input-group"> ' +
-            '<div *ng-for="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
+            '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
             '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
             '</div>' +
             '</div>',

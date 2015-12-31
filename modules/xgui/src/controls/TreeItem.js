@@ -115,7 +115,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                         events: ["toggle:toggle", "select:select"]
                     }),
                     core_1.View({
-                        template: '<div *ng-if="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' +
+                        template: '<div *ngIf="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' +
                             '<div class="x-tree-item-container" (^click)="onSelect($event)">' +
                             '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
                             '<x-label class="tree-label" [text]="data.label"></x-label>' +

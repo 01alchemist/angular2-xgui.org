@@ -35,7 +35,7 @@ System.register(['angular2/core', 'angular2/common', "./Panel"], function(export
                             '<div class="stack-container">' +
                             '<div class="stack-header"></div>' +
                             '<div class="stack-tabs">' +
-                            '<x-panel *ng-for="" [stacked]="true">' +
+                            '<x-panel *ngFor="" [stacked]="true">' +
                             '</div>' +
                             '</div>' +
                             '</div>',
