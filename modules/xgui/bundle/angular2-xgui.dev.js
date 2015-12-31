@@ -35,24 +35,41 @@ System.register("xgui/src/assets/Assets", [], true, function(require, exports, m
   return module.exports;
 });
 
-System.register("xgui/src/skins/ISkin", [], false, function(__require, __exports, __module) {
-  System.get("@@global-helpers").prepareGlobal(__module.id, []);
-  (function() {
-    [];
-  }).call(System.global);
-  return System.get("@@global-helpers").retrieveGlobal(__module.id, false);
-});
-
-System.register("xgui/src/skins/dracula/Dracula", [], true, function(require, exports, module) {
+System.register("xgui/src/skins/Skin", [], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
-  var Dracula = (function() {
+  var Skin = (function() {
+    function Skin() {}
+    return Skin;
+  })();
+  exports.Skin = Skin;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/skins/dracula/Dracula", ["xgui/src/skins/Skin"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Skin_1 = require("xgui/src/skins/Skin");
+  var Dracula = (function(_super) {
+    __extends(Dracula, _super);
     function Dracula() {
+      _super.call(this);
       this.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
     }
     return Dracula;
-  })();
+  })(Skin_1.Skin);
   exports.Dracula = Dracula;
   global.define = __define;
   return module.exports;
@@ -790,7 +807,7 @@ System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common"]
   return module.exports;
 });
 
-System.register("xgui/src/skins/xskin", ["xgui/src/skins/ISkin", "xgui/src/skins/dracula/Dracula", "xgui/src/skins/SkinManager"], true, function(require, exports, module) {
+System.register("xgui/src/skins/xskin", ["xgui/src/skins/Skin", "xgui/src/skins/dracula/Dracula", "xgui/src/skins/SkinManager"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -799,7 +816,7 @@ System.register("xgui/src/skins/xskin", ["xgui/src/skins/ISkin", "xgui/src/skins
       if (!exports.hasOwnProperty(p))
         exports[p] = m[p];
   }
-  __export(require("xgui/src/skins/ISkin"));
+  __export(require("xgui/src/skins/Skin"));
   __export(require("xgui/src/skins/dracula/Dracula"));
   __export(require("xgui/src/skins/SkinManager"));
   global.define = __define;

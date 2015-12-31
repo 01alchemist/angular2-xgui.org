@@ -1,11 +1,11 @@
-import {ISkin} from "../ISkin";
+import {Skin} from "../Skin";
 /**
  * Created by Nidin Vinayakan on 10-10-2015.
  */
-export class Dracula implements ISkin{
+export class Dracula extends Skin{
 
     constructor(){
-
+        super();
     }
 
     panel = {

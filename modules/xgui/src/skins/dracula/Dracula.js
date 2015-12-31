@@ -1,10 +1,21 @@
-System.register([], function(exports_1) {
+System.register(["../Skin"], function(exports_1) {
+    var __extends = (this && this.__extends) || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+    var Skin_1;
     var Dracula;
     return {
-        setters:[],
+        setters:[
+            function (Skin_1_1) {
+                Skin_1 = Skin_1_1;
+            }],
         execute: function() {
-            Dracula = (function () {
+            Dracula = (function (_super) {
+                __extends(Dracula, _super);
                 function Dracula() {
+                    _super.call(this);
                     this.panel = {
                         styles: [
                             'x-panel{' +
@@ -30,7 +41,7 @@ System.register([], function(exports_1) {
                     };
                 }
                 return Dracula;
-            })();
+            })(Skin_1.Skin);
             exports_1("Dracula", Dracula);
         }
     }

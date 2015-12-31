@@ -1,4 +1,4 @@
-System.register(["./ISkin", "./dracula/Dracula", "./SkinManager"], function(exports_1) {
+System.register(["./Skin", "./dracula/Dracula", "./SkinManager"], function(exports_1) {
     function exportStar_1(m) {
         var exports = {};
         for(var n in m) {
@@ -8,8 +8,8 @@ System.register(["./ISkin", "./dracula/Dracula", "./SkinManager"], function(expo
     }
     return {
         setters:[
-            function (ISkin_1_1) {
-                exportStar_1(ISkin_1_1);
+            function (Skin_1_1) {
+                exportStar_1(Skin_1_1);
             },
             function (Dracula_1_1) {
                 exportStar_1(Dracula_1_1);

@@ -1,6 +1,6 @@
 import {Injectable, AppViewManager} from "angular2/core";
 import {Dracula} from "./dracula/Dracula";
-import {ISkin} from "./ISkin";
+import {Skin} from "./Skin";
 /**
  * Created by Nidin Vinayakan on 10-10-2015.
  */
@@ -10,8 +10,8 @@ export class SkinManager{
     static self:SkinManager;
 
 
-    private skins:Array<ISkin>;
-    public defaultSkin:ISkin;
+    private skins:Array<Skin>;
+    public defaultSkin:Skin;
 
     constructor(private _viewManager:AppViewManager) {
         if (self) {
