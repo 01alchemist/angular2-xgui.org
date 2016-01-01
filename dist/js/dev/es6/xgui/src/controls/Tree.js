@@ -12,6 +12,7 @@ import { NgFor, NgIf } from 'angular2/common';
 import { Label } from "./Label";
 import { Icon } from "./Icon";
 import { TreeItem } from "./TreeItem";
+import { StyleUtils } from "../utils/StyleUtils";
 export let Tree = class {
     constructor(elementRef) {
         this.select = new EventEmitter();
@@ -95,16 +96,17 @@ Tree = __decorate([
             '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' +
             '</div>' +
             '</div>',
+        /* FIXME: should be fine with NG.beta.1 */
         styles: [
-            'x-tree{' +
-                'display: block;' +
-                'position: relative;' +
-                'padding-left: 0px;' +
-                'width: auto;' +
-                '}',
-            'x-tree .child{' +
-                'padding-left: 30px;' +
-                '}',
+            /*'x-tree{' +
+             'display: block;' +
+             'position: relative;' +
+             'padding-left: 0px;' +
+             'width: auto;' +
+             '}',
+             'x-tree .child{' +
+             'padding-left: 30px;' +
+             '}',*/
             '.x-tree-item{' +
                 'display: block;' +
                 'position: relative;' +
@@ -114,5 +116,15 @@ Tree = __decorate([
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], Tree);
+var css = 'x-tree{' +
+    'display: block;' +
+    'position: relative;' +
+    'padding-left: 0px;' +
+    'width: auto;' +
+    '}' +
+    'x-tree .child{' +
+    'padding-left: 30px;' +
+    '}';
+StyleUtils.addStyle(css);
 var _a;
 //# sourceMappingURL=Tree.js.map

@@ -15,7 +15,7 @@ import {Assets} from "../assets/Assets";
     template:
     '<div class="panel-container">' +
         '<div class="stack-header">' +
-            '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
+            '<div class="close-button" (click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
             '<div class="expand-button"><x-icon class="expand-arrow-icon" [src]="arrowIcon"></x-icon></div>' +
         '</div>' +
         '<div class="panel-header">' +

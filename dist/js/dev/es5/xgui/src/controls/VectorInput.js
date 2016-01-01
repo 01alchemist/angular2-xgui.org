@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var NumberInput_1 = require("./NumberInput");
+var StyleUtils_1 = require("../utils/StyleUtils");
 var VectorInput = (function () {
     function VectorInput(elementRef) {
         this.change = new core_1.EventEmitter();
@@ -79,13 +80,14 @@ var VectorInput = (function () {
                 '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
                 '</div>' +
                 '</div>',
+            /* FIXME: should be fine with NG.beta.1 */
             styles: [
-                'vector-input{' +
-                    'display: block;' +
-                    'position: relative;' +
-                    'padding: 5px;' +
-                    'width: auto;' +
-                    '}',
+                /*'vector-input{' +
+                 'display: block;' +
+                 'position: relative;' +
+                 'padding: 5px;' +
+                 'width: auto;' +
+                 '}',*/
                 '.input-group{' +
                     'position: relative;' +
                     'display: flex;' +
@@ -107,4 +109,11 @@ var VectorInput = (function () {
     var _a;
 })();
 exports.VectorInput = VectorInput;
+var css = 'vector-input{' +
+    'display: block;' +
+    'position: relative;' +
+    'padding: 5px;' +
+    'width: auto;' +
+    '}';
+StyleUtils_1.StyleUtils.addStyle(css);
 //# sourceMappingURL=VectorInput.js.map

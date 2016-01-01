@@ -75,56 +75,29 @@ System.register("xgui/src/skins/dracula/Dracula", ["xgui/src/skins/Skin"], true,
   return module.exports;
 });
 
-System.register("xgui/src/controls/Label", ["angular2/core"], true, function(require, exports, module) {
+System.register("xgui/src/utils/StyleUtils", [], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    var c = arguments.length,
-        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-        d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      r = Reflect.decorate(decorators, target, key, desc);
-    else
-      for (var i = decorators.length - 1; i >= 0; i--)
-        if (d = decorators[i])
-          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var core_1 = require("angular2/core");
-  var Label = (function() {
-    function Label() {
-      this.label = this.label || "Untitled";
-    }
-    Object.defineProperty(Label.prototype, "label", {
-      get: function() {
-        return this._text;
-      },
-      set: function(value) {
-        this._text = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Label = __decorate([core_1.Component({
-      selector: 'x-label',
-      properties: ['text:text']
-    }), core_1.View({
-      template: '{{text}}',
-      styles: ['x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}']
-    }), __metadata('design:paramtypes', [])], Label);
-    return Label;
+  var StyleUtils = (function() {
+    function StyleUtils() {}
+    StyleUtils.addStyle = function(css) {
+      var style = document.createElement('style');
+      if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    };
+    return StyleUtils;
   })();
-  exports.Label = Label;
+  exports.StyleUtils = StyleUtils;
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/Icon", ["angular2/core", "xgui/src/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Icon", ["angular2/core", "xgui/src/assets/Assets", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -146,6 +119,7 @@ System.register("xgui/src/controls/Icon", ["angular2/core", "xgui/src/assets/Ass
   };
   var core_1 = require("angular2/core");
   var Assets_1 = require("xgui/src/assets/Assets");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var Icon = (function() {
     function Icon(elementRef) {
       this._elementRef = elementRef;
@@ -180,14 +154,13 @@ System.register("xgui/src/controls/Icon", ["angular2/core", "xgui/src/assets/Ass
     Icon = __decorate([core_1.Component({
       selector: 'x-icon',
       properties: ['src:src']
-    }), core_1.View({
-      template: '',
-      styles: ['x-icon{' + 'display: inline-block;' + 'position: relative;' + 'width: 16px;' + 'height: 16px;' + '}']
-    }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Icon);
+    }), core_1.View({template: ''}), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Icon);
     return Icon;
     var _a;
   })();
   exports.Icon = Icon;
+  var css = 'x-icon{' + 'display: inline-block;' + 'position: relative;' + 'width: 16px;' + 'height: 16px;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
@@ -244,7 +217,7 @@ System.register("xgui/src/controls/CheckBox", ["angular2/core", "angular2/common
   return module.exports;
 });
 
-System.register("xgui/src/controls/NumberInput", ["angular2/core", "angular2/common"], true, function(require, exports, module) {
+System.register("xgui/src/controls/NumberInput", ["angular2/core", "angular2/common", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -266,12 +239,14 @@ System.register("xgui/src/controls/NumberInput", ["angular2/core", "angular2/com
   };
   var core_1 = require("angular2/core");
   var common_1 = require("angular2/common");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var NumberInput = (function() {
     function NumberInput(elementRef) {
       this.change = new core_1.EventEmitter();
       this._elementRef = elementRef;
       this.value = this.value || 0;
     }
+    NumberInput.prototype.ngAfterViewInit = function() {};
     Object.defineProperty(NumberInput.prototype, "label", {
       get: function() {
         return this._label;
@@ -350,18 +325,20 @@ System.register("xgui/src/controls/NumberInput", ["angular2/core", "angular2/com
       events: ["change:change"]
     }), core_1.View({
       template: '<div class="input-label">{{ label }}</div>' + '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
-      styles: ['number-input{' + 'display: flex;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-label{' + 'padding-right: 7px;' + '}', '.input-label:hover{' + 'cursor:col-resize;' + '}', '.input-value{' + 'width: auto;' + 'height: 17px;' + 'padding: 2px;' + 'display: flex;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}'],
+      styles: ['.input-label{' + 'padding-right: 7px;' + '}', '.input-label:hover{' + 'cursor:col-resize;' + '}', '.input-value{' + 'width: auto;' + 'height: 17px;' + 'padding: 2px;' + 'display: flex;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}'],
       directives: [common_1.NgFor, common_1.NgIf]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], NumberInput);
     return NumberInput;
     var _a;
   })();
   exports.NumberInput = NumberInput;
+  var css = 'number-input{' + 'display: flex;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/common", "xgui/src/controls/NumberInput"], true, function(require, exports, module) {
+System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/common", "xgui/src/controls/NumberInput", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -384,6 +361,7 @@ System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/com
   var core_1 = require("angular2/core");
   var common_1 = require("angular2/common");
   var NumberInput_1 = require("xgui/src/controls/NumberInput");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var VectorInput = (function() {
     function VectorInput(elementRef) {
       this.change = new core_1.EventEmitter();
@@ -451,18 +429,20 @@ System.register("xgui/src/controls/VectorInput", ["angular2/core", "angular2/com
       events: ['change:change']
     }), core_1.View({
       template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
-      styles: ['vector-input{' + 'display: block;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}', '.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
+      styles: ['.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, NumberInput_1.NumberInput]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], VectorInput);
     return VectorInput;
     var _a;
   })();
   exports.VectorInput = VectorInput;
+  var css = 'vector-input{' + 'display: block;' + 'position: relative;' + 'padding: 5px;' + 'width: auto;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets"], true, function(require, exports, module) {
+System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/assets/Assets", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -487,6 +467,7 @@ System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common
   var Label_1 = require("xgui/src/controls/Label");
   var Icon_1 = require("xgui/src/controls/Icon");
   var Assets_1 = require("xgui/src/assets/Assets");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var TreeItem = (function() {
     function TreeItem(elementRef) {
       this.toggle = new core_1.EventEmitter();
@@ -575,19 +556,21 @@ System.register("xgui/src/controls/TreeItem", ["angular2/core", "angular2/common
       properties: ['data:data', 'dataField:data-field'],
       events: ["toggle:toggle", "select:select"]
     }), core_1.View({
-      template: '<div *ngIf="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
-      styles: ['x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}', 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}', '.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: pointer;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
-      directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon]
+      template: '<div *ngIf="hasDataProvider()" [ngClass]="expanderClass" (click)="onToggle($event)"></div>' + '<div class="x-tree-item-container" (^click)="onSelect($event)">' + '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' + '<x-label class="tree-label" [text]="data.label"></x-label>' + '</div>',
+      styles: ['.x-tree-item-selected{' + 'background-color: #135996;' + '}', '.x-tree-expander{' + 'display: inline-block;' + 'width: 16px;' + 'height: 16px;' + 'font-size: 16px;' + 'text-align: center;' + 'font-family: FontAwesome;' + 'color: #5fa2dd;' + 'cursor: pointer;' + '}', '.x-tree-item-container{' + 'display: inline-block;' + '}', '.x-tree-icon{' + 'top: 2px;' + '}', '.x-tree-collapsed:before{' + 'content: "\\f0da"' + '}', '.x-tree-expanded:before{' + 'content: "\\f0d7"' + '}', '.tree-label{' + 'top:-1px;' + 'cursor:default;' + '}'],
+      directives: [common_1.NgFor, common_1.NgIf, common_1.NgClass, Label_1.Label, Icon_1.Icon]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], TreeItem);
     return TreeItem;
     var _a;
   })();
   exports.TreeItem = TreeItem;
+  var css = 'x-tree-item{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + '}' + 'x-tree-item:hover{' + 'background-color: #3E698E;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
 
-System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/TreeItem"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "xgui/src/controls/Label", "xgui/src/controls/Icon", "xgui/src/controls/TreeItem", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -612,6 +595,7 @@ System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "
   var Label_1 = require("xgui/src/controls/Label");
   var Icon_1 = require("xgui/src/controls/Icon");
   var TreeItem_1 = require("xgui/src/controls/TreeItem");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var Tree = (function() {
     function Tree(elementRef) {
       this.select = new core_1.EventEmitter();
@@ -698,13 +682,15 @@ System.register("xgui/src/controls/Tree", ["angular2/core", "angular2/common", "
       events: ["select:select"]
     }), core_1.View({
       template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
-      styles: ['x-tree{' + 'display: block;' + 'position: relative;' + 'padding-left: 0px;' + 'width: auto;' + '}', 'x-tree .child{' + 'padding-left: 30px;' + '}', '.x-tree-item{' + 'display: block;' + 'position: relative;' + '}'],
+      styles: ['.x-tree-item{' + 'display: block;' + 'position: relative;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
     }), __metadata('design:paramtypes', [(typeof(_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])], Tree);
     return Tree;
     var _a;
   })();
   exports.Tree = Tree;
+  var css = 'x-tree{' + 'display: block;' + 'position: relative;' + 'padding-left: 0px;' + 'width: auto;' + '}' + 'x-tree .child{' + 'padding-left: 30px;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
@@ -755,7 +741,56 @@ System.register("xgui/src/skins/SkinManager", ["angular2/core", "xgui/src/skins/
   return module.exports;
 });
 
-System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common"], true, function(require, exports, module) {
+System.register("xgui/src/controls/Label", ["angular2/core", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = require("angular2/core");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
+  var Label = (function() {
+    function Label() {
+      this.label = this.label || "Untitled";
+    }
+    Object.defineProperty(Label.prototype, "label", {
+      get: function() {
+        return this._text;
+      },
+      set: function(value) {
+        this._text = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Label = __decorate([core_1.Component({
+      selector: 'x-label',
+      properties: ['text:text']
+    }), core_1.View({template: '{{text}}'}), __metadata('design:paramtypes', [])], Label);
+    return Label;
+  })();
+  exports.Label = Label;
+  var css = 'x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
@@ -777,6 +812,7 @@ System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common"]
   };
   var core_1 = require("angular2/core");
   var common_1 = require("angular2/common");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
   var Button = (function() {
     function Button() {
       this.click = new core_1.EventEmitter();
@@ -797,12 +833,14 @@ System.register("xgui/src/controls/Button", ["angular2/core", "angular2/common"]
       events: ["click:click"]
     }), core_1.View({
       template: '<div class="button-label">{{ label }}</div>',
-      styles: ['x-button{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}', 'x-button:hover{' + 'background-color: #4C4C4C;' + '}', 'x-button:active{' + 'background-color: #3879D9;' + '}', '.button-label{display:block; padding: 2px 5px 2px 5px;}'],
+      styles: ['.button-label{display:block; padding: 2px 5px 2px 5px;}'],
       directives: [common_1.NgFor, common_1.NgIf]
     }), __metadata('design:paramtypes', [])], Button);
     return Button;
   })();
   exports.Button = Button;
+  var css = 'x-button{' + 'cursor: pointer;' + 'margin: 5px;' + 'display: inline-block;' + 'position: relative;' + 'padding: 2px;' + 'height: 21px;' + 'background-color: #5D5D5D;' + '}' + 'x-button:hover{' + 'background-color: #4C4C4C;' + '}' + 'x-button:active{' + 'background-color: #3879D9;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });

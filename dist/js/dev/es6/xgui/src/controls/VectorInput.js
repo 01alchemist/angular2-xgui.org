@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
 import { NgFor, NgIf } from 'angular2/common';
 import { NumberInput } from "./NumberInput";
+import { StyleUtils } from "../utils/StyleUtils";
 export let VectorInput = class {
     constructor(elementRef) {
         this.change = new EventEmitter();
@@ -68,13 +69,14 @@ VectorInput = __decorate([
             '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
             '</div>' +
             '</div>',
+        /* FIXME: should be fine with NG.beta.1 */
         styles: [
-            'vector-input{' +
-                'display: block;' +
-                'position: relative;' +
-                'padding: 5px;' +
-                'width: auto;' +
-                '}',
+            /*'vector-input{' +
+             'display: block;' +
+             'position: relative;' +
+             'padding: 5px;' +
+             'width: auto;' +
+             '}',*/
             '.input-group{' +
                 'position: relative;' +
                 'display: flex;' +
@@ -92,5 +94,12 @@ VectorInput = __decorate([
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], VectorInput);
+var css = 'vector-input{' +
+    'display: block;' +
+    'position: relative;' +
+    'padding: 5px;' +
+    'width: auto;' +
+    '}';
+StyleUtils.addStyle(css);
 var _a;
 //# sourceMappingURL=VectorInput.js.map

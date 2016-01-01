@@ -119,7 +119,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                     }),
                     core_1.View({
                         template: '<div *ngIf="hasDataProvider()" [ngClass]="expanderClass" (click)="onToggle($event)"></div>' +
-                            '<div class="x-tree-item-container" (^click)="onSelect($event)">' +
+                            '<div class="x-tree-item-container" (click)="onSelect($event)">' +
                             '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
                             '<x-label class="tree-label" [text]="data.label"></x-label>' +
                             '</div>',

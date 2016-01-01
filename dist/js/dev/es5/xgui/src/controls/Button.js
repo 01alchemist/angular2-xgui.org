@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
+var StyleUtils_1 = require("../utils/StyleUtils");
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
@@ -36,22 +37,23 @@ var Button = (function () {
         }),
         core_1.View({
             template: '<div class="button-label">{{ label }}</div>',
+            /* FIXME: should be fine with NG.beta.1 */
             styles: [
-                'x-button{' +
-                    'cursor: pointer;' +
-                    'margin: 5px;' +
-                    'display: inline-block;' +
-                    'position: relative;' +
-                    'padding: 2px;' +
-                    'height: 21px;' +
-                    'background-color: #5D5D5D;' +
-                    '}',
-                'x-button:hover{' +
-                    'background-color: #4C4C4C;' +
-                    '}',
-                'x-button:active{' +
-                    'background-color: #3879D9;' +
-                    '}',
+                /*'x-button{' +
+                 'cursor: pointer;' +
+                 'margin: 5px;' +
+                 'display: inline-block;' +
+                 'position: relative;' +
+                 'padding: 2px;' +
+                 'height: 21px;' +
+                 'background-color: #5D5D5D;' +
+                 '}',
+                 'x-button:hover{' +
+                 'background-color: #4C4C4C;' +
+                 '}',
+                 'x-button:active{' +
+                 'background-color: #3879D9;' +
+                 '}',*/
                 '.button-label{display:block; padding: 2px 5px 2px 5px;}'
             ],
             directives: [common_1.NgFor, common_1.NgIf]
@@ -61,4 +63,20 @@ var Button = (function () {
     return Button;
 })();
 exports.Button = Button;
+var css = 'x-button{' +
+    'cursor: pointer;' +
+    'margin: 5px;' +
+    'display: inline-block;' +
+    'position: relative;' +
+    'padding: 2px;' +
+    'height: 21px;' +
+    'background-color: #5D5D5D;' +
+    '}' +
+    'x-button:hover{' +
+    'background-color: #4C4C4C;' +
+    '}' +
+    'x-button:active{' +
+    'background-color: #3879D9;' +
+    '}';
+StyleUtils_1.StyleUtils.addStyle(css);
 //# sourceMappingURL=Button.js.map

@@ -7,6 +7,7 @@ export declare class NumberInput {
     private _label;
     private _value;
     constructor(elementRef: ElementRef);
+    ngAfterViewInit(): void;
     label: string;
     inputWidth: number;
     value: any;

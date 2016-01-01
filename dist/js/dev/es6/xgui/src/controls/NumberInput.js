@@ -9,11 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
 import { NgFor, NgIf } from 'angular2/common';
+import { StyleUtils } from "../utils/StyleUtils";
 export let NumberInput = class {
     constructor(elementRef) {
         this.change = new EventEmitter();
         this._elementRef = elementRef;
         this.value = this.value || 0;
+    }
+    ngAfterViewInit() {
     }
     get label() {
         return this._label;
@@ -84,13 +87,14 @@ NumberInput = __decorate([
     View({
         template: '<div class="input-label">{{ label }}</div>' +
             '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
+        /* FIXME: should be fine with NG.beta.1 */
         styles: [
-            'number-input{' +
-                'display: flex;' +
-                'position: relative;' +
-                'padding: 5px;' +
-                'width: auto;' +
-                '}',
+            /*'number-input{' +
+             'display: flex;' +
+             'position: relative;' +
+             'padding: 5px;' +
+             'width: auto;' +
+             '}',*/
             '.input-label{' +
                 'padding-right: 7px;' +
                 '}',
@@ -113,5 +117,12 @@ NumberInput = __decorate([
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object])
 ], NumberInput);
+var css = 'number-input{' +
+    'display: flex;' +
+    'position: relative;' +
+    'padding: 5px;' +
+    'width: auto;' +
+    '}';
+StyleUtils.addStyle(css);
 var _a;
 //# sourceMappingURL=NumberInput.js.map

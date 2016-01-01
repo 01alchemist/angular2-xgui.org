@@ -12,6 +12,7 @@ var common_1 = require('angular2/common');
 var Label_1 = require("./Label");
 var Icon_1 = require("./Icon");
 var TreeItem_1 = require("./TreeItem");
+var StyleUtils_1 = require("../utils/StyleUtils");
 var Tree = (function () {
     function Tree(elementRef) {
         this.select = new core_1.EventEmitter();
@@ -110,16 +111,17 @@ var Tree = (function () {
                 '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' +
                 '</div>' +
                 '</div>',
+            /* FIXME: should be fine with NG.beta.1 */
             styles: [
-                'x-tree{' +
-                    'display: block;' +
-                    'position: relative;' +
-                    'padding-left: 0px;' +
-                    'width: auto;' +
-                    '}',
-                'x-tree .child{' +
-                    'padding-left: 30px;' +
-                    '}',
+                /*'x-tree{' +
+                 'display: block;' +
+                 'position: relative;' +
+                 'padding-left: 0px;' +
+                 'width: auto;' +
+                 '}',
+                 'x-tree .child{' +
+                 'padding-left: 30px;' +
+                 '}',*/
                 '.x-tree-item{' +
                     'display: block;' +
                     'position: relative;' +
@@ -133,4 +135,14 @@ var Tree = (function () {
     var _a;
 })();
 exports.Tree = Tree;
+var css = 'x-tree{' +
+    'display: block;' +
+    'position: relative;' +
+    'padding-left: 0px;' +
+    'width: auto;' +
+    '}' +
+    'x-tree .child{' +
+    'padding-left: 30px;' +
+    '}';
+StyleUtils_1.StyleUtils.addStyle(css);
 //# sourceMappingURL=Tree.js.map
