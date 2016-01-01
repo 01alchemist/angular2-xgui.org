@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./TreeItem"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./TreeItem", "../utils/StyleUtils"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, Label_1, Icon_1, TreeItem_1;
-    var Tree;
+    var core_1, common_1, Label_1, Icon_1, TreeItem_1, StyleUtils_1;
+    var Tree, css;
     return {
         setters:[
             function (core_1_1) {
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
             },
             function (TreeItem_1_1) {
                 TreeItem_1 = TreeItem_1_1;
+            },
+            function (StyleUtils_1_1) {
+                StyleUtils_1 = StyleUtils_1_1;
             }],
         execute: function() {
             Tree = (function () {
@@ -127,15 +130,6 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
                             '</div>' +
                             '</div>',
                         styles: [
-                            'x-tree{' +
-                                'display: block;' +
-                                'position: relative;' +
-                                'padding-left: 0px;' +
-                                'width: auto;' +
-                                '}',
-                            'x-tree .child{' +
-                                'padding-left: 30px;' +
-                                '}',
                             '.x-tree-item{' +
                                 'display: block;' +
                                 'position: relative;' +
@@ -148,6 +142,16 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
                 return Tree;
             })();
             exports_1("Tree", Tree);
+            css = 'x-tree{' +
+                'display: block;' +
+                'position: relative;' +
+                'padding-left: 0px;' +
+                'width: auto;' +
+                '}' +
+                'x-tree .child{' +
+                'padding-left: 30px;' +
+                '}';
+            StyleUtils_1.StyleUtils.addStyle(css);
         }
     }
 });

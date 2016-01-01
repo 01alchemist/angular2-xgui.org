@@ -1,41 +1,42 @@
 import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
 import {NgFor,NgIf} from 'angular2/common';
+import {StyleUtils} from "../utils/StyleUtils";
 
 @Component({
     selector: 'number-input',
-    properties:[
+    properties: [
         'value:value',
         'label:label'
     ],
-    events:["change:change"]
+    events: ["change:change"]
 })
 @View({
-    template:
-    '<div class="input-label">{{ label }}</div>' +
+    template: '<div class="input-label">{{ label }}</div>' +
     '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
-    styles:[
-        'number-input{' +
-            'display: flex;' +
-            'position: relative;' +
-            'padding: 5px;' +
-            'width: auto;' +
-        '}',
+    /* FIXME: should be fine with NG.beta.1 */
+    styles: [
+        /*'number-input{' +
+         'display: flex;' +
+         'position: relative;' +
+         'padding: 5px;' +
+         'width: auto;' +
+         '}',*/
         '.input-label{' +
-            'padding-right: 7px;' +
+        'padding-right: 7px;' +
         '}',
         '.input-label:hover{' +
-            'cursor:col-resize;' +
+        'cursor:col-resize;' +
         '}',
         '.input-value{' +
-            'width: auto;' +
-            'height: 17px;' +
-            'padding: 2px;' +
-            'display: flex;' +
-            'background-color: #50524F;' +
-            'color: #fff;' +
-            'font-size: 0.9em;' +
-            'border: 0px solid #262825;' +
-            'border-top: 1px solid #2F2F2F; ' +
+        'width: auto;' +
+        'height: 17px;' +
+        'padding: 2px;' +
+        'display: flex;' +
+        'background-color: #50524F;' +
+        'color: #fff;' +
+        'font-size: 0.9em;' +
+        'border: 0px solid #262825;' +
+        'border-top: 1px solid #2F2F2F; ' +
         '}'
     ],
     directives: [NgFor, NgIf]
@@ -51,50 +52,59 @@ export class NumberInput {
     private _label:string;
     private _value;
 
-    constructor(elementRef: ElementRef) {
+    constructor(elementRef:ElementRef) {
         this._elementRef = elementRef;
         this.value = this.value || 0;
     }
 
-    get label(){
+    ngAfterViewInit() {
+
+    }
+
+    get label() {
         return this._label;
     }
-    set label(value){
+
+    set label(value) {
         this._label = value;
     }
-    get inputWidth(){
+
+    get inputWidth() {
         this.availableWidth = this._elementRef.nativeElement.parentElement.offsetWidth || 80;
         var labelRef = this._elementRef.nativeElement.getElementsByClassName("input-label")[0];
         this._inputWidth = this.availableWidth - (15 + labelRef.offsetWidth);
         return this._inputWidth;
     }
-    set inputWidth(value){
+
+    set inputWidth(value) {
         this._inputWidth = value;
     }
-    get value(){
+
+    get value() {
         return this._value;
     }
-    set value(_value){
+
+    set value(_value) {
         this._value = _value;
     }
 
-    onInput(event, isKeyInput=false){
+    onInput(event, isKeyInput = false) {
         var target = event.target;
         var value = target.value;
 
-        if(value === ""){
+        if (value === "") {
             target.value = this._value;
-        }else{
+        } else {
             var split = value.split(".");
             var step = target.step;
-            if(split.length > 1){
+            if (split.length > 1) {
                 var fractions = split[1];
                 var length = fractions.length;
 
-                if(length == 0 && !isKeyInput){
+                if (length == 0 && !isKeyInput) {
                     target.value = split[0];
                     step = 1;
-                }else {
+                } else {
 
                     var _step:any = ".";
                     while (length > 1) {
@@ -114,6 +124,14 @@ export class NumberInput {
 
 
         this.value = value;
-        this.change.emit({label:this._label, value:value});
+        this.change.emit({label: this._label, value: value});
     }
 }
+
+var css = 'number-input{' +
+    'display: flex;' +
+    'position: relative;' +
+    'padding: 5px;' +
+    'width: auto;' +
+    '}';
+StyleUtils.addStyle(css);

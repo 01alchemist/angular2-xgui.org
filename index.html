@@ -4,11 +4,13 @@
 
     <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link href='font/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+    <link href='modules/demo/font/font-awesome-4.4.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
-    <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="js/angular2-xgui.dev.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="modules/xgui/bundle/angular2-xgui.dev.js"></script>
     <style>
         body{
             margin: 0;
@@ -38,10 +40,14 @@
 <gui-demo></gui-demo>
 <script>
     System.config({
-        defaultJSExtension: true,
-        packages: {'demo': {defaultExtension: 'js'}}
+        packages: {
+            "modules": {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        }
     });
-    System.import('demo.js');
+    System.import('modules/demo/demo').then(null, console.error.bind(console));
 </script>
 </body>
 </html>

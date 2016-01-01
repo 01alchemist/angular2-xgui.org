@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/bootstrap", "../modules/xgui/src/controls/Icon", "../modules/xgui/src/controls/Button", "../modules/xgui/src/controls/CheckBox", "../modules/xgui/src/controls/NumberInput", "../modules/xgui/src/controls/VectorInput", "../modules/xgui/src/controls/Tree"], function(exports_1) {
+System.register(["angular2/core", "angular2/platform/browser", "../xgui/src/controls/Icon", "../xgui/src/controls/Button", "../xgui/src/controls/CheckBox", "../xgui/src/controls/NumberInput", "../xgui/src/controls/VectorInput", "../xgui/src/controls/Tree"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,15 @@ System.register(["angular2/core", "angular2/bootstrap", "../modules/xgui/src/con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, bootstrap_1, Icon_1, Button_1, CheckBox_1, NumberInput_1, VectorInput_1, Tree_1;
+    var core_1, browser_1, Icon_1, Button_1, CheckBox_1, NumberInput_1, VectorInput_1, Tree_1;
     var GUIDemo;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (bootstrap_1_1) {
-                bootstrap_1 = bootstrap_1_1;
+            function (browser_1_1) {
+                browser_1 = browser_1_1;
             },
             function (Icon_1_1) {
                 Icon_1 = Icon_1_1;
@@ -40,11 +40,11 @@ System.register(["angular2/core", "angular2/bootstrap", "../modules/xgui/src/con
             GUIDemo = (function () {
                 function GUIDemo() {
                     this.vector = { x: 554, y: 0, z: 0 };
-                    this.iconSrc = "images/favicon.png";
+                    this.iconSrc = "modules/demo/images/favicon.png";
                     this.treeDataProvider = [
                         {
                             label: "level_1_1", collection: [
-                                { label: "level_2_1", icon: "images/palette.png" },
+                                { label: "level_2_1", icon: "modules/demo/images/palette.png" },
                                 { label: "level_2_2" },
                                 { label: "level_2_3" }
                             ]
@@ -90,7 +90,7 @@ System.register(["angular2/core", "angular2/bootstrap", "../modules/xgui/src/con
                         selector: 'gui-demo'
                     }),
                     core_1.View({
-                        templateUrl: 'template.html',
+                        templateUrl: 'modules/demo/template.html',
                         directives: [
                             Icon_1.Icon,
                             Button_1.Button,
@@ -105,7 +105,7 @@ System.register(["angular2/core", "angular2/bootstrap", "../modules/xgui/src/con
                 return GUIDemo;
             })();
             exports_1("GUIDemo", GUIDemo);
-            bootstrap_1.bootstrap(GUIDemo);
+            browser_1.bootstrap(GUIDemo);
         }
     }
 });

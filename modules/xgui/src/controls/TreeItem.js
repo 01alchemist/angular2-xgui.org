@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../assets/Assets"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../assets/Assets", "../utils/StyleUtils"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, Label_1, Icon_1, Assets_1;
-    var TreeItem;
+    var core_1, common_1, Label_1, Icon_1, Assets_1, StyleUtils_1;
+    var TreeItem, css;
     return {
         setters:[
             function (core_1_1) {
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
             },
             function (Assets_1_1) {
                 Assets_1 = Assets_1_1;
+            },
+            function (StyleUtils_1_1) {
+                StyleUtils_1 = StyleUtils_1_1;
             }],
         execute: function() {
             TreeItem = (function () {
@@ -115,20 +118,12 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                         events: ["toggle:toggle", "select:select"]
                     }),
                     core_1.View({
-                        template: '<div *ngIf="hasDataProvider()" [class]="expanderClass" (click)="onToggle($event)"></div>' +
+                        template: '<div *ngIf="hasDataProvider()" [ngClass]="expanderClass" (click)="onToggle($event)"></div>' +
                             '<div class="x-tree-item-container" (^click)="onSelect($event)">' +
                             '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
                             '<x-label class="tree-label" [text]="data.label"></x-label>' +
                             '</div>',
                         styles: [
-                            'x-tree-item{' +
-                                'display: inline-block;' +
-                                'position: relative;' +
-                                'padding-left: 5px;' +
-                                '}',
-                            'x-tree-item:hover{' +
-                                'background-color: #3E698E;' +
-                                '}',
                             '.x-tree-item-selected{' +
                                 'background-color: #135996;' +
                                 '}',
@@ -159,13 +154,22 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                                 'cursor:default;' +
                                 '}'
                         ],
-                        directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon]
+                        directives: [common_1.NgFor, common_1.NgIf, common_1.NgClass, Label_1.Label, Icon_1.Icon]
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], TreeItem);
                 return TreeItem;
             })();
             exports_1("TreeItem", TreeItem);
+            css = 'x-tree-item{' +
+                'display: inline-block;' +
+                'position: relative;' +
+                'padding-left: 5px;' +
+                '}' +
+                'x-tree-item:hover{' +
+                'background-color: #3E698E;' +
+                '}';
+            StyleUtils_1.StyleUtils.addStyle(css);
         }
     }
 });

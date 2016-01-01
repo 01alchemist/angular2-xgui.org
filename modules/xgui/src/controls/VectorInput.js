@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "./NumberInput", "../utils/StyleUtils"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, NumberInput_1;
-    var VectorInput;
+    var core_1, common_1, NumberInput_1, StyleUtils_1;
+    var VectorInput, css;
     return {
         setters:[
             function (core_1_1) {
@@ -20,6 +20,9 @@ System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(
             },
             function (NumberInput_1_1) {
                 NumberInput_1 = NumberInput_1_1;
+            },
+            function (StyleUtils_1_1) {
+                StyleUtils_1 = StyleUtils_1_1;
             }],
         execute: function() {
             VectorInput = (function () {
@@ -92,12 +95,6 @@ System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(
                             '</div>' +
                             '</div>',
                         styles: [
-                            'vector-input{' +
-                                'display: block;' +
-                                'position: relative;' +
-                                'padding: 5px;' +
-                                'width: auto;' +
-                                '}',
                             '.input-group{' +
                                 'position: relative;' +
                                 'display: flex;' +
@@ -118,6 +115,13 @@ System.register(['angular2/core', 'angular2/common', "./NumberInput"], function(
                 return VectorInput;
             })();
             exports_1("VectorInput", VectorInput);
+            css = 'vector-input{' +
+                'display: block;' +
+                'position: relative;' +
+                'padding: 5px;' +
+                'width: auto;' +
+                '}';
+            StyleUtils_1.StyleUtils.addStyle(css);
         }
     }
 });

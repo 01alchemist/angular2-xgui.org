@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', "../utils/StyleUtils"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1;
-    var NumberInput;
+    var core_1, common_1, StyleUtils_1;
+    var NumberInput, css;
     return {
         setters:[
             function (core_1_1) {
@@ -17,6 +17,9 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (StyleUtils_1_1) {
+                StyleUtils_1 = StyleUtils_1_1;
             }],
         execute: function() {
             NumberInput = (function () {
@@ -25,6 +28,8 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                     this._elementRef = elementRef;
                     this.value = this.value || 0;
                 }
+                NumberInput.prototype.ngAfterViewInit = function () {
+                };
                 Object.defineProperty(NumberInput.prototype, "label", {
                     get: function () {
                         return this._label;
@@ -107,12 +112,6 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                         template: '<div class="input-label">{{ label }}</div>' +
                             '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
                         styles: [
-                            'number-input{' +
-                                'display: flex;' +
-                                'position: relative;' +
-                                'padding: 5px;' +
-                                'width: auto;' +
-                                '}',
                             '.input-label{' +
                                 'padding-right: 7px;' +
                                 '}',
@@ -138,6 +137,13 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                 return NumberInput;
             })();
             exports_1("NumberInput", NumberInput);
+            css = 'number-input{' +
+                'display: flex;' +
+                'position: relative;' +
+                'padding: 5px;' +
+                'width: auto;' +
+                '}';
+            StyleUtils_1.StyleUtils.addStyle(css);
         }
     }
 });
