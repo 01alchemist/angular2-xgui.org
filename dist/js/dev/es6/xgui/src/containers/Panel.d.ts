@@ -1,4 +1,4 @@
-import { ElementRef, ViewContainerRef } from 'angular2/core';
+import { ElementRef, ViewContainerRef } from '@angular/core';
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */

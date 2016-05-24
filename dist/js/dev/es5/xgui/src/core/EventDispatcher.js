@@ -1,6 +1,7 @@
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
+"use strict";
 var EventDispatcher = (function () {
     function EventDispatcher() {
         this.eventMaps = {};
@@ -40,7 +41,7 @@ var EventDispatcher = (function () {
         }
     };
     return EventDispatcher;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EventDispatcher;
 //# sourceMappingURL=EventDispatcher.js.map

@@ -1,5 +1,5 @@
-import {Component,View,EventEmitter,ElementRef, ViewContainerRef} from 'angular2/core';
-import {NgFor,NgIf} from 'angular2/common';
+import {Component,EventEmitter,ElementRef, ViewContainerRef} from '@angular/core';
+import {NgFor,NgIf} from '@angular/common';
 import {Icon} from "../controls/Icon";
 import {Assets} from "../assets/Assets";
 
@@ -9,9 +9,6 @@ import {Assets} from "../assets/Assets";
 @Component({
     selector:'x-panel',
     properties:['name:name'],
-    directives:[ViewContainerRef]
-})
-@View({
     template:
     '<div class="panel-container">' +
         '<div class="stack-header">' +
@@ -95,7 +92,7 @@ import {Assets} from "../assets/Assets";
             /*'text-transform: uppercase;' +*/
         '}'
     ],
-    directives:[NgIf, NgFor, Icon]
+    directives:[ViewContainerRef, NgIf, NgFor, Icon]
 })
 export class Panel{
 

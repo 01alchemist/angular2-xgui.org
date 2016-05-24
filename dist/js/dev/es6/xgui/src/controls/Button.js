@@ -7,13 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, EventEmitter } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
+import { Component, EventEmitter } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { StyleUtils } from "../utils/StyleUtils";
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-export let Button = class {
+export let Button = class Button {
     constructor() {
         this.click = new EventEmitter();
     }
@@ -30,9 +30,7 @@ Button = __decorate([
         properties: [
             'label:label'
         ],
-        events: ["click:click"]
-    }),
-    View({
+        events: ["click:click"],
         template: '<div class="button-label">{{ label }}</div>',
         /* FIXME: should be fine with NG.beta.1 */
         styles: [

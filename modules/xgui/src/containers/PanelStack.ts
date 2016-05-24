@@ -1,14 +1,12 @@
-import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
-import {NgFor,NgIf} from 'angular2/common';
+import {Component,EventEmitter,ElementRef} from '@angular/core';
+import {NgFor,NgIf} from '@angular/common';
 import {Panel} from "./Panel";
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
 @Component({
     selector:'x-panel-stack',
-    properties:[]
-})
-@View({
+    properties:[],
     template:
     '<div class="stack-bound">' +
     '<div class="stack-container">' +

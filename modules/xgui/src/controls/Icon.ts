@@ -1,4 +1,4 @@
-import {Component,View,ElementRef} from 'angular2/core';
+import {Component, ElementRef} from '@angular/core';
 import {Assets} from "../assets/Assets";
 import {StyleUtils} from "../utils/StyleUtils";
 
@@ -6,9 +6,7 @@ import {StyleUtils} from "../utils/StyleUtils";
     selector: 'x-icon',
     properties:[
         'src:src'
-    ]
-})
-@View({
+    ],
     template:''
     /* FIXME: should be fine with NG.beta.1 */
     /*styles:[

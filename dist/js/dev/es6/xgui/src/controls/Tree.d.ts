@@ -1,4 +1,4 @@
-import { ElementRef } from 'angular2/core';
+import { ElementRef } from '@angular/core';
 import { TreeItem } from "./TreeItem";
 export declare class Tree {
     select: any;

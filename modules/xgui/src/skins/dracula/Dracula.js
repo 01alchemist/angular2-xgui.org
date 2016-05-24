@@ -1,4 +1,6 @@
-System.register(["../Skin"], function(exports_1) {
+System.register(["../Skin"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -41,7 +43,7 @@ System.register(["../Skin"], function(exports_1) {
                     };
                 }
                 return Dracula;
-            })(Skin_1.Skin);
+            }(Skin_1.Skin));
             exports_1("Dracula", Dracula);
         }
     }

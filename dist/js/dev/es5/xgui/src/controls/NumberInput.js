@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var StyleUtils_1 = require("../utils/StyleUtils");
 var NumberInput = (function () {
     function NumberInput(elementRef) {
@@ -94,9 +95,7 @@ var NumberInput = (function () {
                 'value:value',
                 'label:label'
             ],
-            events: ["change:change"]
-        }),
-        core_1.View({
+            events: ["change:change"],
             template: '<div class="input-label">{{ label }}</div>' +
                 '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
             /* FIXME: should be fine with NG.beta.1 */
@@ -127,11 +126,10 @@ var NumberInput = (function () {
             ],
             directives: [common_1.NgFor, common_1.NgIf]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], NumberInput);
     return NumberInput;
-    var _a;
-})();
+}());
 exports.NumberInput = NumberInput;
 var css = 'number-input{' +
     'display: flex;' +

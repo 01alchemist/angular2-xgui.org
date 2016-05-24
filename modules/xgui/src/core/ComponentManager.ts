@@ -1,4 +1,4 @@
-import {AppViewManager, Injectable} from "angular2/core";
+import {/*AppViewManager, */Injectable} from "@angular/core";
 /**
  * Created by Nidin Vinayakan on 11-10-2015.
  */
@@ -7,7 +7,7 @@ export class ComponentManager {
 
     static self:ComponentManager;
 
-    constructor(private _viewManager:AppViewManager) {
+    constructor(/*private _viewManager:AppViewManager*/) {
         if (self) {
             throw {
                 code: 0,

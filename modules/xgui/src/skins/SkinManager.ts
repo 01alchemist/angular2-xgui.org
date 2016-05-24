@@ -1,4 +1,4 @@
-import {Injectable, AppViewManager} from "angular2/core";
+import {Injectable/*, AppViewManager*/} from "@angular/core";
 import {Dracula} from "./dracula/Dracula";
 import {Skin} from "./Skin";
 /**
@@ -13,7 +13,7 @@ export class SkinManager{
     private skins:Array<Skin>;
     public defaultSkin:Skin;
 
-    constructor(private _viewManager:AppViewManager) {
+    constructor(/*private _viewManager:AppViewManager*/) {
         if (self) {
             throw {
                 code: 0,

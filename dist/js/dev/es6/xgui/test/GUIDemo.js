@@ -16,7 +16,7 @@ import { VectorInput } from "../src/controls/VectorInput";
 import { Tree } from "../src/controls/Tree";
 import { Panel } from "../src/containers/Panel";
 import { bootstrap } from "angular2/bootstrap";
-export let GUIDemo = class {
+export let GUIDemo = class GUIDemo {
     constructor() {
         this.vector = { x: 554, y: 0, z: 0 };
         this.iconSrc = "images/favicon.png";

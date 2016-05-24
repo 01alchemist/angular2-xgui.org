@@ -1,7 +1,7 @@
-import { ElementRef } from 'angular2/core';
+import { EventEmitter, ElementRef } from '@angular/core';
 import { TreeItem } from "./TreeItem";
 export declare class Tree {
-    select: any;
+    select: EventEmitter<{}>;
     private _elementRef;
     private _level;
     private _expandLevel;

@@ -1,5 +1,5 @@
-import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
-import {NgFor,NgIf,NgClass} from 'angular2/common';
+import {Component, EventEmitter, ElementRef} from '@angular/core';
+import {NgFor, NgIf, NgClass} from '@angular/common';
 import {Label} from "./Label";
 import {Icon} from "./Icon";
 import {Assets} from "../assets/Assets";
@@ -11,9 +11,7 @@ import {StyleUtils} from "../utils/StyleUtils";
         'data:data',
         'dataField:data-field'
     ],
-    events: ["toggle:toggle", "select:select"]
-})
-@View({
+    events: ["toggle:toggle", "select:select"],
     template: '<div *ngIf="hasDataProvider()" [ngClass]="expanderClass" (click)="onToggle($event)"></div>' +
     '<div class="x-tree-item-container" (click)="onSelect($event)">' +
     '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
@@ -151,5 +149,8 @@ var css = 'x-tree-item{' +
     '}' +
     'x-tree-item:hover{' +
     'background-color: #3E698E;' +
+    '}' +
+    '.x-tree-item-selected{' +
+    'background-color: #135996;' +
     '}';
 StyleUtils.addStyle(css);

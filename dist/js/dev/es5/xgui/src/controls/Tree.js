@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var Label_1 = require("./Label");
 var Icon_1 = require("./Icon");
 var TreeItem_1 = require("./TreeItem");
@@ -90,7 +91,7 @@ var Tree = (function () {
         }
         Tree._selectedItem = event.item;
         Tree._selectedItem.selected = true;
-        this.select.next(event);
+        this.select.emit(event);
     };
     Tree._selectedItem = null;
     Tree = __decorate([
@@ -102,9 +103,7 @@ var Tree = (function () {
                 'dataField:data-field',
                 'dataProvider:data-provider'
             ],
-            events: ["select:select"]
-        }),
-        core_1.View({
+            events: ["select:select"],
             template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
                 '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
                 '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +
@@ -129,11 +128,10 @@ var Tree = (function () {
             ],
             directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], Tree);
     return Tree;
-    var _a;
-})();
+}());
 exports.Tree = Tree;
 var css = 'x-tree{' +
     'display: block;' +

@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../assets/Assets", "../utils/StyleUtils"], function(exports_1) {
+System.register(['@angular/core', '@angular/common', "./Label", "./Icon", "../assets/Assets", "../utils/StyleUtils"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -115,9 +117,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                             'data:data',
                             'dataField:data-field'
                         ],
-                        events: ["toggle:toggle", "select:select"]
-                    }),
-                    core_1.View({
+                        events: ["toggle:toggle", "select:select"],
                         template: '<div *ngIf="hasDataProvider()" [ngClass]="expanderClass" (click)="onToggle($event)"></div>' +
                             '<div class="x-tree-item-container" (click)="onSelect($event)">' +
                             '<x-icon class="x-tree-icon" [src]="data.icon || defaultIcon"></x-icon>' +
@@ -159,7 +159,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], TreeItem);
                 return TreeItem;
-            })();
+            }());
             exports_1("TreeItem", TreeItem);
             css = 'x-tree-item{' +
                 'display: inline-block;' +
@@ -168,6 +168,9 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "../as
                 '}' +
                 'x-tree-item:hover{' +
                 'background-color: #3E698E;' +
+                '}' +
+                '.x-tree-item-selected{' +
+                'background-color: #135996;' +
                 '}';
             StyleUtils_1.StyleUtils.addStyle(css);
         }

@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, EventEmitter } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
-export let CheckBox = class {
+import { Component, EventEmitter } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+export let CheckBox = class CheckBox {
     constructor() {
         this.click = new EventEmitter();
     }
@@ -26,9 +26,7 @@ CheckBox = __decorate([
         properties: [
             'label:label'
         ],
-        events: ["click:click"]
-    }),
-    View({
+        events: ["click:click"],
         template: '<div class="x-checkbox">' +
             '<div *ngIf="label" class="checkbox-label">{{ label }}</div> ' +
             '<input class="x-checkbox-input" type="checkbox"/>' +

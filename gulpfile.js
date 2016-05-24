@@ -8,6 +8,7 @@ var gulp = require('gulp');
 var gulpFormat = require('gulp-clang-format');
 var gulpPlugins = require('gulp-load-plugins')();
 var sass = require('gulp-sass');
+var shell = require('gulp-shell');
 var runSequence = require('run-sequence');
 var madge = require('madge');
 var merge = require('merge');
@@ -252,19 +253,25 @@ var bundleConfig = {
         "*": "dist/js/prod/es5/*.js"
     },
     meta: {
-        'angular2/core': {
+        '@angular/core': {
             build: false
         },
-        'angular2/bootstrap': {
+        '@angular/compiler': {
             build: false
         },
-        'angular2/common': {
+        '@angular/platform-browser': {
             build: false
         },
-        'angular2/http': {
+        '@angular/platform-browser-dynamic': {
             build: false
         },
-        'angular2/router': {
+        '@angular/common': {
+            build: false
+        },
+        '@angular/http': {
+            build: false
+        },
+        '@angular/router': {
             build: false
         }
     }
@@ -355,6 +362,11 @@ process.on('beforeExit', function() {
     }
 });
 
+/* Publish to npm */
+gulp.task('npm.publish', shell.task(['npm publish ./modules/xgui --tag alpha']));
+gulp.task('publish', function(done){
+    runSequence('build.js', 'npm.publish', done)
+});
 
 /**
  * Build tasks

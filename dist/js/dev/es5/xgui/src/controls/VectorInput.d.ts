@@ -1,6 +1,6 @@
-import { ElementRef } from 'angular2/core';
+import { EventEmitter, ElementRef } from '@angular/core';
 export declare class VectorInput {
-    change: any;
+    change: EventEmitter<{}>;
     availableWidth: number;
     elements: any;
     private _elementRef;

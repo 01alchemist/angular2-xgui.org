@@ -1,5 +1,5 @@
-import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
-import {NgFor,NgIf} from 'angular2/common';
+import {Component, EventEmitter, ElementRef} from '@angular/core';
+import {NgFor, NgIf} from '@angular/common';
 import {Label} from "./Label";
 import {Icon} from "./Icon";
 import {TreeItem} from "./TreeItem";
@@ -13,9 +13,7 @@ import {StyleUtils} from "../utils/StyleUtils";
         'dataField:data-field',
         'dataProvider:data-provider'
     ],
-    events: ["select:select"]
-})
-@View({
+    events: ["select:select"],
     template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
     '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
     '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +
@@ -124,7 +122,7 @@ export class Tree {
         }
         Tree._selectedItem = event.item;
         Tree._selectedItem.selected = true;
-        this.select.next(event);
+        this.select.emit(event);
     }
 }
 

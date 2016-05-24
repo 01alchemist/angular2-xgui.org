@@ -7,10 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
+import { Component, EventEmitter, ElementRef } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { StyleUtils } from "../utils/StyleUtils";
-export let NumberInput = class {
+export let NumberInput = class NumberInput {
     constructor(elementRef) {
         this.change = new EventEmitter();
         this._elementRef = elementRef;
@@ -82,9 +82,7 @@ NumberInput = __decorate([
             'value:value',
             'label:label'
         ],
-        events: ["change:change"]
-    }),
-    View({
+        events: ["change:change"],
         template: '<div class="input-label">{{ label }}</div>' +
             '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
         /* FIXME: should be fine with NG.beta.1 */

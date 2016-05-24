@@ -1,4 +1,6 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var Assets;
     return {
         setters:[],
@@ -28,7 +30,7 @@ System.register([], function(exports_1) {
                 Assets.icon_arrow_left_7x5 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAMAAAC+RAbqAAAAElBMVEX////IyMjJycnKysrLy8vMzMyNMQabAAAAAXRSTlMAQObYZgAAAB1JREFUeAFjYGBghWAWFjBmZmYGYwYmJghmYARhAAUIADcJQfU3AAAAAElFTkSuQmCC", "image/png");
                 Assets.icon_close_6x5 = Assets.getURL("iVBORw0KGgoAAAANSUhEUgAAAAYAAAAFCAMAAABRhm3UAAAAHlBMVEVHR0dKSkpNTU1QUFBTU1PIyMjJycnKysrLy8vMzMwo6GY1AAAABXRSTlMAAAAAAMJrBrEAAAAiSURBVAjXY+Rk+M3AysDIzMrAwPCbkQnI/s3AyAjhsYLlAFSABRrcSHg1AAAAAElFTkSuQmCC", "image/png");
                 return Assets;
-            })();
+            }());
             exports_1("Assets", Assets);
         }
     }

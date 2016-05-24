@@ -7,14 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, ElementRef, ViewContainerRef } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
+import { Component, ElementRef, ViewContainerRef } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { Icon } from "../controls/Icon";
 import { Assets } from "../assets/Assets";
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-export let Panel = class {
+export let Panel = class Panel {
     constructor(elementRef, containerRef) {
         this.arrowIcon = Assets.icon_arrow_left_7x5;
         this.closeIcon = Assets.icon_close_6x5;
@@ -45,12 +45,9 @@ Panel = __decorate([
     Component({
         selector: 'x-panel',
         properties: ['name:name'],
-        directives: [ViewContainerRef]
-    }),
-    View({
         template: '<div class="panel-container">' +
             '<div class="stack-header">' +
-            '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
+            '<div class="close-button" (click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
             '<div class="expand-button"><x-icon class="expand-arrow-icon" [src]="arrowIcon"></x-icon></div>' +
             '</div>' +
             '<div class="panel-header">' +
@@ -130,7 +127,7 @@ Panel = __decorate([
                 /*'text-transform: uppercase;' +*/
                 '}'
         ],
-        directives: [NgIf, NgFor, Icon]
+        directives: [ViewContainerRef, NgIf, NgFor, Icon]
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof ViewContainerRef !== 'undefined' && ViewContainerRef) === 'function' && _b) || Object])
 ], Panel);

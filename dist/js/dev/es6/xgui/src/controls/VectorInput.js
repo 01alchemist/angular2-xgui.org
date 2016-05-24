@@ -7,11 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
+import { Component, EventEmitter, ElementRef } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { NumberInput } from "./NumberInput";
 import { StyleUtils } from "../utils/StyleUtils";
-export let VectorInput = class {
+export let VectorInput = class VectorInput {
     constructor(elementRef) {
         this.change = new EventEmitter();
         this._elementRef = elementRef;
@@ -60,9 +60,7 @@ VectorInput = __decorate([
             'vector:vector',
             'label:label'
         ],
-        events: ['change:change']
-    }),
-    View({
+        events: ['change:change'],
         template: '<div class="label">{{ label }}</div> ' +
             '<div class="input-group"> ' +
             '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' +

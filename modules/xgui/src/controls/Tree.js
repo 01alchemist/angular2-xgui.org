@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./TreeItem", "../utils/StyleUtils"], function(exports_1) {
+System.register(['@angular/core', '@angular/common', "./Label", "./Icon", "./TreeItem", "../utils/StyleUtils"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -108,7 +110,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
                     }
                     Tree._selectedItem = event.item;
                     Tree._selectedItem.selected = true;
-                    this.select.next(event);
+                    this.select.emit(event);
                 };
                 Tree._selectedItem = null;
                 Tree = __decorate([
@@ -120,9 +122,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
                             'dataField:data-field',
                             'dataProvider:data-provider'
                         ],
-                        events: ["select:select"]
-                    }),
-                    core_1.View({
+                        events: ["select:select"],
                         template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
                             '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
                             '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +
@@ -140,7 +140,7 @@ System.register(['angular2/core', 'angular2/common', "./Label", "./Icon", "./Tre
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], Tree);
                 return Tree;
-            })();
+            }());
             exports_1("Tree", Tree);
             css = 'x-tree{' +
                 'display: block;' +

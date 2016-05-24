@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var Icon_1 = require("../controls/Icon");
 var Assets_1 = require("../assets/Assets");
 /**
@@ -48,12 +49,9 @@ var Panel = (function () {
         core_1.Component({
             selector: 'x-panel',
             properties: ['name:name'],
-            directives: [core_1.ViewContainerRef]
-        }),
-        core_1.View({
             template: '<div class="panel-container">' +
                 '<div class="stack-header">' +
-                '<div class="close-button" (^click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
+                '<div class="close-button" (click)="close($event)"><x-icon class="stack-close-icon" [src]="closeIcon"></x-icon></div>' +
                 '<div class="expand-button"><x-icon class="expand-arrow-icon" [src]="arrowIcon"></x-icon></div>' +
                 '</div>' +
                 '<div class="panel-header">' +
@@ -133,12 +131,11 @@ var Panel = (function () {
                     /*'text-transform: uppercase;' +*/
                     '}'
             ],
-            directives: [common_1.NgIf, common_1.NgFor, Icon_1.Icon]
+            directives: [core_1.ViewContainerRef, common_1.NgIf, common_1.NgFor, Icon_1.Icon]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [core_1.ElementRef, core_1.ViewContainerRef])
     ], Panel);
     return Panel;
-    var _a, _b;
-})();
+}());
 exports.Panel = Panel;
 //# sourceMappingURL=Panel.js.map

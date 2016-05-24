@@ -1,6 +1,6 @@
-import { ElementRef } from 'angular2/core';
+import { EventEmitter, ElementRef } from '@angular/core';
 export declare class NumberInput {
-    change: any;
+    change: EventEmitter<{}>;
     availableWidth: number;
     private _elementRef;
     private _inputWidth;

@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, View, EventEmitter, ElementRef } from 'angular2/core';
-import { NgFor, NgIf } from 'angular2/common';
+import { Component, EventEmitter, ElementRef } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { Label } from "./Label";
 import { Icon } from "./Icon";
 import { TreeItem } from "./TreeItem";
 import { StyleUtils } from "../utils/StyleUtils";
-export let Tree = class {
+let Tree_1;
+export let Tree = Tree_1 = class Tree {
     constructor(elementRef) {
         this.select = new EventEmitter();
         this._level = 0;
@@ -22,7 +23,7 @@ export let Tree = class {
         this.dataField = "data";
     }
     get selectedItem() {
-        return Tree._selectedItem;
+        return Tree_1._selectedItem;
     }
     get dataProvider() {
         return this._dataProvider;
@@ -69,16 +70,16 @@ export let Tree = class {
         this._expandLevel = this._level - 1;
     }
     handleSelection(event) {
-        if (Tree._selectedItem) {
-            Tree._selectedItem.selected = false;
+        if (Tree_1._selectedItem) {
+            Tree_1._selectedItem.selected = false;
         }
-        Tree._selectedItem = event.item;
-        Tree._selectedItem.selected = true;
-        this.select.next(event);
+        Tree_1._selectedItem = event.item;
+        Tree_1._selectedItem.selected = true;
+        this.select.emit(event);
     }
 };
 Tree._selectedItem = null;
-Tree = __decorate([
+Tree = Tree_1 = __decorate([
     Component({
         selector: 'x-tree',
         properties: [
@@ -87,9 +88,7 @@ Tree = __decorate([
             'dataField:data-field',
             'dataProvider:data-provider'
         ],
-        events: ["select:select"]
-    }),
-    View({
+        events: ["select:select"],
         template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
             '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
             '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +

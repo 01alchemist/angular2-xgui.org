@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/common', "../utils/StyleUtils"], function(exports_1) {
+System.register(['@angular/core', '@angular/common', "../utils/StyleUtils"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -106,9 +108,7 @@ System.register(['angular2/core', 'angular2/common', "../utils/StyleUtils"], fun
                             'value:value',
                             'label:label'
                         ],
-                        events: ["change:change"]
-                    }),
-                    core_1.View({
+                        events: ["change:change"],
                         template: '<div class="input-label">{{ label }}</div>' +
                             '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
                         styles: [
@@ -135,7 +135,7 @@ System.register(['angular2/core', 'angular2/common', "../utils/StyleUtils"], fun
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], NumberInput);
                 return NumberInput;
-            })();
+            }());
             exports_1("NumberInput", NumberInput);
             css = 'number-input{' +
                 'display: flex;' +

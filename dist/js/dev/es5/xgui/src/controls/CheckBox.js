@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var CheckBox = (function () {
     function CheckBox() {
         this.click = new core_1.EventEmitter();
@@ -32,9 +33,7 @@ var CheckBox = (function () {
             properties: [
                 'label:label'
             ],
-            events: ["click:click"]
-        }),
-        core_1.View({
+            events: ["click:click"],
             template: '<div class="x-checkbox">' +
                 '<div *ngIf="label" class="checkbox-label">{{ label }}</div> ' +
                 '<input class="x-checkbox-input" type="checkbox"/>' +
@@ -72,6 +71,6 @@ var CheckBox = (function () {
         __metadata('design:paramtypes', [])
     ], CheckBox);
     return CheckBox;
-})();
+}());
 exports.CheckBox = CheckBox;
 //# sourceMappingURL=CheckBox.js.map

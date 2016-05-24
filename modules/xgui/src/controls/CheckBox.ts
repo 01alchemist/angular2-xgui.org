@@ -1,17 +1,15 @@
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
  */
-import {Component, View, EventEmitter} from 'angular2/core';
-import {NgFor, NgIf} from 'angular2/common';
+import {Component, EventEmitter} from '@angular/core';
+import {NgFor, NgIf} from '@angular/common';
 
 @Component({
     selector: 'x-checkbox',
     properties:[
         'label:label'
     ],
-    events:["click:click"]
-})
-@View({
+    events:["click:click"],
     template:
     '<div class="x-checkbox">' +
     '<div *ngIf="label" class="checkbox-label">{{ label }}</div> ' +

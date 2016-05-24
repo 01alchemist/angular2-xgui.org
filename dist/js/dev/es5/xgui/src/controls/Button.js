@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var StyleUtils_1 = require("../utils/StyleUtils");
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
@@ -33,9 +34,7 @@ var Button = (function () {
             properties: [
                 'label:label'
             ],
-            events: ["click:click"]
-        }),
-        core_1.View({
+            events: ["click:click"],
             template: '<div class="button-label">{{ label }}</div>',
             /* FIXME: should be fine with NG.beta.1 */
             styles: [
@@ -61,7 +60,7 @@ var Button = (function () {
         __metadata('design:paramtypes', [])
     ], Button);
     return Button;
-})();
+}());
 exports.Button = Button;
 var css = 'x-button{' +
     'cursor: pointer;' +

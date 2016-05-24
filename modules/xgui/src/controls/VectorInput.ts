@@ -1,5 +1,5 @@
-import {Component,View,EventEmitter,ElementRef} from 'angular2/core';
-import {NgFor,NgIf} from 'angular2/common';
+import {Component, EventEmitter,ElementRef} from '@angular/core';
+import {NgFor,NgIf} from '@angular/common';
 import {NumberInput} from "./NumberInput";
 import {StyleUtils} from "../utils/StyleUtils";
 
@@ -9,9 +9,7 @@ import {StyleUtils} from "../utils/StyleUtils";
         'vector:vector',
         'label:label'
     ],
-    events: ['change:change']
-})
-@View({
+    events: ['change:change'],
     template: '<div class="label">{{ label }}</div> ' +
     '<div class="input-group"> ' +
     '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' +

@@ -1,13 +1,11 @@
-import {Component,View} from 'angular2/core';
+import {Component} from '@angular/core';
 import {StyleUtils} from "../utils/StyleUtils";
 
 @Component({
     selector: 'x-label',
     properties: [
         'text:text'
-    ]
-})
-@View({
+    ],
     template: '{{text}}',
     /* FIXME: should be fine with NG.beta.1 */
     /*styles:[
