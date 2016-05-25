@@ -1,4 +1,5 @@
-import {Component, View} from "angular2/core";
+import {Component} from "@angular/core";
+import {bootstrap} from "@angular/platform-browser-dynamic";
 import {Icon} from "../src/controls/Icon";
 import {Button} from "../src/controls/Button";
 import {CheckBox} from "../src/controls/CheckBox";
@@ -6,12 +7,9 @@ import {NumberInput} from "../src/controls/NumberInput";
 import {VectorInput} from "../src/controls/VectorInput";
 import {Tree} from "../src/controls/Tree";
 import {Panel} from "../src/containers/Panel";
-import {bootstrap} from "angular2/bootstrap";
 
 @Component({
-    selector: 'gui-demo'
-})
-@View({
+    selector: 'gui-demo',
     templateUrl: 'GUIDemoTemplate.html',
     directives: [
         Icon,

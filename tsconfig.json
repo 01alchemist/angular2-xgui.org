@@ -1,18 +1,21 @@
 {
-    "compilerOptions": {
-        "target": "ES5",
-        "module": "system",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "removeComments": true,
-        "noImplicitAny": false
-    },
-    "exclude": [
-        "node_modules",
-        "modules/xgui/manual_typings",
-        "modules/xgui/bundle",
-        "tools"
-    ]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "rootDir": ".",
+    "sourceMap": true,
+    "target": "es5",
+    "inlineSources": true
+  },
+
+  "files": [
+    "modules/**/*.ts",
+    "modules/xgui/test/GUIDemo.ts"
+  ]
 }

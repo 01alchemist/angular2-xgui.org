@@ -1,5 +1,5 @@
-import {Component, View} from "angular2/core";
-import {bootstrap} from "angular2/platform/browser";
+import {Component} from "@angular/core";
+import {bootstrap} from "@angular/platform-browser-dynamic";
 import {Icon} from "../xgui/src/controls/Icon";
 import {Button} from "../xgui/src/controls/Button";
 import {CheckBox} from "../xgui/src/controls/CheckBox";
@@ -8,9 +8,7 @@ import {VectorInput} from "../xgui/src/controls/VectorInput";
 import {Tree} from "../xgui/src/controls/Tree";
 
 @Component({
-    selector: 'gui-demo'
-})
-@View({
+    selector: 'gui-demo',
     templateUrl: 'modules/demo/template.html',
     directives: [
         Icon,
