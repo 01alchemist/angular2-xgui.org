@@ -1,4 +1,4 @@
-import {Component,EventEmitter,ElementRef, ViewContainerRef} from '@angular/core';
+import {Component,EventEmitter,ElementRef/*, ViewContainerRef*/} from '@angular/core';
 import {NgFor,NgIf} from '@angular/common';
 import {Icon} from "../controls/Icon";
 import {Assets} from "../assets/Assets";
@@ -92,7 +92,7 @@ import {Assets} from "../assets/Assets";
             /*'text-transform: uppercase;' +*/
         '}'
     ],
-    directives:[ViewContainerRef, NgIf, NgFor, Icon]
+    directives:[/*ViewContainerRef, */NgIf, NgFor, Icon]
 })
 export class Panel{
 
@@ -103,15 +103,15 @@ export class Panel{
     titleWidth:number;
     titleHeight:number;
     _elementRef:ElementRef;
-    _containerRef:ViewContainerRef;
+    /*_containerRef:ViewContainerRef;*/
 
     get stackHeadDisplay(){
         return this.stacked?"none":"block";
     }
 
-    constructor(elementRef: ElementRef, containerRef:ViewContainerRef) {
+    constructor(elementRef: ElementRef/*, containerRef:ViewContainerRef*/) {
         this._elementRef = elementRef;
-        this._containerRef = containerRef;
+        /*this._containerRef = containerRef;*/
         this._elementRef.nativeElement.addEventListener("mousedown",this.handleMouseEvent);
         this._elementRef.nativeElement.addEventListener("mouseup",this.handleMouseEvent);
         this._elementRef.nativeElement.addEventListener("onmouseleave",this.handleMouseEvent);

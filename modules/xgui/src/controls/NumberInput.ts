@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef} from '@angular/core';
+import {Component, EventEmitter, ElementRef, Output} from '@angular/core';
 import {NgFor, NgIf} from '@angular/common';
 import {StyleUtils} from "../utils/StyleUtils";
 
@@ -42,7 +42,7 @@ import {StyleUtils} from "../utils/StyleUtils";
 
 export class NumberInput {
 
-    change = new EventEmitter();
+    @Output() change = new EventEmitter();
     availableWidth:number;
 
     private _elementRef:ElementRef;
@@ -87,6 +87,9 @@ export class NumberInput {
     }
 
     onInput(event, isKeyInput = false) {
+
+        event.stopPropagation();
+
         var target = event.target;
         var value = target.value;
 

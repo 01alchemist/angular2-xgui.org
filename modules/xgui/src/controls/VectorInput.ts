@@ -12,11 +12,11 @@ import {StyleUtils} from "../utils/StyleUtils";
     events: ['change:change'],
     template: '<div class="label">{{ label }}</div> ' +
     '<div class="input-group"> ' +
-    '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' +
+    '<div *ngFor="let element of elements" [style.width]="inputWidth" class="input-element"> ' +
     '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' +
     '</div>' +
     '</div>',
-    /* FIXME: should be fine with NG.beta.1 */
+    /* FIXME: should be fine with NG.rc.1 */
     styles: [
         /*'vector-input{' +
          'display: block;' +

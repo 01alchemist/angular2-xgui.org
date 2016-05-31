@@ -14,7 +14,7 @@ import {StyleUtils} from "../utils/StyleUtils";
         'dataProvider:data-provider'
     ],
     events: ["select:select"],
-    template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' +
+    template: '<div class="x-tree-item" *ngFor="let data of dataProvider">' +
     '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' +
     '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' +
     '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' +
