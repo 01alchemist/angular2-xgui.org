@@ -8,13 +8,11 @@ import {VectorInput} from "../src/controls/VectorInput";
 import {Tree} from "../src/controls/Tree";
 import {Panel} from "../src/containers/Panel";
 import {SkinManager} from "../src/skins/SkinManager";
-import {ViewResolver} from "@angular/compiler";
 
 @Component({
     selector: 'gui-demo',
     templateUrl: 'GUIDemoTemplate.html',
     directives: [
-        ViewResolver,
         Icon,
         Button,
         CheckBox,
@@ -82,4 +80,4 @@ export class GUIDemo {
         console.log(event);
     }
 }
-bootstrap(GUIDemo, [SkinManager, ViewResolver]);
+bootstrap(GUIDemo, [SkinManager]);
