@@ -1,7 +1,9 @@
-import {Component,EventEmitter,ElementRef/*, ViewContainerRef*/} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ComponentRef/*, ViewContainerRef*/} from '@angular/core';
 import {NgFor,NgIf} from '@angular/common';
 import {Icon} from "../controls/Icon";
 import {Assets} from "../assets/Assets";
+import {StyleUtils} from "../utils/StyleUtils";
+import {ViewResolver} from "@angular/compiler";
 
 /**
  * Created by Nidin Vinayakan on 02-10-2015.
@@ -19,6 +21,7 @@ import {Assets} from "../assets/Assets";
         '<div class="panel-title" [style.width]="titleWidth" [style.height]="titleHeight">{{name}}</div>' +
         '</div>' +
         '<div class="stack-tabs">' +
+        '<ng-content></ng-content>' +
         '</div>' +
     '</div>',
     styles: [
@@ -73,14 +76,14 @@ import {Assets} from "../assets/Assets";
         '.panel-header{' +
             'display:block;' +
             'width:inherit;' +
-            'height:27px;' +
+            'height:25px;' +
             'border-top: #282828 1px solid;' +
             'background-color: #8A8782;' +
             'border-bottom: #444444 1px solid;' +
         '}',
         '.panel-title{' +
             'width:70px;' +
-            'height:17px;' +
+            'height:15px;' +
             'padding:5px;' +
             'padding-left:8px;' +
             'color:#ffffff;' +
@@ -92,7 +95,7 @@ import {Assets} from "../assets/Assets";
             /*'text-transform: uppercase;' +*/
         '}'
     ],
-    directives:[/*ViewContainerRef, */NgIf, NgFor, Icon]
+    directives:[/*ViewContainerRef, */ViewResolver, NgIf, NgFor, Icon]
 })
 export class Panel{
 
@@ -109,8 +112,9 @@ export class Panel{
         return this.stacked?"none":"block";
     }
 
-    constructor(elementRef: ElementRef/*, containerRef:ViewContainerRef*/) {
+    constructor(elementRef: ElementRef, private _viewResolver:ViewResolver /*, containerRef:ViewContainerRef*/) {
         this._elementRef = elementRef;
+        this._elementRef = _viewResolver.resolve(this);
         /*this._containerRef = containerRef;*/
         this._elementRef.nativeElement.addEventListener("mousedown",this.handleMouseEvent);
         this._elementRef.nativeElement.addEventListener("mouseup",this.handleMouseEvent);
@@ -126,8 +130,20 @@ export class Panel{
         console.log(event.type);
     }
     close(){
+        this.componentRef.destroy();
         /*var eli = this._elementRef.parentView._view.elementInjectors[this._elementRef.boundElementIndex];
         var vc = eli.getHost().getViewContainerRef();
         vc.remove(this._elementRef.boundElementIndex);*/
     }
 }
+
+var css = 'x-panel{' +
+    'min-width:212px;' +
+    'max-width:1370px;' +
+    'min-height:148px;' +
+    'max-height:805px;' +
+    'display: block;' +
+    'border: 1px solid #282828;' +
+    'background-color: #535353;' +
+    '}';
+StyleUtils.addStyle(css);

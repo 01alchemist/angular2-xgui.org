@@ -20,7 +20,7 @@ import {Panel} from "./Panel";
 })
 export class StackBox{
 
-    private _panels:Array<Panel>
+    private _panels:Array<Panel>;
 
     constructor(){
 

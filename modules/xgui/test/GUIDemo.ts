@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ComponentRef} from "@angular/core";
 import {bootstrap} from "@angular/platform-browser-dynamic";
 import {Icon} from "../src/controls/Icon";
 import {Button} from "../src/controls/Button";
@@ -7,11 +7,14 @@ import {NumberInput} from "../src/controls/NumberInput";
 import {VectorInput} from "../src/controls/VectorInput";
 import {Tree} from "../src/controls/Tree";
 import {Panel} from "../src/containers/Panel";
+import {SkinManager} from "../src/skins/SkinManager";
+import {ViewResolver} from "@angular/compiler";
 
 @Component({
     selector: 'gui-demo',
     templateUrl: 'GUIDemoTemplate.html',
     directives: [
+        ViewResolver,
         Icon,
         Button,
         CheckBox,
@@ -27,7 +30,10 @@ export class GUIDemo {
     treeDataProvider;
     iconSrc;
 
-    constructor(){
+    constructor(private skinManager:SkinManager){
+
+        console.log(skinManager.defaultSkin);
+        
         this.vector = {x:554,y:0,z:0};
         this.iconSrc = "images/favicon.png";
         this.treeDataProvider = [
@@ -76,4 +82,4 @@ export class GUIDemo {
         console.log(event);
     }
 }
-bootstrap(GUIDemo);
+bootstrap(GUIDemo, [SkinManager, ViewResolver]);

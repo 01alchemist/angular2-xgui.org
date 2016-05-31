@@ -10,8 +10,12 @@
     </div>
     <div class="column">
         <x-panel [name]="'Properties'">
-            <!--<vector-input id="position2" [label]="'Position'" [vector]="{x:554,y:0,z:0}" (change)="onVectorChange($event)"></vector-input>-->
-            <div>test</div>
+            <vector-input id="position2" [label]="'Position'" [vector]="{x:554,y:0,z:0}" (change)="onVectorChange($event)"></vector-input>
+            <!--<div>test</div>-->
+        </x-panel>
+        <x-panel [name]="'Properties'">
+            <vector-input id="rotation" [label]="'Rotation'" [vector]="{x:554,y:0,z:0}" (change)="onVectorChange($event)"></vector-input>
+            <!--<div>test</div>-->
         </x-panel>
     </div>
 </div>

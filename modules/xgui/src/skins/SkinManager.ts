@@ -9,21 +9,22 @@ export class SkinManager{
 
     static self:SkinManager;
 
-
     private skins:Array<Skin>;
     public defaultSkin:Skin;
 
     constructor(/*private _viewManager:AppViewManager*/) {
-        if (self) {
+        if (SkinManager.self) {
             throw {
                 code: 0,
                 name: "Singleton Error",
                 message: "ComponentManager is singleton, someone already created it"
             };
         }
+        SkinManager.self = this;
+        this.init();
     }
 
-    init(){
+    private init(){
         this.skins = [
             new Dracula()
         ];

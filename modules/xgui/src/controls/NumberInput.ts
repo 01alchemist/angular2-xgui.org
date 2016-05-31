@@ -10,7 +10,7 @@ import {StyleUtils} from "../utils/StyleUtils";
     ],
     events: ["change:change"],
     template: '<div class="input-label">{{ label }}</div>' +
-    '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
+    '<input type="number" step="1" class="input-value input-background" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
     /* FIXME: should be fine with NG.beta.1 */
     styles: [
         /*'number-input{' +
@@ -33,7 +33,7 @@ import {StyleUtils} from "../utils/StyleUtils";
         'background-color: #50524F;' +
         'color: #fff;' +
         'font-size: 0.9em;' +
-        'border: 0px solid #262825;' +
+        'border: 1px solid #303030;' +
         'border-top: 1px solid #2F2F2F; ' +
         '}'
     ],
