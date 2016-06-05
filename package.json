@@ -1,6 +1,6 @@
 {
   "name": "xgui",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.17",
   "description": "GUI Framework for angular2",
   "main": "GUICore.ts",
   "scripts": {

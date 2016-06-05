@@ -7,7 +7,7 @@ var exec = require('child_process').exec;
 var gulp = require('gulp');
 var gulpFormat = require('gulp-clang-format');
 var gulpPlugins = require('gulp-load-plugins')();
-var sass = require('gulp-sass');
+//var sass = require('gulp-sass');
 var shell = require('gulp-shell');
 var runSequence = require('run-sequence');
 var madge = require('madge');
@@ -325,13 +325,13 @@ gulp.task('bundle.js.dev', ['build.js.dev'], function() {
 /**
  * angular material testing rules
  */
-gulp.task('build.css.material', function() {
-    return gulp.src('src/**/*.scss')
+/*gulp.task('build.css.material', function() {
+    return gulp.src('src/!**!/!*.scss')
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(gulp.dest(CONFIG.dest.js.prod.es5))
         .pipe(gulp.dest(CONFIG.dest.js.dev.es5));
-});
+});*/
 
 gulp.task('cleanup.builder', function() {
     return angularXGUIBuilder.cleanup();

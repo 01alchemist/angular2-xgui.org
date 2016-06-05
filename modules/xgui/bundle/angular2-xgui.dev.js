@@ -48,34 +48,6 @@ System.register("xgui/src/skins/Skin", [], true, function(require, exports, modu
   return module.exports;
 });
 
-System.register("xgui/src/skins/dracula/Dracula", ["xgui/src/skins/Skin"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-      if (b.hasOwnProperty(p))
-        d[p] = b[p];
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-  var Skin_1 = require("xgui/src/skins/Skin");
-  var Dracula = (function(_super) {
-    __extends(Dracula, _super);
-    function Dracula() {
-      _super.call(this);
-      this.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
-    }
-    return Dracula;
-  }(Skin_1.Skin));
-  exports.Dracula = Dracula;
-  global.define = __define;
-  return module.exports;
-});
-
 System.register("xgui/src/utils/StyleUtils", [], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
@@ -95,6 +67,57 @@ System.register("xgui/src/utils/StyleUtils", [], true, function(require, exports
     return StyleUtils;
   }());
   exports.StyleUtils = StyleUtils;
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/controls/Label", ["@angular/core", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = require("@angular/core");
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
+  var Label = (function() {
+    function Label() {
+      this.label = this.label || "Untitled";
+    }
+    Object.defineProperty(Label.prototype, "label", {
+      get: function() {
+        return this._text;
+      },
+      set: function(value) {
+        this._text = value;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Label = __decorate([core_1.Component({
+      selector: 'x-label',
+      properties: ['text:text'],
+      template: '{{text}}'
+    }), __metadata('design:paramtypes', [])], Label);
+    return Label;
+  }());
+  exports.Label = Label;
+  var css = 'x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}';
+  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
@@ -288,6 +311,7 @@ System.register("xgui/src/controls/NumberInput", ["@angular/core", "@angular/com
       if (isKeyInput === void 0) {
         isKeyInput = false;
       }
+      event.stopPropagation();
       var target = event.target;
       var value = target.value;
       if (value === "") {
@@ -323,12 +347,13 @@ System.register("xgui/src/controls/NumberInput", ["@angular/core", "@angular/com
         value: value
       });
     };
+    __decorate([core_1.Output(), __metadata('design:type', Object)], NumberInput.prototype, "change", void 0);
     NumberInput = __decorate([core_1.Component({
       selector: 'number-input',
       properties: ['value:value', 'label:label'],
       events: ["change:change"],
-      template: '<div class="input-label">{{ label }}</div>' + '<input type="number" step="1" class="input-value" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
-      styles: ['.input-label{' + 'padding-right: 7px;' + '}', '.input-label:hover{' + 'cursor:col-resize;' + '}', '.input-value{' + 'width: auto;' + 'height: 17px;' + 'padding: 2px;' + 'display: flex;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 0px solid #262825;' + 'border-top: 1px solid #2F2F2F; ' + '}'],
+      template: '<div class="input-label">{{ label }}</div>' + '<input type="number" step="1" class="input-value input-background" value="{{ value }}" [style.width]="inputWidth" (keyup)="onInput($event, true)" (change)="onInput($event)"/>',
+      styles: ['.input-label{' + 'padding-right: 7px;' + '}', '.input-label:hover{' + 'cursor:col-resize;' + '}', '.input-value{' + 'width: auto;' + 'height: 17px;' + 'padding: 2px;' + 'display: flex;' + 'background-color: #50524F;' + 'color: #fff;' + 'font-size: 0.9em;' + 'border: 1px solid #303030;' + 'border-top: 1px solid #2F2F2F; ' + '}'],
       directives: [common_1.NgFor, common_1.NgIf]
     }), __metadata('design:paramtypes', [core_1.ElementRef])], NumberInput);
     return NumberInput;
@@ -430,7 +455,7 @@ System.register("xgui/src/controls/VectorInput", ["@angular/core", "@angular/com
       selector: 'vector-input',
       properties: ['vector:vector', 'label:label'],
       events: ['change:change'],
-      template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ngFor="#element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
+      template: '<div class="label">{{ label }}</div> ' + '<div class="input-group"> ' + '<div *ngFor="let element of elements" [style.width]="inputWidth" class="input-element"> ' + '<number-input [label]="element.label" [value]="element.value" (change)="onInput($event)"></number-input>' + '</div>' + '</div>',
       styles: ['.input-group{' + 'position: relative;' + 'display: flex;' + 'padding-top: 5px;' + 'padding-left: 5px;' + '}', '.input-element{' + 'font-size: 0.9em;' + 'position: relative;' + 'display: flex;' + 'padding-right: 10px;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, NumberInput_1.NumberInput]
     }), __metadata('design:paramtypes', [core_1.ElementRef])], VectorInput);
@@ -681,7 +706,7 @@ System.register("xgui/src/controls/Tree", ["@angular/core", "@angular/common", "
       selector: 'x-tree',
       properties: ['_level:_level', 'expandLevel:expand', 'dataField:data-field', 'dataProvider:data-provider'],
       events: ["select:select"],
-      template: '<div class="x-tree-item" *ngFor="#data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
+      template: '<div class="x-tree-item" *ngFor="let data of dataProvider">' + '<x-tree-item [data]="data" [data-field]="dataField" (toggle)="toggle($event)" (select)="handleSelection($event)"></x-tree-item>' + '<div *ngIf="hasDataProvider(data) && (isExpanded(data))">' + '<x-tree class="child" [_level]="_level+1" [expand]="expandLevel" [data-provider]="getDataProvider(data)" [data-field]="dataField" (select)="handleSelection($event)"></x-tree>' + '</div>' + '</div>',
       styles: ['.x-tree-item{' + 'display: block;' + 'position: relative;' + '}'],
       directives: [common_1.NgFor, common_1.NgIf, Label_1.Label, Icon_1.Icon, TreeItem_1.TreeItem, Tree]
     }), __metadata('design:paramtypes', [core_1.ElementRef])], Tree);
@@ -690,6 +715,31 @@ System.register("xgui/src/controls/Tree", ["@angular/core", "@angular/common", "
   exports.Tree = Tree;
   var css = 'x-tree{' + 'display: block;' + 'position: relative;' + 'padding-left: 0px;' + 'width: auto;' + '}' + 'x-tree .child{' + 'padding-left: 30px;' + '}';
   StyleUtils_1.StyleUtils.addStyle(css);
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/skins/dracula/Styles", ["xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
+  var Styles = (function() {
+    function Styles() {
+      this.colors = {
+        darkGray: "#393939",
+        liteGray: "#3A3A3A"
+      };
+      this.init();
+    }
+    Styles.prototype.init = function() {
+      this.gradients = {backgrounds: {inputField: ".input-background{\n                        background: red; /* For browsers that do not support gradients */\n                        background: -webkit-linear-gradient(" + this.colors.darkGray + ", " + this.colors.liteGray + "); /* For Safari 5.1 to 6.0 */\n                        background: -o-linear-gradient(" + this.colors.darkGray + ", " + this.colors.liteGray + "); /* For Opera 11.1 to 12.0 */\n                        background: -moz-linear-gradient(" + this.colors.darkGray + ", " + this.colors.liteGray + "); /* For Firefox 3.6 to 15 */\n                        background: linear-gradient(" + this.colors.darkGray + ", " + this.colors.liteGray + "); /* Standard syntax */\n                    }"}};
+      StyleUtils_1.StyleUtils.addStyle(this.gradients.backgrounds.inputField);
+    };
+    return Styles;
+  }());
+  exports.Styles = Styles;
   global.define = __define;
   return module.exports;
 });
@@ -719,13 +769,15 @@ System.register("xgui/src/skins/SkinManager", ["@angular/core", "xgui/src/skins/
   var Dracula_1 = require("xgui/src/skins/dracula/Dracula");
   var SkinManager = (function() {
     function SkinManager() {
-      if (self) {
+      if (SkinManager.self) {
         throw {
           code: 0,
           name: "Singleton Error",
           message: "ComponentManager is singleton, someone already created it"
         };
       }
+      SkinManager.self = this;
+      this.init();
     }
     SkinManager.prototype.init = function() {
       this.skins = [new Dracula_1.Dracula()];
@@ -735,57 +787,6 @@ System.register("xgui/src/skins/SkinManager", ["@angular/core", "xgui/src/skins/
     return SkinManager;
   }());
   exports.SkinManager = SkinManager;
-  global.define = __define;
-  return module.exports;
-});
-
-System.register("xgui/src/controls/Label", ["@angular/core", "xgui/src/utils/StyleUtils"], true, function(require, exports, module) {
-  var global = System.global,
-      __define = global.define;
-  global.define = undefined;
-  "use strict";
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    var c = arguments.length,
-        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-        d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      r = Reflect.decorate(decorators, target, key, desc);
-    else
-      for (var i = decorators.length - 1; i >= 0; i--)
-        if (d = decorators[i])
-          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var core_1 = require("@angular/core");
-  var StyleUtils_1 = require("xgui/src/utils/StyleUtils");
-  var Label = (function() {
-    function Label() {
-      this.label = this.label || "Untitled";
-    }
-    Object.defineProperty(Label.prototype, "label", {
-      get: function() {
-        return this._text;
-      },
-      set: function(value) {
-        this._text = value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Label = __decorate([core_1.Component({
-      selector: 'x-label',
-      properties: ['text:text'],
-      template: '{{text}}'
-    }), __metadata('design:paramtypes', [])], Label);
-    return Label;
-  }());
-  exports.Label = Label;
-  var css = 'x-label{' + 'display: inline-block;' + 'position: relative;' + 'padding-left: 5px;' + 'padding-right: 5px;' + 'width: auto;' + '}';
-  StyleUtils_1.StyleUtils.addStyle(css);
   global.define = __define;
   return module.exports;
 });
@@ -845,19 +846,35 @@ System.register("xgui/src/controls/Button", ["@angular/core", "@angular/common",
   return module.exports;
 });
 
-System.register("xgui/src/skins/xskin", ["xgui/src/skins/Skin", "xgui/src/skins/dracula/Dracula", "xgui/src/skins/SkinManager"], true, function(require, exports, module) {
+System.register("xgui/src/skins/dracula/Dracula", ["xgui/src/skins/Skin", "xgui/src/skins/dracula/Styles"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
   "use strict";
-  function __export(m) {
-    for (var p in m)
-      if (!exports.hasOwnProperty(p))
-        exports[p] = m[p];
-  }
-  __export(require("xgui/src/skins/Skin"));
-  __export(require("xgui/src/skins/dracula/Dracula"));
-  __export(require("xgui/src/skins/SkinManager"));
+  var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+      if (b.hasOwnProperty(p))
+        d[p] = b[p];
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+  var Skin_1 = require("xgui/src/skins/Skin");
+  var Styles_1 = require("xgui/src/skins/dracula/Styles");
+  var Dracula = (function(_super) {
+    __extends(Dracula, _super);
+    function Dracula() {
+      _super.call(this);
+      this.init();
+    }
+    Dracula.prototype.init = function() {
+      this.styles = new Styles_1.Styles();
+      this.panel = {styles: ['x-panel{' + 'min-width:212px;' + 'max-width:1370px;' + 'min-height:148px;' + 'max-height:805px;' + 'display: block;' + 'border: 1px solid #282828;' + '}', '.stack-header{' + 'display:block;' + 'width:inherit;' + 'height:11px;' + 'border-top: #474747 1px solid;' + 'border-bottom: #282828 1px solid;' + 'background-color: #323232;' + '}', '.panel-title{' + 'width:100px;' + '}']};
+    };
+    return Dracula;
+  }(Skin_1.Skin));
+  exports.Dracula = Dracula;
   global.define = __define;
   return module.exports;
 });
@@ -880,6 +897,23 @@ System.register("xgui/src/controls/xcontrols", ["xgui/src/controls/Label", "xgui
   __export(require("xgui/src/controls/VectorInput"));
   __export(require("xgui/src/controls/TreeItem"));
   __export(require("xgui/src/controls/Tree"));
+  global.define = __define;
+  return module.exports;
+});
+
+System.register("xgui/src/skins/xskin", ["xgui/src/skins/Skin", "xgui/src/skins/dracula/Dracula", "xgui/src/skins/SkinManager"], true, function(require, exports, module) {
+  var global = System.global,
+      __define = global.define;
+  global.define = undefined;
+  "use strict";
+  function __export(m) {
+    for (var p in m)
+      if (!exports.hasOwnProperty(p))
+        exports[p] = m[p];
+  }
+  __export(require("xgui/src/skins/Skin"));
+  __export(require("xgui/src/skins/dracula/Dracula"));
+  __export(require("xgui/src/skins/SkinManager"));
   global.define = __define;
   return module.exports;
 });
